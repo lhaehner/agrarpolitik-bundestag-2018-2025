@@ -1,0 +1,22 @@
+﻿Bezug;Bereich;Kennzahl;Bestand;Geprüft;TP;FP;FN;TN;Zähler;Nenner;Wert_in_Prozent;KI95_unten_in_Prozent;KI95_oben_in_Prozent;Hochgerechnete_übersehene_Sätze;Zeitraum;Wert_in_Prozentpunkten
+Tabelle 5;Ökologie;Präzision;;1000;289;0;51;660;289;289;100;98,6882121;100;;;
+Tabelle 5;Ökologie;Trefferquote;;1000;289;0;51;660;289;340;85;80,81457892;88,40336845;;;
+Tabelle 5;Ökonomie;Präzision;;1000;226;4;66;704;226;230;98,26086957;95,61445622;99,32166038;;;
+Tabelle 5;Ökonomie;Trefferquote;;1000;226;4;66;704;226;292;77,39726027;72,26216595;81,82085563;;;
+Tabelle 5;Sicherheit und Resilienz;Präzision;;1000;50;0;9;941;50;50;100;92,86524009;100;;;
+Tabelle 5;Sicherheit und Resilienz;Trefferquote;;1000;50;0;9;941;50;59;84,74576271;73,48201622;91,761536;;;
+Tabelle 6;vom Filter erfasst;A&E-Anteil laut Handcodierung;25247;1000;;;;;1000;1000;100;99,61732415;100;;;
+Tabelle 6;vom Filter nicht erfasst;A&E-Anteil laut Handcodierung;1887482;3000;;;;;9;3000;0,3;0,15791325;0,56920431;;;
+Abschnitt 3.5;Politikfeldfilter;Geschätzte Trefferquote;1912729;;;;;;;;81,68053222;70,14881582;89,44088103;5662,446;;
+Abschnitt 3.5;Ökologie;Trefferquote im Vierjahresblock;;474;155;0;27;292;155;182;85,16483516;79,27614156;89,59977063;;2018–2021;
+Abschnitt 3.5;Ökonomie;Trefferquote im Vierjahresblock;;474;80;3;33;358;80;113;70,79646018;61,83975397;78,3856938;;2018–2021;
+Abschnitt 3.5;Sicherheit und Resilienz;Trefferquote im Vierjahresblock;;474;12;0;2;460;12;14;85,71428571;60,0586205;95,99060787;;2018–2021;
+Abschnitt 5.4;Ökonomie;Stichprobenanteil nach Handcodierung;;474;;;;;113;474;23,83966245;;;;2018–2021;
+Abschnitt 5.4;Ökonomie;Stichprobenanteil nach Wörterbuchzuordnung;;474;;;;;83;474;17,51054852;;;;2018–2021;
+Abschnitt 3.5;Ökologie;Trefferquote im Vierjahresblock;;526;134;0;24;368;134;158;84,81012658;78,39275463;89,57499653;;2022–2025;
+Abschnitt 3.5;Ökonomie;Trefferquote im Vierjahresblock;;526;146;1;33;346;146;179;81,56424581;75,24139268;86,56078322;;2022–2025;
+Abschnitt 3.5;Sicherheit und Resilienz;Trefferquote im Vierjahresblock;;526;38;0;7;481;38;45;84,44444444;71,21609113;92,25457652;;2022–2025;
+Abschnitt 5.4;Ökonomie;Stichprobenanteil nach Handcodierung;;526;;;;;179;526;34,03041825;;;;2022–2025;
+Abschnitt 5.4;Ökonomie;Stichprobenanteil nach Wörterbuchzuordnung;;526;;;;;147;526;27,94676806;;;;2022–2025;
+Abschnitt 5.4;Ökonomie;Veränderung des Stichprobenanteils nach Handcodierung;;;;;;;;;;;;;2018–2021 → 2022–2025;10,1907558
+Abschnitt 5.4;Ökonomie;Veränderung des Stichprobenanteils nach Wörterbuchzuordnung;;;;;;;;;;;;;2018–2021 → 2022–2025;10,43621954

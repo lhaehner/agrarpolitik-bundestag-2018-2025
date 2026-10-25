@@ -1,0 +1,309 @@
+{
+  "beschreibung": [
+    "Abweichungen von Quellenmetadaten plus expliziten Standardfeldern und Ergänzungstabelle.",
+    "Alle Änderungen sind an erwartete Ausgangswerte gebunden; Herkunfts-DOIs bleiben erhalten."
+  ],
+  "nullwerte": [
+    "NA"
+  ],
+  "standardfelder": {
+    "korpus_reparatur_status": "unveraendert",
+    "personenschluessel_pruefstatus": "quellkennung_unveraendert",
+    "quellstatistik_status": "zeichen_tokens_typen_saetze_sind_unveraenderte_Quellenwerte"
+  },
+  "korrekturen": [
+    {
+      "rede_id": "ID1911005100",
+      "aenderungen": {
+        "korpus_reparatur_status": {
+          "vorher": "unveraendert",
+          "nachher": "xml_hauptbeitrag_rekonstruiert"
+        },
+        "quellstatistik_status": {
+          "vorher": "zeichen_tokens_typen_saetze_sind_unveraenderte_Quellenwerte",
+          "nachher": "Text_rekonstruiert_Quellenstatistik_nicht_als_neue_Zaehlung_verwenden"
+        }
+      },
+      "beleg": {
+        "protokoll_pdf": "https://dserver.bundestag.de/btp/19/19110.pdf",
+        "fundstelle": "19110.xml-0051; Beitrag ID1911005100; exakte Textstellen in operations.before und operations.after",
+        "begruendung": "Sprecherbeiträge innerhalb des XML-Redeblocks trennen und ausgelassene gesprochene Absätze wiederherstellen; Präsidiums- und Regietext nicht dem Hauptredner zuschlagen."
+      }
+    },
+    {
+      "rede_id": "ID1912800600",
+      "aenderungen": {
+        "korpus_reparatur_status": {
+          "vorher": "unveraendert",
+          "nachher": "xml_hauptbeitrag_rekonstruiert"
+        },
+        "quellstatistik_status": {
+          "vorher": "zeichen_tokens_typen_saetze_sind_unveraenderte_Quellenwerte",
+          "nachher": "Text_rekonstruiert_Quellenstatistik_nicht_als_neue_Zaehlung_verwenden"
+        }
+      },
+      "beleg": {
+        "protokoll_pdf": "https://dserver.bundestag.de/btp/19/19128.pdf",
+        "fundstelle": "19128.xml-0006; Beitrag ID1912800600; exakte Textstellen in operations.before und operations.after",
+        "begruendung": "Sprecherbeiträge innerhalb des XML-Redeblocks trennen und ausgelassene gesprochene Absätze wiederherstellen; Präsidiums- und Regietext nicht dem Hauptredner zuschlagen."
+      }
+    },
+    {
+      "rede_id": "ID1913910900",
+      "aenderungen": {
+        "korpus_reparatur_status": {
+          "vorher": "unveraendert",
+          "nachher": "xml_hauptbeitrag_rekonstruiert"
+        },
+        "quellstatistik_status": {
+          "vorher": "zeichen_tokens_typen_saetze_sind_unveraenderte_Quellenwerte",
+          "nachher": "Text_rekonstruiert_Quellenstatistik_nicht_als_neue_Zaehlung_verwenden"
+        }
+      },
+      "beleg": {
+        "protokoll_pdf": "https://dserver.bundestag.de/btp/19/19139.pdf",
+        "fundstelle": "19139.xml-0109; Beitrag ID1913910900; exakte Textstellen in operations.before und operations.after",
+        "begruendung": "Sprecherbeiträge innerhalb des XML-Redeblocks trennen und ausgelassene gesprochene Absätze wiederherstellen; Präsidiums- und Regietext nicht dem Hauptredner zuschlagen."
+      }
+    },
+    {
+      "rede_id": "ID1917005300",
+      "aenderungen": {
+        "korpus_reparatur_status": {
+          "vorher": "unveraendert",
+          "nachher": "xml_hauptbeitrag_rekonstruiert"
+        },
+        "quellstatistik_status": {
+          "vorher": "zeichen_tokens_typen_saetze_sind_unveraenderte_Quellenwerte",
+          "nachher": "Text_rekonstruiert_Quellenstatistik_nicht_als_neue_Zaehlung_verwenden"
+        }
+      },
+      "beleg": {
+        "protokoll_pdf": "https://dserver.bundestag.de/btp/19/19170.pdf",
+        "fundstelle": "19170.xml-0053; Beitrag ID1917005300; exakte Textstellen in operations.before und operations.after",
+        "begruendung": "Sprecherbeiträge innerhalb des XML-Redeblocks trennen und ausgelassene gesprochene Absätze wiederherstellen; Präsidiums- und Regietext nicht dem Hauptredner zuschlagen."
+      }
+    },
+    {
+      "rede_id": "ID1917304200",
+      "aenderungen": {
+        "korpus_reparatur_status": {
+          "vorher": "unveraendert",
+          "nachher": "xml_hauptbeitrag_rekonstruiert"
+        },
+        "quellstatistik_status": {
+          "vorher": "zeichen_tokens_typen_saetze_sind_unveraenderte_Quellenwerte",
+          "nachher": "Text_rekonstruiert_Quellenstatistik_nicht_als_neue_Zaehlung_verwenden"
+        }
+      },
+      "beleg": {
+        "protokoll_pdf": "https://dserver.bundestag.de/btp/19/19173.pdf",
+        "fundstelle": "19173.xml-0042; Beitrag ID1917304200; exakte Textstellen in operations.before und operations.after",
+        "begruendung": "Sprecherbeiträge innerhalb des XML-Redeblocks trennen und ausgelassene gesprochene Absätze wiederherstellen; Präsidiums- und Regietext nicht dem Hauptredner zuschlagen."
+      }
+    },
+    {
+      "rede_id": "ID1920109100",
+      "aenderungen": {
+        "korpus_reparatur_status": {
+          "vorher": "unveraendert",
+          "nachher": "xml_hauptbeitrag_rekonstruiert"
+        },
+        "quellstatistik_status": {
+          "vorher": "zeichen_tokens_typen_saetze_sind_unveraenderte_Quellenwerte",
+          "nachher": "Text_rekonstruiert_Quellenstatistik_nicht_als_neue_Zaehlung_verwenden"
+        }
+      },
+      "beleg": {
+        "protokoll_pdf": "https://dserver.bundestag.de/btp/19/19201.pdf",
+        "fundstelle": "19201.xml-0091; Beitrag ID1920109100; exakte Textstellen in operations.before und operations.after",
+        "begruendung": "Sprecherbeiträge innerhalb des XML-Redeblocks trennen und ausgelassene gesprochene Absätze wiederherstellen; Präsidiums- und Regietext nicht dem Hauptredner zuschlagen."
+      }
+    },
+    {
+      "rede_id": "ID208205200",
+      "aenderungen": {
+        "redner_vorname": {
+          "vorher": "Dirk-UlrichLena",
+          "nachher": "Lena"
+        },
+        "redner_nachname": {
+          "vorher": "Mende Kreck",
+          "nachher": "Kreck"
+        },
+        "redner_fraktion": {
+          "vorher": "SPD",
+          "nachher": "DIE LINKE"
+        },
+        "korpus_reparatur_status": {
+          "vorher": "unveraendert",
+          "nachher": "unveraendert+metadaten_geprueft"
+        },
+        "zugehoerigkeit_art": {
+          "vorher": "rollenbezogene_politische_zuordnung",
+          "nachher": "parteipolitische_zuordnung_regierungsrolle"
+        },
+        "zugehoerigkeit_pruefstatus": {
+          "vorher": "aus_bisheriger_arbeitsfassung",
+          "nachher": "belegt_personenname_und_politische_zuordnung_korrigiert"
+        },
+        "personenschluessel_pruefstatus": {
+          "vorher": "quellkennung_unveraendert",
+          "nachher": "quellkennung_erhalten_name_amtlich_korrigiert"
+        }
+      },
+      "beleg": {
+        "sitzung_datum": "2023-01-26",
+        "protokoll_pdf": "https://dserver.bundestag.de/btp/20/20082.pdf",
+        "druckseite": "9783 D–9784",
+        "weitere_quellen": [
+          "https://www.berlin.de/sen/justv/presse/pressemitteilungen/2022/pressemitteilung.1213526.php"
+        ],
+        "begruendung": "Das Protokoll nennt Lena Kreck als Berliner Senatorin. Die amtliche Mitteilung vom 02.06.2022 benennt ihre politische Zuordnung zur Linken. Der zusammengezogene Quellenname und die SPD-Ergänzung werden für diesen Beitrag korrigiert; dies bezeichnet kein Bundestagsfraktionsmandat."
+      }
+    },
+    {
+      "rede_id": "ID2014407800",
+      "aenderungen": {
+        "redner_fraktion": {
+          "vorher": "CDU/CSU",
+          "nachher": "ungeklärt"
+        },
+        "korpus_reparatur_status": {
+          "vorher": "unveraendert",
+          "nachher": "unveraendert+metadaten_geprueft"
+        },
+        "zugehoerigkeit_art": {
+          "vorher": "rollenbezogene_politische_zuordnung",
+          "nachher": "politische_zuordnung_ungeklaert_regierungsrolle"
+        },
+        "zugehoerigkeit_pruefstatus": {
+          "vorher": "aus_bisheriger_arbeitsfassung",
+          "nachher": "cdu_csu_fuellung_unbelegt_keine_ersatzpartei_geraten"
+        },
+        "personenschluessel_pruefstatus": {
+          "vorher": "quellkennung_unveraendert",
+          "nachher": "quellkennung_erhalten_nicht_personeneindeutig"
+        }
+      },
+      "beleg": {
+        "sitzung_datum": "2023-12-14",
+        "protokoll_pdf": "https://dserver.bundestag.de/btp/20/20144.pdf",
+        "druckseite": "18312 D–18313",
+        "weitere_quellen": [
+          "https://www.bmbfsfj.bund.de/bmbfsfj/aktuelles/pressemitteilungen/bundesregierung-beruft-erstmals-antiziganismus-beauftragten-193920"
+        ],
+        "begruendung": "Protokoll und amtliche Berufungsmitteilung vom 09.03.2022 belegen Mehmet Daimagüler als Antiziganismusbeauftragten. Sie belegen keine CDU/CSU-Zugehörigkeit. Die Quellen-ID ist auch für Judith Gerlach vergeben; die unbelegte CDU/CSU-Ergänzung wird deshalb nur für diesen Beitrag auf ungeklärt gesetzt, ohne eine Ersatzpartei zu unterstellen."
+      }
+    },
+    {
+      "rede_id": "ID2015400700",
+      "aenderungen": {
+        "korpus_reparatur_status": {
+          "vorher": "unveraendert",
+          "nachher": "xml_hauptbeitrag_rekonstruiert"
+        },
+        "quellstatistik_status": {
+          "vorher": "zeichen_tokens_typen_saetze_sind_unveraenderte_Quellenwerte",
+          "nachher": "Text_rekonstruiert_Quellenstatistik_nicht_als_neue_Zaehlung_verwenden"
+        }
+      },
+      "beleg": {
+        "protokoll_pdf": "https://dserver.bundestag.de/btp/20/20154.pdf",
+        "fundstelle": "20154.xml-0007; Beitrag ID2015400700; exakte Textstellen in operations.before und operations.after",
+        "begruendung": "Sprecherbeiträge innerhalb des XML-Redeblocks trennen und ausgelassene gesprochene Absätze wiederherstellen; Präsidiums- und Regietext nicht dem Hauptredner zuschlagen."
+      }
+    },
+    {
+      "rede_id": "ID2015913200",
+      "aenderungen": {
+        "redner_fraktion": {
+          "vorher": "CDU/CSU",
+          "nachher": "ungeklärt"
+        },
+        "korpus_reparatur_status": {
+          "vorher": "unveraendert",
+          "nachher": "unveraendert+metadaten_geprueft"
+        },
+        "zugehoerigkeit_art": {
+          "vorher": "rollenbezogene_politische_zuordnung",
+          "nachher": "politische_zuordnung_ungeklaert_regierungsrolle"
+        },
+        "zugehoerigkeit_pruefstatus": {
+          "vorher": "aus_bisheriger_arbeitsfassung",
+          "nachher": "cdu_mitgliedschaft_am_rededatum_widerlegt_ersatzzuordnung_offen"
+        }
+      },
+      "beleg": {
+        "sitzung_datum": "2024-03-20",
+        "protokoll_pdf": "https://dserver.bundestag.de/btp/20/20159.pdf",
+        "druckseite": "20384 D",
+        "weitere_quellen": [
+          "https://www.bundesrat.de/SharedDocs/personen/DE/laender/be/badenberg-felor.html",
+          "https://www.berlin.de/rbmskzl/aktuelles/media/artikel.1318340.php"
+        ],
+        "begruendung": "Das Protokoll nennt Felor Badenberg als Berliner Senatorin für den Bundesrat. Die Bundesratsbiografie datiert den CDU-Beitritt auf den 23.05.2024; die amtliche Vereidigungsdokumentation 2023 bezeichnet sie als parteilos für die CDU. Die spätere Parteimitgliedschaft wird nicht auf den Beitrag vom 20.03.2024 zurückdatiert. Der festgelegte Datenstand kennzeichnet die Zuordnung als ungeklärt; Nominierung und Parteimitgliedschaft sind zu unterscheiden."
+      }
+    },
+    {
+      "rede_id": "ID2020700600",
+      "aenderungen": {
+        "redner_fraktion": {
+          "vorher": "FDP",
+          "nachher": "fraktionslos"
+        },
+        "korpus_reparatur_status": {
+          "vorher": "unveraendert",
+          "nachher": "unveraendert+metadaten_geprueft"
+        },
+        "zugehoerigkeit_art": {
+          "vorher": "rollenbezogene_politische_zuordnung",
+          "nachher": "fraktionslos_regierungsrolle"
+        },
+        "zugehoerigkeit_pruefstatus": {
+          "vorher": "aus_bisheriger_arbeitsfassung",
+          "nachher": "belegt_partei_und_fraktionsaustritt_vor_rededatum"
+        }
+      },
+      "beleg": {
+        "sitzung_datum": "2024-12-19",
+        "protokoll_pdf": "https://dserver.bundestag.de/btp/20/20207.pdf",
+        "weitere_quellen": [
+          "https://www.bundestag.de/webarchiv/abgeordnete/biografien20/W/wissing_volker-861446"
+        ],
+        "begruendung": "Die archivierte Bundestagsbiografie vermerkt den Austritt Volker Wissings aus FDP und FDP-Bundestagsfraktion am 07.11.2024. Für diesen späteren Beitrag wird die frühere FDP-Ergänzung durch fraktionslos ersetzt."
+      }
+    },
+    {
+      "rede_id": "ID21201700",
+      "aenderungen": {
+        "korpus_reparatur_status": {
+          "vorher": "unveraendert",
+          "nachher": "unveraendert+metadaten_geprueft"
+        },
+        "zugehoerigkeit_art": {
+          "vorher": "rollenbezogene_politische_zuordnung",
+          "nachher": "politische_zuordnung_regierungsrolle_tagesstatus_offen"
+        },
+        "zugehoerigkeit_pruefstatus": {
+          "vorher": "aus_bisheriger_arbeitsfassung",
+          "nachher": "parteieintritt_nur_monatsgenau_keine_willkuerliche_umcodierung"
+        }
+      },
+      "beleg": {
+        "sitzung_datum": "2025-05-06",
+        "protokoll_pdf": "https://dserver.bundestag.de/btp/21/21002.pdf",
+        "weitere_quellen": [
+          "https://bmds.bund.de/en/the-ministry/leadership/minister"
+        ],
+        "begruendung": "Die amtliche Biografie nennt den Ministerbeginn am 06.05.2025 und einen CDU-Beitritt im Mai 2025, aber keinen Eintrittstag. Der politische Zuordnungswert bleibt unverändert; die tagesgenaue Parteimitgliedschaft ist ausdrücklich offen und wird nicht aus dem Monatsdatum abgeleitet."
+      }
+    }
+  ],
+  "herkunft": {
+    "rekonstruktion": "Aus festgelegter Ausgangs- und Zieldatei abgeleitet; kein vollständiges historisches Bearbeitungsprotokoll.",
+    "dokumentation": "docs/Korpuskorrekturen.md",
+    "pfadbezug": "Repository-Hauptverzeichnis",
+    "belegumfang": "Gezielte personenbezogene und zeitliche Belege für fünf auffällige Beiträge; sieben weitere Einträge kennzeichnen die Textrekonstruktion. Keine vollständige historische Einzelprüfung aller politischen Zuordnungen."
+  }
+}

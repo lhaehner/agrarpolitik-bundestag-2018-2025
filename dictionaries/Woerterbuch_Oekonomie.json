@@ -1,0 +1,2429 @@
+{
+  "titel": "Wörterbuch Ökonomie",
+  "beschreibung": [
+    "Erfasst ausdrücklich benannte wirtschaftliche Gegenstände und Vorgänge.",
+    "Wird auf bereits abgegrenzte Agrar- und Ernährungssätze angewandt.",
+    "Gemessen wird die Präsenz der Themen; Bewertungen werden nicht unterschieden.",
+    "Mehrfachzuordnungen zwischen Kategorien und Themenbereichen sind zulässig."
+  ],
+  "korpus": {
+    "trennzeichen": ";",
+    "textspalte": "sent_text"
+  },
+  "verfahren": {
+    "aufbau": [
+      "gruppen definiert die Kategorien; familien ordnet die Begriffslisten zu.",
+      "Jede Familie gehört über gruppe zu genau einer Kategorie.",
+      "unterkategorien gliedert die Formenlisten innerhalb einer Familie.",
+      "Beschreibung und Hinweise dokumentieren die Regeln; sie lösen keine Treffer aus."
+    ],
+    "normalisierung": [
+      "Der Satz wird kleingeschrieben; ä, ö, ü und ß werden zu ae, oe, ue und ss.",
+      "Weitere Zeichen werden bei der Normalisierung nicht verändert."
+    ],
+    "tokenisierung": [
+      "Token sind maximale Zeichenfolgen nach [A-Za-z0-9_-]+.",
+      "Bindestriche und Unterstriche gehören zum Token."
+    ],
+    "positivlisten": [
+      "Es gelten ausschließlich die Formen unter familien > unterkategorien > formen.",
+      "Jede Form muss als vollständiges Token vorkommen.",
+      "Flexion, Steigerung und Komposita müssen ausdrücklich gelistet sein.",
+      "Es gibt keine automatische Wortstammsuche oder Lemmatisierung."
+    ],
+    "ausschlussregeln": [
+      "Lokale Ausschlussregeln gelten zuerst für den normalisierten Satz.",
+      "Sie entfernen nur die Token-Fundstelle der benannten Regex-Gruppe target.",
+      "Dieselbe Form kann an anderer Stelle im Satz weiterhin treffen.",
+      "Kontextregeln entfernen danach ihre grundform aus dem gesamten Satz.",
+      "Andere gelistete Treffer im Satz bleiben erhalten."
+    ],
+    "zaehlung": [
+      "Eine Familie zählt, sobald mindestens eine ihrer Formen gültig trifft.",
+      "Eine Kategorie zählt, wenn mindestens eine zugeordnete Familie trifft.",
+      "Der Themenbereich zählt bei mindestens einer treffenden Kategorie.",
+      "Je Satz zählt jede Familie, Kategorie und jeder Themenbereich höchstens einmal."
+    ],
+    "dokumentierte_ausschluesse": [
+      "nicht_erfasst dokumentiert fehlende Formen und ist keine zusätzliche Filterliste.",
+      "Ein Ausschlusswort verhindert keine anderen Treffer im selben Satz."
+    ]
+  },
+  "abgrenzung": [
+    "Allgemeine Förderung, Subvention, Kaufen, Verkaufen, Einkaufen und Warenangebot",
+    "bilden keine eigenständigen Trefferfamilien.",
+    "Gelistete Zusammensetzungen anderer Familien sind eigenständige Treffer.",
+    "Dazu zählen Investitionsförderung, Exportförderung, Kaufpreis",
+    "und Kfz-Steuer-Subvention.",
+    "Finanzierung, Investition, Zahlung und konkrete Transferinstrumente sind erfasst.",
+    "Ausgewählte Mittelbereitstellungs-, Haushalts- und Programmbegriffe fehlen.",
+    "Maßgeblich sind die Positivlisten; Haushaltsthemen sind nicht pauschal gesperrt.",
+    "Ein ökologischer Verwendungszweck schließt wirtschaftliche Treffer nicht aus."
+  ],
+  "gruppen": [
+    {
+      "id": "G1",
+      "nummer": 1,
+      "name": "Preise und Kosten",
+      "hinweise": [
+        "Enthält die gelisteten Preis- und Kostenbezüge einschließlich Kostenfreiheit,",
+        "Kostendeckung und niedriger Preise; keine Beschränkung auf Kostensteigerungen."
+      ]
+    },
+    {
+      "id": "G2",
+      "nummer": 2,
+      "name": "Arbeitskosten und Arbeitskräftemangel",
+      "hinweise": [
+        "Enthält Löhne, Vergütung, Tarifverträge sowie Arbeitsmarkt- und Mangelbegriffe.",
+        "Die genauen Zuordnungen ergeben sich aus den Familien und ihren Positivlisten."
+      ]
+    },
+    {
+      "id": "G3",
+      "nummer": 3,
+      "name": "Finanzierung, Investition und Zahlungen",
+      "hinweise": [
+        "Enthält Finanzierung, Investitionen, Planungssicherheit, Kapital und Zahlungen.",
+        "Konkrete staatliche Transferinstrumente stehen unter Kategorie 6."
+      ]
+    },
+    {
+      "id": "G4",
+      "nummer": 4,
+      "name": "Märkte, Handel und Wettbewerb",
+      "hinweise": [
+        "Pacht und Verpachtung gehören zu den Nutzungsverhältnissen.",
+        "Pachtpreise sind als Preisbezug unter Kategorie 1 gelistet."
+      ]
+    },
+    {
+      "id": "G5",
+      "nummer": 5,
+      "name": "Einkommen, Wirtschaftlichkeit und Fortbestand",
+      "hinweise": [
+        "Enthält Ertrag, Wirtschaftlichkeit, Effizienz und wirtschaftlichen Fortbestand."
+      ]
+    },
+    {
+      "id": "G6",
+      "nummer": 6,
+      "name": "Staatliche Zahlungen, Abgaben und Bürokratie",
+      "hinweise": [
+        "Enthält gelistete staatliche Zahlungen, Abgaben und Bürokratiebegriffe.",
+        "Die Kfz-Steuer-Subvention zählt zur Steuerfamilie."
+      ]
+    },
+    {
+      "id": "G7",
+      "nummer": 7,
+      "name": "Agrardiesel und Rückvergütung",
+      "hinweise": [
+        "Entspricht der Familie Agrardiesel samt gelisteten Rückvergütungsbegriffen.",
+        "Es wird keine zusätzliche freie Textsuche angewandt."
+      ]
+    }
+  ],
+  "kontextregeln": [
+    {
+      "familie": "Kosten",
+      "grundform": "kosten",
+      "beschreibung": "„auf Kosten“ (der, des, von …) als Redewendung",
+      "suchmuster": "(?<![A-Za-z0-9_-])auf kosten(?![A-Za-z0-9_-])"
+    },
+    {
+      "familie": "Preis",
+      "grundform": "preis",
+      "beschreibung": "„um jeden Preis“, „ein hoher Preis“, „den Preis (be)zahlen“ als Redewendung",
+      "suchmuster": "(?<![A-Za-z0-9_-])(?:um jeden preis(?![A-Za-z0-9_-])|hoh(e|en|er) preis(?![A-Za-z0-9_-])|den preis (be)?zahl)"
+    },
+    {
+      "familie": "teuer / Teuerung / Verteuerung",
+      "grundform": "teuer",
+      "beschreibung": "„teuer zu stehen kommen“, „politisch teuer bezahlen“ als Redewendung",
+      "suchmuster": "(?<![A-Za-z0-9_-])(?:teuer zu stehen|politisch teuer(?![A-Za-z0-9_-]))"
+    },
+    {
+      "familie": "Kapital / Kredit / Liquidität / Rücklage / Zins / Darlehen",
+      "grundform": "kapital",
+      "beschreibung": "„politisches Kapital“, „Kapital schlagen“ als Redewendung",
+      "suchmuster": "(?<![A-Za-z0-9_-])(?:(politisch\\w*|populistisch\\w*) kapital(?![A-Za-z0-9_-])|kapital (zu )?schlagen)"
+    },
+    {
+      "familie": "Nachfrage",
+      "grundform": "nachfrage",
+      "beschreibung": "Parlamentarische Rückfrage: „meine Nachfrage zu …“, „Nachfrage gestellt“",
+      "suchmuster": "(?<![A-Za-z0-9_-])(?:(meine|ihre|eine|zweite|kurze|erste|weitere) nachfrage(:|\\?| zum| zur| zu | geht| an )|nachfrage gestellt|nachfrage geht dahin)"
+    }
+  ],
+  "lokale_ausschlussregeln": [
+    {
+      "id": "wirtschaftliche_in_institutionstitel",
+      "beschreibung": [
+        "Blendet wirtschaftliche im Ministeriums-, Minister- oder Ausschusstitel",
+        "für wirtschaftliche Zusammenarbeit und Entwicklung aus.",
+        "Weitere Vorkommen im Satz bleiben gültig."
+      ],
+      "suchmuster": "(?<![A-Za-z0-9_-])(?:bundesministerium|bundesministeriums|bundesministerien|bundesminister|bundesministers|bundesministern|bundesministerin|bundesministerinnen|ministerium|ministeriums|ministerien|minister|ministers|ministern|ministerin|ministerinnen|ausschuss|ausschusses|ausschuesse|ausschuessen)\\s+fuer\\s+(?P<target>wirtschaftliche)\\s+zusammenarbeit\\s+und\\s+entwicklung(?![A-Za-z0-9_-])"
+    },
+    {
+      "id": "abgabe_von_emissionen",
+      "beschreibung": [
+        "Blendet nur Abgabe in der Wortfolge Abgabe von Emission oder Emissionen aus.",
+        "Weitere Vorkommen im Satz bleiben gültig."
+      ],
+      "suchmuster": "(?<![A-Za-z0-9_-])(?P<target>abgabe)\\s+von\\s+emission(?:en)?(?![A-Za-z0-9_-])"
+    }
+  ],
+  "familien": [
+    {
+      "id": "preis",
+      "name": "Preis",
+      "gruppe": "G1",
+      "unterkategorien": [
+        {
+          "name": "Grundwort und Adjektiv",
+          "formen": [
+            "-preises", "preis", "preise", "preisen", "preises", "preislich", "preisliche",
+            "preislichem", "preislichen", "preislicher", "preisliches"
+          ]
+        },
+        {
+          "name": "Preise von Lebensmitteln und Agrarerzeugnissen",
+          "formen": [
+            "abnehmerpreise", "agrarpreise", "discountpreise", "erzeugerpreis", "erzeugerpreise",
+            "erzeugerpreisen", "fleischpreis", "fleischpreise", "fleischpreisen",
+            "fleischpreiserhoehungen", "futterpreise", "getreidepreise", "getreidepreises",
+            "getreidepreissenkungen", "getreidepreissteigerungen", "lebensmittelpreisbildung",
+            "lebensmittelpreise", "lebensmittelpreisen", "lebensmittelpreissteigerungen",
+            "milchauszahlungspreises", "milchpreis", "milchpreiskrise", "mindesterzeugerpreisen",
+            "nahrungsmittelpreise", "nahrungsmittelpreisen", "schweinepreis", "schweinepreise",
+            "weizenpreise"
+          ]
+        },
+        {
+          "name": "Preise von Betriebsmitteln, Energie, Boden",
+          "formen": [
+            "ackerlandpreise", "benzinpreise", "bodenkaufpreise", "bodenpreisbremse", "bodenpreise",
+            "dieselpreis", "dieselpreise", "duengemittelpreise", "duengepreise", "duengerpreise",
+            "energiepreisanstieg", "energiepreise", "energiepreisen", "energiepreiserhoehungen",
+            "energiepreisgetrieben", "energiepreisgetriebene", "energiepreisgetriebenem",
+            "energiepreisgetriebenen", "energiepreisgetriebener", "energiepreisgetriebenes",
+            "energiepreiskrise", "energiepreispauschale", "energiepreissteigerungen", "gaspreise",
+            "gaspreisumlage", "herstellungspreise", "kraftstoffpreise", "kraftstoffpreisen",
+            "pachtpreise", "pachtpreisen", "pestizidpreise", "rohstoffpreise", "rohstoffpreisen",
+            "spritpreis", "spritpreise", "spritpreisen", "strompreis", "strompreise",
+            "strompreisexplosion", "trinkwasserpreise", "wasserpreise"
+          ]
+        },
+        {
+          "name": "Verbraucher- und Ladenpreise",
+          "formen": [
+            "einkaufspreise", "endverbraucherpreis", "kaufpreis", "konsumpreise", "ladenpreis",
+            "verbraucherpreisen", "verbraucherpreisindex", "verkaufspreise", "verkaufspreises"
+          ]
+        },
+        {
+          "name": "Preisniveau, Preisbewegung, Preisbildung",
+          "formen": [
+            "aufpreis", "bepreisung", "billigstpreise", "billigstpreisen", "co2-bepreisung",
+            "co2-preis", "co2-preisausgleich", "dumpingpreise", "dumpingpreisen", "eingepreist",
+            "einpreisen", "festpreis", "hoeherpreisig", "hoeherpreisige", "hoeherpreisigem",
+            "hoeherpreisigen", "hoeherpreisiger", "hoeherpreisiges", "immobilienpreise",
+            "immobilienpreisen", "marktpreisen", "marktpreises", "mehrpreise", "mindestpreis",
+            "mondpreisen", "preisanstieg", "preisanstiegen", "preisbelastungen", "preisbewusst",
+            "preisbewusste", "preisbewusstem", "preisbewussten", "preisbewusster",
+            "preisbewusstere", "preisbewussterem", "preisbewussteren", "preisbewussterer",
+            "preisbewussteres", "preisbewusstes", "preisbewussteste", "preisbewusstestem",
+            "preisbewusstesten", "preisbewusstester", "preisbewusstestes", "preisbildung",
+            "preisbremse", "preisdeckel", "preisdiktat", "preisdruck", "preisdrueckerei",
+            "preisdumping", "preisentlastung", "preisentwicklung", "preisentwicklungen",
+            "preiserhoehung", "preiserhoehungen", "preisexplosion", "preisexplosionen",
+            "preisfestsetzung", "preisgestaltung", "preisguenstig", "preisguenstige",
+            "preisguenstigem", "preisguenstigen", "preisguenstiger", "preisguenstigere",
+            "preisguenstigerem", "preisguenstigeren", "preisguenstigerer", "preisguenstigeres",
+            "preisguenstiges", "preisguenstigste", "preisguenstigstem", "preisguenstigsten",
+            "preisguenstigster", "preisguenstigstes", "preiskaempfe", "preiskampf",
+            "preiskonkurrenz", "preiskontrolle", "preiskontrollen", "preiskrieg", "preisniveau",
+            "preispolitik", "preisregelungen", "preisregulierungen", "preisschock",
+            "preisschwankung", "preisschwankungen", "preissegment", "preissenkungen",
+            "preissensibilitaet", "preissignal", "preissignale", "preisspirale", "preisspiralen",
+            "preisspruenge", "preissteigerung", "preissteigerungen", "preissubvention",
+            "preistaeuschung", "preistreiber", "preistreiberei", "preisveraenderungen",
+            "preisverfall", "preisverfalls", "preiswert", "preiswerte", "preiswertem",
+            "preiswerten", "preiswerter", "preiswertere", "preiswerterem", "preiswerteren",
+            "preiswerterer", "preiswerteres", "preiswertes", "preiswerteste", "preiswertestem",
+            "preiswertesten", "preiswertester", "preiswertestes", "preiswettbewerb", "ramschpreise",
+            "ramschpreisen", "rekordpreise", "spottpreis", "spottpreisen", "verrechnungspreise",
+            "weltmarktpreis", "weltmarktpreise", "weltmarktpreisen"
+          ]
+        }
+      ],
+      "nicht_erfasst": [
+        {
+          "klasse": "Akteure, Branchen und Institutionen",
+          "formen": [
+            "energiepreisaufsicht", "lebensmittelpreisaufsicht", "preisaufsicht",
+            "preisaufsichtsbehoerde", "preisbeobachtungsstelle"
+          ]
+        },
+        {
+          "klasse": "Einzelfall aus einem anderen Feld",
+          "formen": [
+            "oepnv-preise"
+          ]
+        },
+        {
+          "klasse": "Orte und Gegenstände",
+          "formen": [
+            "preisschild"
+          ]
+        },
+        {
+          "klasse": "anderes Wort desselben Stamms",
+          "formen": [
+            "bundespreis", "friedensnobelpreis", "nobelpreistraeger", "nobelpreistraegerin",
+            "preisgegeben", "preist", "preisverleihung", "preiszugeben", "trostpreis"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kosten",
+      "name": "Kosten",
+      "gruppe": "G1",
+      "unterkategorien": [
+        {
+          "name": "Grundwort und Verbformen",
+          "formen": [
+            "gekostet", "kosten", "kosten-", "kostengruenden", "kostet", "kostete",
+            "unkostenbeitrag"
+          ]
+        },
+        {
+          "name": "Kosten von Betriebsmitteln, Energie, Arbeit, Produktion",
+          "formen": [
+            "anschaffungskosten", "arbeitskosten", "betriebskosten", "betriebskostenzuschuessen",
+            "betriebsmittelkosten", "duengekosten", "duengerkosten", "energieerzeugungskosten",
+            "energiekosten", "energiekostenexplosion", "erzeugungskosten", "faktorkosten",
+            "frachtkosten", "herstellungskosten", "kostenfaktor", "lohnkosten", "lohnkostenanteil",
+            "lohnkostenbereich", "lohnnebenkosten", "mineralduengerkosten", "personalkosten",
+            "produktionskosten", "produktionskostensteigerung", "rohstoffkosten", "spritkosten",
+            "stromkosten", "transportkosten", "zinskosten"
+          ]
+        },
+        {
+          "name": "Kosten von Lebensmitteln und Lebenshaltung",
+          "formen": [
+            "erzeugerkosten", "fahrtkosten", "futtermittelkosten", "gesundheitskosten",
+            "heizkosten", "heizkostenrechnungen", "heizkostenzuschuss", "lebenshaltungskosten",
+            "lebensmittelkosten", "mietkosten", "mobilitaetskosten", "sozialversicherungskosten",
+            "wohnkosten"
+          ]
+        },
+        {
+          "name": "Kostenbewegung und Kostenbelastung",
+          "formen": [
+            "abgrenzungskosten", "deichbaukosten", "erfuellungskosten", "extrakosten", "fixkosten",
+            "folgekosten", "gesamtkosten", "kostenanstieg", "kostenbloecke", "kostendaempfung",
+            "kostendruck", "kosteneinsparung", "kostenentlastung", "kostenexplosion",
+            "kostenexplosionen", "kostenseite", "kostensteigerung", "kostensteigerungen",
+            "kostentreiber", "kostenumfang", "krisenkosten", "mehrkosten", "transaktionskosten",
+            "werbekosten", "werbekostenzuschuesse", "zusatzkosten"
+          ]
+        },
+        {
+          "name": "Kostendeckung, Kostenfreiheit, Kostenbewusstsein",
+          "formen": [
+            "kostenbewusst", "kostenbewusste", "kostenbewusstem", "kostenbewussten",
+            "kostenbewusster", "kostenbewusstere", "kostenbewussterem", "kostenbewussteren",
+            "kostenbewussterer", "kostenbewussteres", "kostenbewusstes", "kostenbewussteste",
+            "kostenbewusstestem", "kostenbewusstesten", "kostenbewusstester", "kostenbewusstestes",
+            "kostendeckend", "kostendeckende", "kostendeckendem", "kostendeckenden",
+            "kostendeckender", "kostendeckendes", "kosteneffizient", "kosteneffiziente",
+            "kosteneffizientem", "kosteneffizienten", "kosteneffizienter", "kosteneffizientere",
+            "kosteneffizienterem", "kosteneffizienteren", "kosteneffizienterer",
+            "kosteneffizienteres", "kosteneffizientes", "kosteneffizienteste",
+            "kosteneffizientestem", "kosteneffizientesten", "kosteneffizientester",
+            "kosteneffizientestes", "kostenfrei", "kostenfreie", "kostenfreiem", "kostenfreien",
+            "kostenfreier", "kostenfreies", "kostenfreiheit", "kostenguenstig", "kostenguenstige",
+            "kostenguenstigem", "kostenguenstigen", "kostenguenstiger", "kostenguenstigere",
+            "kostenguenstigerem", "kostenguenstigeren", "kostenguenstigerer", "kostenguenstigeres",
+            "kostenguenstiges", "kostenguenstigste", "kostenguenstigstem", "kostenguenstigsten",
+            "kostenguenstigster", "kostenguenstigstes", "kostenintensiv", "kostenintensive",
+            "kostenintensivem", "kostenintensiven", "kostenintensiver", "kostenintensivere",
+            "kostenintensiverem", "kostenintensiveren", "kostenintensiverer", "kostenintensiveres",
+            "kostenintensives", "kostenintensivste", "kostenintensivstem", "kostenintensivsten",
+            "kostenintensivster", "kostenintensivstes", "kostenlos", "kostenlose", "kostenlosem",
+            "kostenlosen", "kostenloser", "kostenloses", "kostensparend", "kostensparende",
+            "kostensparendem", "kostensparenden", "kostensparender", "kostensparendere",
+            "kostensparenderem", "kostensparenderen", "kostensparenderer", "kostensparenderes",
+            "kostensparendes", "kostensparendste", "kostensparendstem", "kostensparendsten",
+            "kostensparendster", "kostensparendstes", "kostenuebernahme", "vollkostendeckung"
+          ]
+        }
+      ],
+      "nicht_erfasst": [
+        {
+          "klasse": "Ausgewählte Mittelbereitstellungs-, Haushalts-, Programm- und fachfremde Begriffe",
+          "formen": [
+            "energiekostendaempfungsprogramm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "teuer_teuerung_verteuerung",
+      "name": "teuer / Teuerung / Verteuerung",
+      "gruppe": "G1",
+      "unterkategorien": [
+        {
+          "name": "Grundwort und Adjektiv",
+          "formen": [
+            "teuer", "teuere", "teuerem", "teueren", "teuerer", "teueres", "teuerste", "teuerstem",
+            "teuersten", "teuerster", "teuerstes", "teuerung", "teuerungswelle", "teure", "teurem",
+            "teuren", "teurer", "teurere", "teurerem", "teureren", "teurerer", "teureres", "teures",
+            "verteuern", "verteuert", "verteuerte", "verteuertem", "verteuerten", "verteuerter",
+            "verteuertes", "verteuerung"
+          ]
+        }
+      ],
+      "nicht_erfasst": []
+    },
+    {
+      "id": "billig",
+      "name": "billig",
+      "gruppe": "G1",
+      "unterkategorien": [
+        {
+          "name": "Adjektiv",
+          "formen": [
+            "billig", "billige", "billigem", "billigen", "billiger", "billigere", "billigerem",
+            "billigeren", "billigerer", "billigeres", "billiges", "billigste", "billigstem",
+            "billigsten", "billigster", "billigstes"
+          ]
+        },
+        {
+          "name": "Billigfleisch, Billigimporte, Billigstpreise",
+          "formen": [
+            "billigbilligprodukte", "billigfleisch", "billigfleischangeboten", "billiggetreide",
+            "billigimporte", "billigkonkurrenz", "billiglebensmittel", "billiglockangeboten",
+            "billigloehnen", "billigprodukte", "billigstpreise", "billigstpreisen", "billigware",
+            "lebensmittelbilligimporte", "massenbilligproduktion"
+          ]
+        }
+      ],
+      "nicht_erfasst": [
+        {
+          "klasse": "Akteure, Branchen und Institutionen",
+          "formen": [
+            "billigloehner", "billigrohstofflieferanten"
+          ]
+        },
+        {
+          "klasse": "anderes Wort desselben Stamms",
+          "formen": [
+            "billigend", "gebilligt", "zubilligt"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "inflation",
+      "name": "Inflation",
+      "gruppe": "G1",
+      "unterkategorien": [
+        {
+          "name": "alle Formen",
+          "formen": [
+            "hyperinflation", "inflation", "inflationsausgleich", "inflationsbedingt",
+            "inflationsbedingte", "inflationsbedingtem", "inflationsbedingten",
+            "inflationsbedingter", "inflationsbedingtes", "inflationsbereinigt",
+            "inflationsbereinigte", "inflationsbereinigtem", "inflationsbereinigten",
+            "inflationsbereinigter", "inflationsbereinigtes", "inflationsbonus", "inflationsbremse",
+            "inflationsentwicklung", "inflationsfolgen", "inflationsrate", "inflationsraten",
+            "inflationstreiber", "inflationsursachen", "kerninflation", "kerninflationsrate",
+            "lebensmittelinflation", "nachinflationaer", "nachinflationaere", "nachinflationaerem",
+            "nachinflationaeren", "nachinflationaerer", "nachinflationaeres", "nullinflation",
+            "rekordinflation", "teuerungsrate", "teuerungsraten"
+          ]
+        }
+      ],
+      "nicht_erfasst": []
+    },
+    {
+      "id": "bezahlbarkeit_bezahlbar",
+      "name": "Bezahlbarkeit / bezahlbar",
+      "gruppe": "G1",
+      "unterkategorien": [
+        {
+          "name": "alle Formen",
+          "formen": [
+            "bezahlbar", "bezahlbare", "bezahlbarem", "bezahlbaren", "bezahlbarer", "bezahlbarere",
+            "bezahlbarerem", "bezahlbareren", "bezahlbarerer", "bezahlbareres", "bezahlbares",
+            "bezahlbarkeit", "bezahlbarste", "bezahlbarstem", "bezahlbarsten", "bezahlbarster",
+            "bezahlbarstes", "unbezahlbar", "unbezahlbare", "unbezahlbarem", "unbezahlbaren",
+            "unbezahlbarer", "unbezahlbares"
+          ]
+        }
+      ],
+      "nicht_erfasst": []
+    },
+    {
+      "id": "loehne_und_arbeitskraeftemangel",
+      "name": "Löhne und Arbeitskräftemangel",
+      "gruppe": "G2",
+      "unterkategorien": [
+        {
+          "name": "Lohn, Mindestlohn, Entlohnung",
+          "formen": [
+            "billigloehnen", "entlohnen", "entlohnt", "entlohnte", "entlohntem", "entlohnten",
+            "entlohnter", "entlohntes", "entlohnung", "euro-mindestlohn", "jahreslohn", "loehne",
+            "loehnen", "lohn", "lohn-", "lohnbedingungen", "lohnbetrug", "lohndumping",
+            "lohngruppe", "lohnkonkurrenz", "lohnnebenkosten", "lohns", "lohnsegment",
+            "lohnsenkung", "lohnsteigerungen", "lohnuntergrenze", "mindestloehne", "mindestlohn",
+            "mindestlohn-", "mindestlohnbestimmungen", "mindestlohndokumentationspflicht",
+            "mindestlohnerhoehung", "mindestlohnes", "mindestlohngesetz", "mindestlohns",
+            "mindestlohntarifvertraege", "nettolohn", "niedrigloehne", "niedriglohnbereich",
+            "niedriglohnbeschaeftigung", "niedriglohnsektor", "realloehne", "tarifloehne",
+            "tariflohn", "vergleichslohn"
+          ]
+        },
+        {
+          "name": "Gehalt, Vergütung, Tarifvertrag",
+          "formen": [
+            "gehaelter", "gehaeltern", "tarifbindung", "tarifflucht", "tarifgebunden",
+            "tarifgebundene", "tarifgebundenem", "tarifgebundenen", "tarifgebundener",
+            "tarifgebundenes", "tariftreuegesetz", "tarifvertraege", "tarifvertraegen",
+            "tarifvertrag", "vergueten", "verguetet", "verguetung", "verguetungen"
+          ]
+        },
+        {
+          "name": "Arbeitsmarkt und Arbeitskräftemangel",
+          "formen": [
+            "arbeitskraeftemangel", "arbeitsmaerkte", "arbeitsmarkt", "arbeitsmarktes",
+            "arbeitsmarktpolitisch", "arbeitsmarktpolitische", "arbeitsmarktpolitischem",
+            "arbeitsmarktpolitischen", "arbeitsmarktpolitischer", "arbeitsmarktpolitisches",
+            "arbeitsmarktzugang", "fachkraeftemangel", "personalmangel", "personalmangels",
+            "stellenmarkt"
+          ]
+        }
+      ],
+      "nicht_erfasst": [
+        {
+          "klasse": "Akteure, Branchen und Institutionen",
+          "formen": [
+            "billigloehner", "lohndrueckern", "lohnsklaven", "lohnunternehmen", "lohnunternehmer",
+            "lohnunternehmern", "mindestlohnkommission"
+          ]
+        },
+        {
+          "klasse": "Einzelfall aus einem anderen Feld",
+          "formen": [
+            "pflegemindestlohn"
+          ]
+        },
+        {
+          "klasse": "anderes Wort desselben Stamms",
+          "formen": [
+            "belohne", "belohnen", "belohnt", "belohnung", "belohnungssystem", "gelohnt", "lohnen",
+            "lohnende", "lohnt"
+          ]
+        },
+        {
+          "klasse": "Ausgewählte Mittelbereitstellungs-, Haushalts-, Programm- und fachfremde Begriffe",
+          "formen": [
+            "arbeitsmarktprogramme"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "zahlung_und_bezahlung",
+      "name": "Zahlung und Bezahlung",
+      "gruppe": "G3",
+      "unterkategorien": [
+        {
+          "name": "Zahlung, zahlt, gezahlt",
+          "formen": [
+            "gezahlt", "gezahlte", "gezahltem", "gezahlten", "gezahlter", "gezahltes", "zahlt",
+            "zahlung", "zahlungen", "zahlungsbereitschaft", "zahlungsstroeme", "zahlungsunfaehig",
+            "zahlungsunfaehige", "zahlungsunfaehigem", "zahlungsunfaehigen", "zahlungsunfaehiger",
+            "zahlungsunfaehiges", "zahlungsverlangen"
+          ]
+        },
+        {
+          "name": "bezahlen, Bezahlung",
+          "formen": [
+            "bezahlen", "bezahlt", "bezahlte", "bezahltem", "bezahlten", "bezahlter", "bezahltes",
+            "bezahlung"
+          ]
+        },
+        {
+          "name": "Zahlungen (Komposita)",
+          "formen": [
+            "agrarzahlungen", "auszahlung", "beitragszahlung", "duerrezahlungen", "einmalzahlung",
+            "einmalzahlungen", "eu-flaechenzahlungen", "fortzahlung", "grundzahlung",
+            "hilfszahlungen", "nachzahlungen", "rueckzahlungen", "transferzahlungen"
+          ]
+        }
+      ],
+      "nicht_erfasst": [
+        {
+          "klasse": "anderes Wort desselben Stamms",
+          "formen": [
+            "zahlen"
+          ]
+        },
+        {
+          "klasse": "Bezeichnung aus einem anderen Politikfeld (Bezahlkarte in der Asylpolitik)",
+          "formen": [
+            "bezahlkarte", "bezahlkarten"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "finanzierung_finanziell_finanzhilfe",
+      "name": "Finanzierung / finanziell / Finanzhilfe",
+      "gruppe": "G3",
+      "unterkategorien": [
+        {
+          "name": "finanziell (Adjektiv)",
+          "formen": [
+            "finanziell", "finanzielle", "finanziellem", "finanziellen", "finanzieller",
+            "finanzielles"
+          ]
+        },
+        {
+          "name": "Finanzierung und Verbformen",
+          "formen": [
+            "finanzierbar", "finanzierbare", "finanzierbarem", "finanzierbaren", "finanzierbarer",
+            "finanzierbarere", "finanzierbarerem", "finanzierbareren", "finanzierbarerer",
+            "finanzierbareres", "finanzierbares", "finanzierbarste", "finanzierbarstem",
+            "finanzierbarsten", "finanzierbarster", "finanzierbarstes", "finanziere", "finanzieren",
+            "finanziert", "finanzierte", "finanziertem", "finanzierten", "finanzierter",
+            "finanziertes", "finanzierung", "finanzierungen", "finanzierungsgrundlage",
+            "finanzierungsmoeglichkeiten", "finanzierungssicherheit"
+          ]
+        },
+        {
+          "name": "Finanzierungsarten und Finanzkraft",
+          "formen": [
+            "finanzgrundlage", "finanzhilfe", "finanzhilfen", "finanzkraeftig", "finanzkraeftige",
+            "finanzkraeftigem", "finanzkraeftigen", "finanzkraeftiger", "finanzkraeftigere",
+            "finanzkraeftigerem", "finanzkraeftigeren", "finanzkraeftigerer", "finanzkraeftigeres",
+            "finanzkraeftiges", "finanzkraeftigste", "finanzkraeftigstem", "finanzkraeftigsten",
+            "finanzkraeftigster", "finanzkraeftigstes", "finanzkraft", "finanzrisiken",
+            "finanzschwach", "finanzschwache", "finanzschwachem", "finanzschwachen",
+            "finanzschwacher", "finanzschwaches", "finanzschwaecher", "finanzschwaechere",
+            "finanzschwaecherem", "finanzschwaecheren", "finanzschwaecherer", "finanzschwaecheres",
+            "finanzschwaechste", "finanzschwaechstem", "finanzschwaechsten", "finanzschwaechster",
+            "finanzschwaechstes", "finanzstaerker", "finanzstaerkere", "finanzstaerkerem",
+            "finanzstaerkeren", "finanzstaerkerer", "finanzstaerkeres", "finanzstaerkste",
+            "finanzstaerkstem", "finanzstaerksten", "finanzstaerkster", "finanzstaerkstes",
+            "finanzstark", "finanzstarke", "finanzstarkem", "finanzstarken", "finanzstarker",
+            "finanzstarkes", "mitfinanziert", "unterfinanziert", "unterfinanzierte",
+            "unterfinanziertem", "unterfinanzierten", "unterfinanzierter", "unterfinanziertere",
+            "unterfinanzierterem", "unterfinanzierteren", "unterfinanzierterer",
+            "unterfinanzierteres", "unterfinanziertes", "unterfinanzierteste",
+            "unterfinanziertestem", "unterfinanziertesten", "unterfinanziertester",
+            "unterfinanziertestes", "weiterfinanzierung"
+          ]
+        }
+      ],
+      "nicht_erfasst": [
+        {
+          "klasse": "Akteure, Branchen und Institutionen",
+          "formen": [
+            "bundesfinanzminister", "bundesfinanzministerium", "finanz-ag", "finanzamt",
+            "finanzanlagenvermittler", "finanzausschuss", "finanzbereich", "finanzdienstleistungen",
+            "finanzgeschaefte", "finanzinstituten", "finanzinvestoren", "finanzkommissar",
+            "finanzleute", "finanzminister", "finanzministerium", "finanzpolitiker", "finanzsektor",
+            "finanzsektors", "finanzwesen", "us-finanzministerium"
+          ]
+        },
+        {
+          "klasse": "Einzelfall aus einem anderen Feld",
+          "formen": [
+            "schlepper-finanzierung", "zwangsfinanzierten"
+          ]
+        },
+        {
+          "klasse": "staatliche Geberseite und Wirtschaftsordnung",
+          "formen": [
+            "eu-finanzmitteln", "finanzausgleichssystemen", "finanzdebatte", "finanzen",
+            "finanzkompetenz", "finanzkontrolle", "finanzmittel", "finanzmitteln", "finanzpaket",
+            "finanzplan", "finanzplanung", "finanzpolitik", "finanzpolitisch", "finanzpolitischen",
+            "finanzrahmen", "finanzsystem", "finanztopf", "haushaltsfinanzierungsgesetz",
+            "haushaltsfinanzierungsgesetzes", "terrorismusfinanzierung"
+          ]
+        },
+        {
+          "klasse": "anderes Wort desselben Stamms",
+          "formen": [
+            "finanz-"
+          ]
+        },
+        {
+          "klasse": "Ausgewählte Mittelbereitstellungs-, Haushalts-, Programm- und fachfremde Begriffe",
+          "formen": [
+            "agrarfinanzierung", "anschlussfinanzierung", "anschubfinanzierung", "auszufinanzieren",
+            "durchfinanziert", "durchzufinanzieren", "entwicklungsfinanzierung", "finanzbedarf",
+            "finanzbedarfs", "finanzierungsbedarf", "finanzierungsfrage", "finanzierungsluecken",
+            "finanzierungsmodellen", "finanzierungsquellen", "finanzierungsvolumen",
+            "finanzierungsvorschlages", "finanzstroemen", "gegenfinanziert", "gegenfinanzierte",
+            "gegenfinanziertem", "gegenfinanzierten", "gegenfinanzierter", "gegenfinanziertes",
+            "gegenfinanzierung", "gegenfinanzierungsvorschlaege", "gegenzufinanzieren",
+            "klimafinanzierung", "kofinanzierung", "mikrofinanzierung", "nothilfefinanzierungen",
+            "refinanzierung"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "investition_investieren",
+      "name": "Investition / investieren",
+      "gruppe": "G3",
+      "unterkategorien": [
+        {
+          "name": "Grundwort und Verbformen",
+          "formen": [
+            "investieren", "investiert", "investition", "investitionen", "investitions-",
+            "investment", "reinvestiert"
+          ]
+        },
+        {
+          "name": "Investitionssicherheit, Investitionsförderung, Abschreibung",
+          "formen": [
+            "abschreiben", "abschreibung", "abschreibungs-", "abschreibungsbedingungen",
+            "abschreibungsmoeglichkeiten", "afa", "investitionsabzugsbetrag", "investitionsbedarf",
+            "investitionsbooster", "investitionsfoerderung", "investitionsfoerderungen",
+            "investitionsfreudigkeit", "investitionsimpuls", "investitionskapital",
+            "investitionssicherheit", "investitionsstopp", "investitionszuschuesse",
+            "sonderabschreibungen", "sonderabschreibungsmoeglichkeiten",
+            "tierhaltungsinvestitionen", "zukunftsinvestitionen"
+          ]
+        }
+      ],
+      "nicht_erfasst": [
+        {
+          "klasse": "Ausgewählte Mittelbereitstellungs-, Haushalts-, Programm- und fachfremde Begriffe",
+          "formen": [
+            "agrarinvestitionsfoerderprogramm", "bundesinvestitionsprogramm", "investitionsmittel",
+            "investitionsprogramm", "investitionsprogramme", "klimainvestitionen",
+            "milliardeninvestitionen", "zukunftsinvestitionsprogramm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "planungssicherheit_investitionssicherheit",
+      "name": "Planungssicherheit / Investitionssicherheit",
+      "gruppe": "G3",
+      "unterkategorien": [
+        {
+          "name": "alle Formen",
+          "formen": [
+            "investitionssicherheit", "planungssicherheit", "planungsunsicherheit"
+          ]
+        }
+      ],
+      "nicht_erfasst": []
+    },
+    {
+      "id": "kapital_kredit_liquiditaet_ruecklage_zins_darlehen",
+      "name": "Kapital / Kredit / Liquidität / Rücklage / Zins / Darlehen",
+      "gruppe": "G3",
+      "unterkategorien": [
+        {
+          "name": "alle Formen",
+          "formen": [
+            "agrarkredite", "agrarkrediten", "betriebsvermoegen", "darlehen", "eigenkapital",
+            "investitionskapital", "kapital", "kapitalertrag", "kapitalgedeckt", "kapitalgedeckte",
+            "kapitalgedecktem", "kapitalgedeckten", "kapitalgedeckter", "kapitalgedecktes",
+            "kapitalmacht", "kapitalsektors", "kapitalstaerker", "kapitalstaerkere",
+            "kapitalstaerkerem", "kapitalstaerkeren", "kapitalstaerkerer", "kapitalstaerkeres",
+            "kapitalstaerkste", "kapitalstaerkstem", "kapitalstaerksten", "kapitalstaerkster",
+            "kapitalstaerkstes", "kapitalstark", "kapitalstarke", "kapitalstarkem",
+            "kapitalstarken", "kapitalstarker", "kapitalstarkes", "kapitalvermoegen", "kredit",
+            "kreditbuch", "kredite", "kreditfonds", "liquiditaet", "liquiditaetsengpaessen",
+            "liquiditaetsengpass", "liquiditaetsprobleme", "mikrokredite", "monetaer", "monetaere",
+            "monetaerem", "monetaeren", "monetaerer", "monetaeres", "risikoausgleichsruecklage",
+            "ruecklage", "ruecklagen", "ruecklagenregelungen", "wagniskapital", "zinsen",
+            "zinsguenstig", "zinsguenstige", "zinsguenstigem", "zinsguenstigen", "zinsguenstiger",
+            "zinsguenstigere", "zinsguenstigerem", "zinsguenstigeren", "zinsguenstigerer",
+            "zinsguenstigeres", "zinsguenstiges", "zinsguenstigste", "zinsguenstigstem",
+            "zinsguenstigsten", "zinsguenstigster", "zinsguenstigstes", "zinslast"
+          ]
+        }
+      ],
+      "nicht_erfasst": [
+        {
+          "klasse": "Akteure, Branchen und Institutionen",
+          "formen": [
+            "kapitalgesellschaft", "kapitalinvestoren"
+          ]
+        },
+        {
+          "klasse": "Einzelfall aus einem anderen Feld",
+          "formen": [
+            "stiftungskapital"
+          ]
+        },
+        {
+          "klasse": "staatliche Geberseite und Wirtschaftsordnung",
+          "formen": [
+            "agrarkapitalismus", "agrarkapitalisten", "handelskapitalismus", "kapitalismus",
+            "kapitalismuskritik", "kapitalistische", "nettokreditaufnahme", "staatskapitalismus"
+          ]
+        },
+        {
+          "klasse": "anderes Wort desselben Stamms",
+          "formen": [
+            "diskreditieren", "diskreditiert"
+          ]
+        },
+        {
+          "klasse": "Ausgewählte Mittelbereitstellungs-, Haushalts-, Programm- und fachfremde Begriffe",
+          "formen": [
+            "liquiditaetsprogramme", "programmkredit"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pacht",
+      "name": "Pacht",
+      "gruppe": "G4",
+      "unterkategorien": [
+        {
+          "name": "Grundwort",
+          "formen": [
+            "pacht", "pachten", "verpachten", "verpachtet", "verpachtung", "verpachtungserloesen",
+            "verpachtungskriterien", "verpachtungsstopp", "verpachtungstaetigkeit"
+          ]
+        },
+        {
+          "name": "Pachtpreise, Pachtflächen, Verpachtung",
+          "formen": [
+            "flaechenverpachtung", "gepachtet", "gepachtete", "gepachtetem", "gepachteten",
+            "gepachteter", "gepachtetes", "pachtflaechen", "pachtgebot", "pachtpreise",
+            "pachtpreisen"
+          ]
+        }
+      ],
+      "nicht_erfasst": []
+    },
+    {
+      "id": "markt",
+      "name": "Markt",
+      "gruppe": "G4",
+      "unterkategorien": [
+        {
+          "name": "Grundwort",
+          "formen": [
+            "maerkte", "maerkten", "markt", "markt-", "marktes"
+          ]
+        },
+        {
+          "name": "Agrar- und Lebensmittelmärkte",
+          "formen": [
+            "agrarmaerkte", "agrarmaerkten", "agrarmarkt", "agrarmarktrechtlich",
+            "agrarmarktrechtliche", "agrarmarktrechtlichem", "agrarmarktrechtlichen",
+            "agrarmarktrechtlicher", "agrarmarktrechtliches", "agrarmarktstrukturgesetz",
+            "agrarmarktstrukturgesetzes", "biomarkt", "bodenmarkt", "bodenmarktes",
+            "energiemaerkten", "energiemarkt", "eu-agrarmarkt", "fleischmarkt",
+            "futtermittelmaerkte", "getreidemaerkte", "getreidemaerkten", "getreidemarkt",
+            "lebensmittelmaerkte", "lebensmittelmaerkten", "lebensmittelmarkt", "milchmarkt",
+            "milchmarktkrise", "milchmarktsondergesetz", "mineralduengermarkt",
+            "nahrungsmittelmaerkten", "nahrungsmittelmarkt", "saatgutmarkt", "saatgutmarktes",
+            "tiermarkt", "weinmarkt", "weltmarktorientierung"
+          ]
+        },
+        {
+          "name": "Absatzmärkte, Absatzwege und Marktebene",
+          "formen": [
+            "absatzmaerkte", "absatzmarkt", "bauernmaerkte", "binnenmarkt", "binnenmarktes",
+            "eu-markt", "exportmaerkte", "exportmarkt", "weltmaerkte", "weltmaerkten", "weltmarkt",
+            "weltmarktes", "weltmarktpreis", "weltmarktpreise", "weltmarktpreisen", "weltmarkts",
+            "wochenmaerkte", "wochenmaerkten", "wochenmarkt"
+          ]
+        },
+        {
+          "name": "Marktmacht, Marktstruktur, Marktordnung",
+          "formen": [
+            "marktanteil", "marktanteile", "marktbeherrschend", "marktbeherrschende",
+            "marktbeherrschendem", "marktbeherrschenden", "marktbeherrschender",
+            "marktbeherrschendere", "marktbeherrschenderem", "marktbeherrschenderen",
+            "marktbeherrschenderer", "marktbeherrschenderes", "marktbeherrschendes",
+            "marktbeherrschendste", "marktbeherrschendstem", "marktbeherrschendsten",
+            "marktbeherrschendster", "marktbeherrschendstes", "markteinfuehrung",
+            "marktkonzentration", "marktkonzentrationen", "marktkraefte", "marktmacht",
+            "marktmachtmissbrauch", "marktmaechten", "marktmaechtig", "marktmaechtige",
+            "marktmaechtigem", "marktmaechtigen", "marktmaechtiger", "marktmaechtigere",
+            "marktmaechtigerem", "marktmaechtigeren", "marktmaechtigerer", "marktmaechtigeres",
+            "marktmaechtiges", "marktmaechtigste", "marktmaechtigstem", "marktmaechtigsten",
+            "marktmaechtigster", "marktmaechtigstes", "marktmonopols", "marktnische",
+            "marktoeffnung", "marktoeffnungen", "marktordnung", "marktorganisation",
+            "marktorganisationen", "marktorganisationsgesetz", "marktorganisationsgesetzes",
+            "marktposition", "marktstellung", "marktstuetzungsmassnahmen", "marktteilnahme",
+            "marktuebermacht", "marktueberwachung", "marktzugaenge", "marktzugang", "marktzugangs",
+            "marktzutritt"
+          ]
+        },
+        {
+          "name": "Marktlage und Marktmechanismus",
+          "formen": [
+            "marktangebot", "marktausrichtung", "marktbedingungen", "marktbeobachtung",
+            "marktchancen", "marktdruck", "marktfaehig", "marktfaehige", "marktfaehigem",
+            "marktfaehigen", "marktfaehiger", "marktfaehigere", "marktfaehigerem",
+            "marktfaehigeren", "marktfaehigerer", "marktfaehigeres", "marktfaehiges",
+            "marktfaehigste", "marktfaehigstem", "marktfaehigsten", "marktfaehigster",
+            "marktfaehigstes", "marktfoermig", "marktfoermige", "marktfoermigem", "marktfoermigen",
+            "marktfoermiger", "marktfoermiges", "marktgerecht", "marktgerechte", "marktgerechtem",
+            "marktgerechten", "marktgerechter", "marktgerechtere", "marktgerechterem",
+            "marktgerechteren", "marktgerechterer", "marktgerechteres", "marktgerechtes",
+            "marktgerechteste", "marktgerechtestem", "marktgerechtesten", "marktgerechtester",
+            "marktgerechtestes", "markthochlauf", "marktinteressen", "marktlage",
+            "marktnormalitaet", "marktpreisen", "marktpreises", "marktreife", "marktsysteme",
+            "marktungleichgewicht", "marktversagen", "marktverzerrungen"
+          ]
+        }
+      ],
+      "nicht_erfasst": [
+        {
+          "klasse": "Akteure, Branchen und Institutionen",
+          "formen": [
+            "direktvermarkter", "leh-marktbeteiligter", "marktakteure", "marktteilnehmer",
+            "marktueberwachungsbehoerden", "pfalzmarkt", "vermarktern"
+          ]
+        },
+        {
+          "klasse": "Einzelfall aus einem anderen Feld",
+          "formen": [
+            "baumaerkte", "elektronikfachmaerkten", "weihnachtsmaerkte"
+          ]
+        },
+        {
+          "klasse": "Orte und Gegenstände",
+          "formen": [
+            "markthallen", "marktplaetze", "markttagen", "supermaerkte", "supermaerkten",
+            "supermarkt", "supermarkt-", "supermarktes", "supermarktkasse", "supermarktketten",
+            "supermarktkonzerne", "supermarktregal", "supermarktregale", "supermarktregalen",
+            "supermarkttonnen"
+          ]
+        },
+        {
+          "klasse": "staatliche Geberseite und Wirtschaftsordnung",
+          "formen": [
+            "marktwirtschaft", "marktwirtschaftlich", "marktwirtschaftliche",
+            "marktwirtschaftlichen", "marktwirtschaftliches"
+          ]
+        },
+        {
+          "klasse": "anderes Wort desselben Stamms",
+          "formen": [
+            "gebrandmarkt", "marktmarkt", "marktrenner", "markttreff", "marktunverstaendnis"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nachfrage",
+      "name": "Nachfrage",
+      "gruppe": "G4",
+      "unterkategorien": [
+        {
+          "name": "alle Formen",
+          "formen": [
+            "ernaehrungsnachfrage", "nachfrage", "nachfragedruck", "nachfrageimpulse",
+            "nachfragemacht", "nachfrageorientiert", "nachfrageorientierte",
+            "nachfrageorientiertem", "nachfrageorientierten", "nachfrageorientierter",
+            "nachfrageorientiertere", "nachfrageorientierterem", "nachfrageorientierteren",
+            "nachfrageorientierterer", "nachfrageorientierteres", "nachfrageorientiertes",
+            "nachfrageorientierteste", "nachfrageorientiertestem", "nachfrageorientiertesten",
+            "nachfrageorientiertester", "nachfrageorientiertestes", "nachfragerueckgangs",
+            "nachfrageschwankungen", "nachfrageseite", "nachfrageseitig", "nachfrageseitige",
+            "nachfrageseitigem", "nachfrageseitigen", "nachfrageseitiger", "nachfrageseitiges"
+          ]
+        }
+      ],
+      "nicht_erfasst": [
+        {
+          "klasse": "anderes Wort desselben Stamms",
+          "formen": [
+            "nachfragen"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wettbewerb_wettbewerbsfaehigkeit",
+      "name": "Wettbewerb / Wettbewerbsfähigkeit",
+      "gruppe": "G4",
+      "unterkategorien": [
+        {
+          "name": "Grundwort",
+          "formen": [
+            "wettbewerb", "wettbewerblich", "wettbewerbliche", "wettbewerblichem",
+            "wettbewerblichen", "wettbewerblicher", "wettbewerbliches", "wettbewerbs",
+            "wettbewerbs-"
+          ]
+        },
+        {
+          "name": "Wettbewerbsfähigkeit und Wettbewerbsbedingungen",
+          "formen": [
+            "wettbewerbsbedingungen", "wettbewerbsfaehig", "wettbewerbsfaehige",
+            "wettbewerbsfaehigem", "wettbewerbsfaehigen", "wettbewerbsfaehiger",
+            "wettbewerbsfaehigere", "wettbewerbsfaehigerem", "wettbewerbsfaehigeren",
+            "wettbewerbsfaehigerer", "wettbewerbsfaehigeres", "wettbewerbsfaehiges",
+            "wettbewerbsfaehigkeit", "wettbewerbsfaehigste", "wettbewerbsfaehigstem",
+            "wettbewerbsfaehigsten", "wettbewerbsfaehigster", "wettbewerbsfaehigstes",
+            "wettbewerbsfairness", "wettbewerbsmaessig", "wettbewerbsmaessige",
+            "wettbewerbsmaessigem", "wettbewerbsmaessigen", "wettbewerbsmaessiger",
+            "wettbewerbsmaessiges", "wettbewerbssituation", "wettbewerbsstandards",
+            "wettbewerbsstellung"
+          ]
+        },
+        {
+          "name": "Wettbewerbsnachteil, Wettbewerbsverzerrung, Wettbewerbsdruck",
+          "formen": [
+            "abwaertswettbewerb", "dumpingwettbewerbs", "preiswettbewerb",
+            "unterbietungswettbewerb", "verdraengungswettbewerb", "verdraengungswettbewerbes",
+            "wettbewerbsdruck", "wettbewerbsnachteil", "wettbewerbsnachteile",
+            "wettbewerbsnachteilen", "wettbewerbsrecht", "wettbewerbsrechtlich",
+            "wettbewerbsrechtliche", "wettbewerbsrechtlichem", "wettbewerbsrechtlichen",
+            "wettbewerbsrechtlicher", "wettbewerbsrechtliches", "wettbewerbsstoerungen",
+            "wettbewerbsverzerrend", "wettbewerbsverzerrende", "wettbewerbsverzerrendem",
+            "wettbewerbsverzerrenden", "wettbewerbsverzerrender", "wettbewerbsverzerrendere",
+            "wettbewerbsverzerrenderem", "wettbewerbsverzerrenderen", "wettbewerbsverzerrenderer",
+            "wettbewerbsverzerrenderes", "wettbewerbsverzerrendes", "wettbewerbsverzerrendste",
+            "wettbewerbsverzerrendstem", "wettbewerbsverzerrendsten", "wettbewerbsverzerrendster",
+            "wettbewerbsverzerrendstes", "wettbewerbsverzerrung", "wettbewerbsverzerrungen",
+            "wettbewerbsvorschriften", "wettbewerbsvorteil"
+          ]
+        }
+      ],
+      "nicht_erfasst": [
+        {
+          "klasse": "Akteure, Branchen und Institutionen",
+          "formen": [
+            "wettbewerbern"
+          ]
+        },
+        {
+          "klasse": "anderes Wort desselben Stamms",
+          "formen": [
+            "bundeswettbewerb", "modellregionenwettbewerb"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "konkurrenz",
+      "name": "Konkurrenz",
+      "gruppe": "G4",
+      "unterkategorien": [
+        {
+          "name": "alle Formen",
+          "formen": [
+            "billigkonkurrenz", "flaechenkonkurrenz", "flaechennutzungskonkurrenz", "konkurrenz",
+            "konkurrenzdruck", "konkurrenzen", "konkurrenzfaehig", "konkurrenzfaehige",
+            "konkurrenzfaehigem", "konkurrenzfaehigen", "konkurrenzfaehiger", "konkurrenzfaehigere",
+            "konkurrenzfaehigerem", "konkurrenzfaehigeren", "konkurrenzfaehigerer",
+            "konkurrenzfaehigeres", "konkurrenzfaehiges", "konkurrenzfaehigkeit",
+            "konkurrenzfaehigste", "konkurrenzfaehigstem", "konkurrenzfaehigsten",
+            "konkurrenzfaehigster", "konkurrenzfaehigstes", "konkurrenzkampf",
+            "konkurrenzsituation", "konkurrenzsituationen", "lohnkonkurrenz",
+            "nutzungskonkurrenzen", "preiskonkurrenz"
+          ]
+        }
+      ],
+      "nicht_erfasst": [
+        {
+          "klasse": "Akteure, Branchen und Institutionen",
+          "formen": [
+            "flaechenkonkurrenten", "konkurrent", "konkurrenten"
+          ]
+        },
+        {
+          "klasse": "staatliche Geberseite und Wirtschaftsordnung",
+          "formen": [
+            "mittelkonkurrenz"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "import",
+      "name": "Import",
+      "gruppe": "G4",
+      "unterkategorien": [
+        {
+          "name": "Grundwort und Verbformen",
+          "formen": [
+            "import", "importe", "importen", "importieren", "importierend", "importierende",
+            "importierendem", "importierenden", "importierender", "importierendes", "importiert",
+            "importierte", "importiertem", "importierten", "importierter", "importiertes"
+          ]
+        },
+        {
+          "name": "Importe von Lebensmitteln, Futter, Betriebsmitteln",
+          "formen": [
+            "agrarimporte", "agrarimporten", "billigimporte", "duengemittelimport",
+            "duengemittelimporten", "duengerimport", "duengerimporten", "dumpingimporte",
+            "dumpingimporten", "energieimporte", "futterimporten", "futtermittelimporte",
+            "futtermittelimporten", "gesamtimporte", "getreideimport", "getreideimporte",
+            "giftimporte", "guelleimport", "importfleisch", "importprodukten", "importtieren",
+            "importware", "importwaren", "lebensmittelbilligimporte", "lebensmittelimporte",
+            "lebensmittelimporten", "nahrungsmittelimporten", "saatgutimporten", "sojaimporte",
+            "weizenimporten"
+          ]
+        },
+        {
+          "name": "Importverbote, Importabhängigkeit, Importware",
+          "formen": [
+            "importabhaengig", "importabhaengige", "importabhaengigem", "importabhaengigen",
+            "importabhaengiger", "importabhaengigere", "importabhaengigerem", "importabhaengigeren",
+            "importabhaengigerer", "importabhaengigeres", "importabhaengiges",
+            "importabhaengigkeit", "importabhaengigste", "importabhaengigstem",
+            "importabhaengigsten", "importabhaengigster", "importabhaengigstes",
+            "importbeschraenkungen", "importtoleranzen", "importunabhaengig", "importunabhaengige",
+            "importunabhaengigem", "importunabhaengigen", "importunabhaengiger",
+            "importunabhaengigere", "importunabhaengigerem", "importunabhaengigeren",
+            "importunabhaengigerer", "importunabhaengigeres", "importunabhaengiges",
+            "importunabhaengigste", "importunabhaengigstem", "importunabhaengigsten",
+            "importunabhaengigster", "importunabhaengigstes", "importverbot", "importverbote",
+            "importwahn", "importzwaengen"
+          ]
+        }
+      ],
+      "nicht_erfasst": [
+        {
+          "klasse": "Akteure, Branchen und Institutionen",
+          "formen": [
+            "importlaender", "nettoimporteur", "weizenimporteur"
+          ]
+        },
+        {
+          "klasse": "Einzelfall aus einem anderen Feld",
+          "formen": [
+            "automobilimporte"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "export",
+      "name": "Export",
+      "gruppe": "G4",
+      "unterkategorien": [
+        {
+          "name": "Grundwort und Verbformen",
+          "formen": [
+            "export", "exporte", "exporten", "exportieren", "exportierend", "exportierende",
+            "exportierendem", "exportierenden", "exportierender", "exportierendes", "exportiert",
+            "exportierte", "exportiertem", "exportierten", "exportierter", "exportiertes", "exports"
+          ]
+        },
+        {
+          "name": "Exporte von Lebensmitteln und Agrarerzeugnissen",
+          "formen": [
+            "agrarexport", "agrarexporte", "agrarexporten", "agrarexportstrategie",
+            "agrarexportsubventionen", "dumpingexporten", "exportfleisch", "exportgueter",
+            "exportorientiert", "exportorientierte", "exportorientiertem", "exportorientierten",
+            "exportorientierter", "exportorientiertere", "exportorientierterem",
+            "exportorientierteren", "exportorientierterer", "exportorientierteres",
+            "exportorientiertes", "exportorientierteste", "exportorientiertestem",
+            "exportorientiertesten", "exportorientiertester", "exportorientiertestes",
+            "exportorientierung", "exportprodukt", "exportschlager", "fleischexporte",
+            "fleischexporten", "getreideexporte", "getreideexporten", "nahrungsmittelexport",
+            "nahrungsmittelexporte", "nahrungsmittelexporten", "pestizidexporte",
+            "pflanzenschutzexporte", "schlachtviehexporten", "sojaexporte", "tierexporte",
+            "tierexporten"
+          ]
+        },
+        {
+          "name": "Exportstrategie, Exportorientierung, Exportverbot",
+          "formen": [
+            "exportabhaengigkeit", "exportchancen", "exportfoerderung", "exportfreiheit",
+            "exportkurs", "exportmaerkte", "exportmarkt", "exportmenge", "exportpolitik",
+            "exportstrategie", "exportueberschuesse", "exportverbot", "exportverbots",
+            "exportvolumen"
+          ]
+        }
+      ],
+      "nicht_erfasst": [
+        {
+          "klasse": "Akteure, Branchen und Institutionen",
+          "formen": [
+            "exporteur", "exporteure", "exporteuren", "exportindustrie", "exportlaender",
+            "exportweltmeister", "exportwirtschaft", "hauptexporteure", "lebensmittelexporteur",
+            "waffenexporteuren"
+          ]
+        },
+        {
+          "klasse": "Einzelfall aus einem anderen Feld",
+          "formen": [
+            "waffenexport", "waffenexporte"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "handel_freihandel_welthandel",
+      "name": "Handel (nur Komposita) / Freihandel / Welthandel",
+      "gruppe": "G4",
+      "unterkategorien": [
+        {
+          "name": "Handelspolitik, Handelsabkommen, Handelspraktiken",
+          "formen": [
+            "eu-handelsabkommen", "eu-handelspolitik", "freihandel", "freihandels",
+            "freihandelsabkommen", "freihandelspolitik", "freihandelsquoten", "freihandelszone",
+            "handelsabkommen", "handelsauseinandersetzungen", "handelsbedingungen",
+            "handelsbeziehungen", "handelshemmnisse", "handelshemmnissen", "handelsnormen",
+            "handelspolitik", "handelspolitisch", "handelspolitische", "handelspolitischem",
+            "handelspolitischen", "handelspolitischer", "handelspolitisches", "handelspraktiken",
+            "handelsrecht", "handelssanktionen", "handelsstreit", "handelsungleichgewichte",
+            "handelsvertraege", "handelsvertrag", "kern-ttip-freihandelsabkommen", "welthandel"
+          ]
+        },
+        {
+          "name": "Handelsströme und Handelsbereiche",
+          "formen": [
+            "aalhandel", "agrarhandel", "agrarhandels", "agrarrohstoffhandel", "getreidehandel",
+            "handels-", "handelsbereich", "handelsroute", "handelsstroeme", "handelsstroemen",
+            "handelsvolumina", "landhandel", "onlinehandel"
+          ]
+        },
+        {
+          "name": "Handel mit anderen Waren (Emissionshandel, Zertifikatehandel)",
+          "formen": [
+            "brennstoffemissionshandelsgesetz", "emissionshandel", "emissionshandels",
+            "emissionshandelssystem", "emissionshandelssystems", "eu-emissionshandel",
+            "zertifikatehandel"
+          ]
+        }
+      ],
+      "nicht_erfasst": [
+        {
+          "klasse": "Akteure, Branchen und Institutionen",
+          "formen": [
+            "einzelhandel", "einzelhandels", "einzelhandels-", "einzelhandelsgeschaeften",
+            "einzelhandelsketten", "einzelhandelslagers", "grosshandel", "grosshandelsketten",
+            "handel", "handels", "handelskammern", "handelsketten", "handelskonzerne",
+            "handelskonzernen", "handelspartner", "handelspartnern", "handelsriesen",
+            "handelsunternehmen", "handelsverbaende", "lebensmitteleinzelhandel",
+            "lebensmitteleinzelhandels", "lebensmitteleinzelhandelskonzerne",
+            "lebensmitteleinzelhandelsunternehmen", "lebensmittelhandel", "lebensmittelhandels",
+            "non-food-handel", "welthandelsorganisation"
+          ]
+        },
+        {
+          "klasse": "Einzelfall aus einem anderen Feld",
+          "formen": [
+            "aktienhandel", "drogenhandels", "holzkohlehandel", "schwarzhandel"
+          ]
+        },
+        {
+          "klasse": "Orte und Gegenstände",
+          "formen": [
+            "handelsschiffe"
+          ]
+        },
+        {
+          "klasse": "staatliche Geberseite und Wirtschaftsordnung",
+          "formen": [
+            "handelskapitalismus"
+          ]
+        },
+        {
+          "klasse": "anderes Wort desselben Stamms",
+          "formen": [
+            "ausgehandelt", "ausgehandelte", "behandeln", "behandelnde", "behandelt", "behandelte",
+            "behandelten", "eingehandelt", "gehandelt", "handele", "handeln", "handelns", "handelt",
+            "herausverhandelt", "hineinverhandeln", "hineinverhandelt", "kuhhandel", "misshandelt",
+            "mitverhandelt", "nachverhandeln", "nachzuverhandeln", "regierungshandeln",
+            "verhandelbare", "verhandeln", "verhandelnden", "verhandelt", "verschandeln"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "vermarktung_direktvermarktung",
+      "name": "Vermarktung / Direktvermarktung",
+      "gruppe": "G4",
+      "unterkategorien": [
+        {
+          "name": "alle Formen",
+          "formen": [
+            "agrarvermarktung", "direktvermarktung", "direktvermarktungsangebote",
+            "direktvermarktungskonzepte", "direktvermarktungsvertraegen", "regionalvermarktung",
+            "selbstvermarktung", "vermarktbarkeit", "vermarkten", "vermarktet", "vermarktete",
+            "vermarktetem", "vermarkteten", "vermarkteter", "vermarktetes", "vermarktung",
+            "vermarktungs-", "vermarktungsstrategien", "vermarktungsstrukturen", "vermarktungsweg",
+            "vermarktungswege"
+          ]
+        }
+      ],
+      "nicht_erfasst": [
+        {
+          "klasse": "Akteure, Branchen und Institutionen",
+          "formen": [
+            "direktvermarkter", "vermarktern"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "absatz_vertrieb",
+      "name": "Absatz (nur Komposita) / Vertrieb",
+      "gruppe": "G4",
+      "unterkategorien": [
+        {
+          "name": "alle Komposita",
+          "formen": [
+            "absatzfoerderung", "absatzmaerkte", "absatzmarkt", "absatzmoeglichkeiten",
+            "absatzproblem", "absatzproblemen", "absatzregeln", "absatzrueckgang", "absatzseite",
+            "absatzzahlen", "vertrieb", "vertriebskanaele", "vertriebsstufen", "vertriebswege",
+            "vertriebswegen"
+          ]
+        }
+      ],
+      "nicht_erfasst": [
+        {
+          "klasse": "Akteure, Branchen und Institutionen",
+          "formen": [
+            "marketing-gesellschaft"
+          ]
+        },
+        {
+          "klasse": "anderes Wort desselben Stamms",
+          "formen": [
+            "absatz", "absatzes", "vertrieben", "vertriebenen"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wertschoepfung",
+      "name": "Wertschöpfung",
+      "gruppe": "G4",
+      "unterkategorien": [
+        {
+          "name": "alle Formen",
+          "formen": [
+            "biowertschoepfungskette", "bruttowertschoepfung", "lebensmittelwertschoepfungskette",
+            "wertschoepfend", "wertschoepfende", "wertschoepfendem", "wertschoepfenden",
+            "wertschoepfender", "wertschoepfendere", "wertschoepfenderem", "wertschoepfenderen",
+            "wertschoepfenderer", "wertschoepfenderes", "wertschoepfendes", "wertschoepfendste",
+            "wertschoepfendstem", "wertschoepfendsten", "wertschoepfendster", "wertschoepfendstes",
+            "wertschoepfung", "wertschoepfungselemente", "wertschoepfungskette",
+            "wertschoepfungsketten", "wertschoepfungskettenfrei", "wertschoepfungskettenfreie",
+            "wertschoepfungskettenfreiem", "wertschoepfungskettenfreien",
+            "wertschoepfungskettenfreier", "wertschoepfungskettenfreies", "wertschoepfungsstufen"
+          ]
+        }
+      ],
+      "nicht_erfasst": [
+        {
+          "klasse": "Akteure, Branchen und Institutionen",
+          "formen": [
+            "wertschoepfungskettenmanager"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "spekulation",
+      "name": "Spekulation",
+      "gruppe": "G4",
+      "unterkategorien": [
+        {
+          "name": "alle Substantive",
+          "formen": [
+            "bodenspekulation", "bodenspekulationen", "boersenspekulationen",
+            "lebensmittelspekulationen", "nahrungsmittelspekulationen", "spekulation",
+            "spekulationen", "spekulationsgeschaefte", "spekulationskaeufe", "spekulationsobjekte"
+          ]
+        }
+      ],
+      "nicht_erfasst": [
+        {
+          "klasse": "Akteure, Branchen und Institutionen",
+          "formen": [
+            "bodenspekulanten", "lebensmittelspekulanten", "nahrungsmittelspekulanten",
+            "spekulanten", "spekulantenland"
+          ]
+        },
+        {
+          "klasse": "anderes Wort desselben Stamms",
+          "formen": [
+            "spekulieren", "spekuliert"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "namentlich_genannte_handelsabkommen",
+      "name": "Namentlich genannte Handelsabkommen (Mercosur, CETA, TTIP, JEFTA)",
+      "gruppe": "G4",
+      "unterkategorien": [
+        {
+          "name": "alle Formen",
+          "formen": [
+            "ceta-abkommen", "ceta-aehnlich", "ceta-aehnliche", "ceta-aehnlichem",
+            "ceta-aehnlichen", "ceta-aehnlicher", "ceta-aehnlichere", "ceta-aehnlicherem",
+            "ceta-aehnlicheren", "ceta-aehnlicherer", "ceta-aehnlicheres", "ceta-aehnliches",
+            "ceta-aehnlichste", "ceta-aehnlichstem", "ceta-aehnlichsten", "ceta-aehnlichster",
+            "ceta-aehnlichstes", "eu-mercosur-abkommen", "gesamt-mercosur-abkommen", "jefta",
+            "jefta-abkommens", "kern-ttip-freihandelsabkommen", "mercosur", "mercosur-abkommen",
+            "mercosur-abkommens", "mercosur-prozess", "mercosur-staaten", "ttip", "ttip-"
+          ]
+        }
+      ],
+      "nicht_erfasst": []
+    },
+    {
+      "id": "einkommen",
+      "name": "Einkommen",
+      "gruppe": "G5",
+      "unterkategorien": [
+        {
+          "name": "Grundwort",
+          "formen": [
+            "einkommen", "einkommens", "einkommens-"
+          ]
+        },
+        {
+          "name": "Einkommenslage und Einkommensentwicklung",
+          "formen": [
+            "einkommensalternative", "einkommensbasis", "einkommensbereich", "einkommenschancen",
+            "einkommensdruck", "einkommenseinbussen", "einkommensentwicklung", "einkommenskuerzung",
+            "einkommensmoeglichkeiten", "einkommensquelle", "einkommensrisiken",
+            "einkommensschicht", "einkommensschwach", "einkommensschwache", "einkommensschwachem",
+            "einkommensschwachen", "einkommensschwacher", "einkommensschwaches",
+            "einkommensschwaecher", "einkommensschwaechere", "einkommensschwaecherem",
+            "einkommensschwaecheren", "einkommensschwaecherer", "einkommensschwaecheres",
+            "einkommensschwaechste", "einkommensschwaechstem", "einkommensschwaechsten",
+            "einkommensschwaechster", "einkommensschwaechstes", "einkommenssituation",
+            "einkommensstaerker", "einkommensstaerkere", "einkommensstaerkerem",
+            "einkommensstaerkeren", "einkommensstaerkerer", "einkommensstaerkeres",
+            "einkommensstaerkste", "einkommensstaerkstem", "einkommensstaerksten",
+            "einkommensstaerkster", "einkommensstaerkstes", "einkommensstark", "einkommensstarke",
+            "einkommensstarkem", "einkommensstarken", "einkommensstarker", "einkommensstarkes",
+            "einkommensstrukturen", "einkommensverhaeltnisse", "einkommensverlust",
+            "einkommensverluste", "einkommensverlusten", "einkommenszahlen", "familieneinkommen",
+            "grundeinkommen", "haushaltseinkommen", "haushaltseinkommens", "nettoeinkommens",
+            "nettoeinkommensverluste", "nettorenteneinkommen", "realeinkommen"
+          ]
+        },
+        {
+          "name": "Einkommenssicherung und Einkommensstützung",
+          "formen": [
+            "einkommensbonus", "einkommensgrundstuetzung", "einkommenshilfe",
+            "einkommensorientiert", "einkommensorientierte", "einkommensorientiertem",
+            "einkommensorientierten", "einkommensorientierter", "einkommensorientiertere",
+            "einkommensorientierterem", "einkommensorientierteren", "einkommensorientierterer",
+            "einkommensorientierteres", "einkommensorientiertes", "einkommensorientierteste",
+            "einkommensorientiertestem", "einkommensorientiertesten", "einkommensorientiertester",
+            "einkommensorientiertestes", "einkommenspolitik", "einkommenssicherheit",
+            "einkommenssichernd", "einkommenssichernde", "einkommenssicherndem",
+            "einkommenssichernden", "einkommenssichernder", "einkommenssicherndere",
+            "einkommenssichernderem", "einkommenssichernderen", "einkommenssichernderer",
+            "einkommenssichernderes", "einkommenssicherndes", "einkommenssicherndste",
+            "einkommenssicherndstem", "einkommenssicherndsten", "einkommenssicherndster",
+            "einkommenssicherndstes", "einkommenssicherung", "einkommensstuetzend",
+            "einkommensstuetzende", "einkommensstuetzendem", "einkommensstuetzenden",
+            "einkommensstuetzender", "einkommensstuetzendere", "einkommensstuetzenderem",
+            "einkommensstuetzenderen", "einkommensstuetzenderer", "einkommensstuetzenderes",
+            "einkommensstuetzendes", "einkommensstuetzendste", "einkommensstuetzendstem",
+            "einkommensstuetzendsten", "einkommensstuetzendster", "einkommensstuetzendstes",
+            "einkommenswirksam", "einkommenswirksame", "einkommenswirksamem", "einkommenswirksamen",
+            "einkommenswirksamer", "einkommenswirksamere", "einkommenswirksamerem",
+            "einkommenswirksameren", "einkommenswirksamerer", "einkommenswirksameres",
+            "einkommenswirksames", "einkommenswirksamkeit", "einkommenswirksamste",
+            "einkommenswirksamstem", "einkommenswirksamsten", "einkommenswirksamster",
+            "einkommenswirksamstes", "resilienzeinkommen"
+          ]
+        },
+        {
+          "name": "Einkommensteuer (zählt auch bei Steuer)",
+          "formen": [
+            "einkommensteuer", "einkommensteuergesetz", "einkommensteuergesetzes",
+            "einkommensteuerrecht", "einkommensteuerreform", "einkommensteuersenkung"
+          ]
+        }
+      ],
+      "nicht_erfasst": [
+        {
+          "klasse": "anderes Wort desselben Stamms",
+          "formen": [
+            "ilo-uebereinkommen", "ilo-uebereinkommens", "reinkommen", "uebereinkommen",
+            "uebereinkommens"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ertrag",
+      "name": "Ertrag",
+      "gruppe": "G5",
+      "unterkategorien": [
+        {
+          "name": "Grundwort",
+          "formen": [
+            "ertraege", "ertraegen", "ertrag"
+          ]
+        },
+        {
+          "name": "Ernte- und Flächenerträge",
+          "formen": [
+            "agrarertraege", "ernteertraege", "ernteertrag", "ertraglos", "ertraglose",
+            "ertraglosem", "ertraglosen", "ertragloser", "ertragloses", "ertragreich",
+            "ertragreiche", "ertragreichem", "ertragreichen", "ertragreicher", "ertragreichere",
+            "ertragreicherem", "ertragreicheren", "ertragreicherer", "ertragreicheres",
+            "ertragreiches", "ertragreichste", "ertragreichstem", "ertragreichsten",
+            "ertragreichster", "ertragreichstes", "ertragsminderungen", "ertragsschwach",
+            "ertragsschwache", "ertragsschwachem", "ertragsschwachen", "ertragsschwacher",
+            "ertragsschwaches", "ertragsschwaecher", "ertragsschwaechere", "ertragsschwaecherem",
+            "ertragsschwaecheren", "ertragsschwaecherer", "ertragsschwaecheres",
+            "ertragsschwaechste", "ertragsschwaechstem", "ertragsschwaechsten",
+            "ertragsschwaechster", "ertragsschwaechstes", "fischereiertraege", "flaechenertraege",
+            "flaechenertraegen", "flaechenertrag", "futterertraege", "grenzertragsstandorte",
+            "minderertraege"
+          ]
+        },
+        {
+          "name": "Ertragslage, Ertragsrisiko, Ertragssteigerung",
+          "formen": [
+            "ertrags-", "ertragsausfaelle", "ertragsdaten", "ertragseinbruechen",
+            "ertragseinbussen", "ertragsfaehigkeit", "ertragsgrundlage", "ertragskraft",
+            "ertragslagen", "ertragsmoeglichkeit", "ertragsmoeglichkeiten", "ertragsorientiert",
+            "ertragsorientierte", "ertragsorientiertem", "ertragsorientierten",
+            "ertragsorientierter", "ertragsorientiertere", "ertragsorientierterem",
+            "ertragsorientierteren", "ertragsorientierterer", "ertragsorientierteres",
+            "ertragsorientiertes", "ertragsorientierteste", "ertragsorientiertestem",
+            "ertragsorientiertesten", "ertragsorientiertester", "ertragsorientiertestes",
+            "ertragspotenzial", "ertragsprodukten", "ertragsquelle", "ertragsrisiken",
+            "ertragsrisiko", "ertragsrueckgang", "ertragsschwankungen", "ertragssicher",
+            "ertragssichere", "ertragssicherem", "ertragssicheren", "ertragssicherer",
+            "ertragssicherere", "ertragssichererem", "ertragssichereren", "ertragssichererer",
+            "ertragssichereres", "ertragssicheres", "ertragssicherheit", "ertragssicherste",
+            "ertragssicherstem", "ertragssichersten", "ertragssicherster", "ertragssicherstes",
+            "ertragssicherung", "ertragssteigerung", "ertragssteigerungen", "ertragssteigung",
+            "ertragsverluste", "ertragsverlusten", "kapitalertrag", "unternehmensertraege"
+          ]
+        }
+      ],
+      "nicht_erfasst": [
+        {
+          "klasse": "anderes Wort desselben Stamms",
+          "formen": [
+            "ertraegliches", "ertragen"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "umsatz",
+      "name": "Umsatz",
+      "gruppe": "G5",
+      "unterkategorien": [
+        {
+          "name": "Grundwort",
+          "formen": [
+            "gesamtumsatz", "gesamtumsatzes", "inlandsumsatz", "jahresumsatz", "jahresumsatzes",
+            "umsaetze", "umsaetzen", "umsatz", "umsatzes"
+          ]
+        },
+        {
+          "name": "Umsatzentwicklung",
+          "formen": [
+            "umsatzausfaelle", "umsatzeinbruch", "umsatzeinbrueche", "umsatzeinbussen",
+            "umsatzgrenze", "umsatzrueckgaengen", "umsatzsteigerungen"
+          ]
+        },
+        {
+          "name": "Umsatzsteuer (zählt auch bei Steuer)",
+          "formen": [
+            "umsatzbesteuerung", "umsatzsteuer", "umsatzsteuerermaessigung", "umsatzsteuerfrei",
+            "umsatzsteuerfreie", "umsatzsteuerfreiem", "umsatzsteuerfreien", "umsatzsteuerfreier",
+            "umsatzsteuerfreies", "umsatzsteuergesetz", "umsatzsteuerpauschale",
+            "umsatzsteuerpauschalierung", "umsatzsteuersaetze", "umsatzsteuersatz",
+            "umsatzsteuersatzes", "umsatzsteuersenkung", "umsatzsteuersonderregel"
+          ]
+        }
+      ],
+      "nicht_erfasst": [
+        {
+          "klasse": "staatliche Geberseite und Wirtschaftsordnung",
+          "formen": [
+            "umsatzsteuereinnahmen"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "erloes",
+      "name": "Erlös",
+      "gruppe": "G5",
+      "unterkategorien": [
+        {
+          "name": "alle Formen",
+          "formen": [
+            "erloes", "erloese", "erloesen", "erloeses", "erloesmodelle", "marketingerloes",
+            "stromerloesabschoepfung", "verpachtungserloesen", "versteigerungserloese",
+            "versteigerungserloesen"
+          ]
+        }
+      ],
+      "nicht_erfasst": [
+        {
+          "klasse": "anderes Wort desselben Stamms",
+          "formen": [
+            "erloest", "erloesung", "musterloesung", "speicherloesungen"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "einnahmen",
+      "name": "Einnahmen",
+      "gruppe": "G5",
+      "unterkategorien": [
+        {
+          "name": "alle Formen",
+          "formen": [
+            "einnahmeausfaellen", "einnahmeausfall", "einnahmemoeglichkeit", "einnahmen",
+            "einnahmenueberschussrechnung", "einnahmequelle", "einnahmequellen",
+            "einnahmesituation", "einnahmeverluste", "mindereinnahmen"
+          ]
+        }
+      ],
+      "nicht_erfasst": [
+        {
+          "klasse": "staatliche Geberseite und Wirtschaftsordnung",
+          "formen": [
+            "gewerbesteuereinnahmen", "steuereinnahmen", "umsatzsteuereinnahmen", "zolleinnahmen"
+          ]
+        },
+        {
+          "klasse": "anderes Wort desselben Stamms",
+          "formen": [
+            "einnahme", "vereinnahmen"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gewinn_profit",
+      "name": "Gewinn / Profit",
+      "gruppe": "G5",
+      "unterkategorien": [
+        {
+          "name": "Grundwort",
+          "formen": [
+            "gewinn", "gewinne", "profit", "profite", "profiten"
+          ]
+        },
+        {
+          "name": "Gewinnhöhe und Gewinnstreben",
+          "formen": [
+            "extraprofite", "gewinnausstattung", "gewinnbringend", "gewinnbringende",
+            "gewinnbringendem", "gewinnbringenden", "gewinnbringender", "gewinnbringendere",
+            "gewinnbringenderem", "gewinnbringenderen", "gewinnbringenderer", "gewinnbringenderes",
+            "gewinnbringendes", "gewinnbringendste", "gewinnbringendstem", "gewinnbringendsten",
+            "gewinnbringendster", "gewinnbringendstes", "gewinnerwirtschaftung", "gewinnmargen",
+            "gewinnmaximierung", "gewinnspannen", "gewinnstaerker", "gewinnstaerkere",
+            "gewinnstaerkerem", "gewinnstaerkeren", "gewinnstaerkerer", "gewinnstaerkeres",
+            "gewinnstaerkste", "gewinnstaerkstem", "gewinnstaerksten", "gewinnstaerkster",
+            "gewinnstaerkstes", "gewinnstark", "gewinnstarke", "gewinnstarkem", "gewinnstarken",
+            "gewinnstarker", "gewinnstarkes", "gewinnverteilung", "milliardengewinne",
+            "milliardengewinnen", "profitabel", "profitabelste", "profitabelstem", "profitabelsten",
+            "profitabelster", "profitabelstes", "profitable", "profitablem", "profitablen",
+            "profitabler", "profitablere", "profitablerem", "profitableren", "profitablerer",
+            "profitableres", "profitables", "profitgier", "profitgruenden", "profitinteressen",
+            "profitmaximierend", "profitmaximierende", "profitmaximierendem", "profitmaximierenden",
+            "profitmaximierender", "profitmaximierendes", "profitmaximierung", "profitorientiert",
+            "profitorientierte", "profitorientiertem", "profitorientierten", "profitorientierter",
+            "profitorientiertere", "profitorientierterem", "profitorientierteren",
+            "profitorientierterer", "profitorientierteres", "profitorientiertes",
+            "profitorientierteste", "profitorientiertestem", "profitorientiertesten",
+            "profitorientiertester", "profitorientiertestes", "profitstreben", "rekordgewinne",
+            "uebergewinne", "uebergewinnsteuer"
+          ]
+        }
+      ],
+      "nicht_erfasst": [
+        {
+          "klasse": "Akteure, Branchen und Institutionen",
+          "formen": [
+            "gewinner", "kriegsgewinnkonzerne", "kriegsgewinnler", "profiteure", "profiteuren"
+          ]
+        },
+        {
+          "klasse": "anderes Wort desselben Stamms",
+          "formen": [
+            "abgewinnen", "bioenergiegewinnung", "biogasgewinnung", "energiegewinnung", "gewinnen",
+            "gewinnt", "gewinnung", "imagegewinn", "mehrgewinnstrategien",
+            "non-profit-organisation", "oekologisierungsgewinne", "profitieren", "profitiert",
+            "saatgutgewinnung", "trinkwassergewinnung", "zugewinn", "zurueckgewinnen",
+            "zurueckgewinnt", "zurueckzugewinnen"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rentabilitaet_rendite_marge_deckungsbeitrag_auskoemmlich",
+      "name": "Rentabilität / Rendite / Marge / Deckungsbeitrag / auskömmlich",
+      "gruppe": "G5",
+      "unterkategorien": [
+        {
+          "name": "alle Formen",
+          "formen": [
+            "auskoemmlich", "auskoemmliche", "auskoemmlichem", "auskoemmlichen", "auskoemmlicher",
+            "auskoemmlichere", "auskoemmlicherem", "auskoemmlicheren", "auskoemmlicherer",
+            "auskoemmlicheres", "auskoemmliches", "auskoemmlichste", "auskoemmlichstem",
+            "auskoemmlichsten", "auskoemmlichster", "auskoemmlichstes", "deckungsbeitraege",
+            "deckungsbeitrags", "marge", "margen", "rendite", "renditeerwartungen", "rentabel",
+            "rentabelste", "rentabelstem", "rentabelsten", "rentabelster", "rentabelstes",
+            "rentabilitaet", "rentable", "rentablem", "rentablen", "rentabler", "rentablere",
+            "rentablerem", "rentableren", "rentablerer", "rentableres", "rentables"
+          ]
+        }
+      ],
+      "nicht_erfasst": []
+    },
+    {
+      "id": "wirtschaftlichkeit_wirtschaftlich_betriebswirtschaft_wirtschaftszweig",
+      "name": "Wirtschaftlichkeit / wirtschaftlich / Betriebswirtschaft / Wirtschaftszweig",
+      "gruppe": "G5",
+      "unterkategorien": [
+        {
+          "name": "alle Formen",
+          "formen": [
+            "betriebswirtschaft", "betriebswirtschaften", "betriebswirtschaftlich",
+            "betriebswirtschaftliche", "betriebswirtschaftlichem", "betriebswirtschaftlichen",
+            "betriebswirtschaftlicher", "betriebswirtschaftliches", "wirtschaftlich",
+            "wirtschaftliche", "wirtschaftlichem", "wirtschaftlichen", "wirtschaftlicher",
+            "wirtschaftlichere", "wirtschaftlicherem", "wirtschaftlicheren", "wirtschaftlicherer",
+            "wirtschaftlicheres", "wirtschaftliches", "wirtschaftlichkeit",
+            "wirtschaftlichkeitsuntersuchungen", "wirtschaftlichste", "wirtschaftlichstem",
+            "wirtschaftlichsten", "wirtschaftlichster", "wirtschaftlichstes", "wirtschaftszweig",
+            "wirtschaftszweige", "wirtschaftszweigen"
+          ]
+        }
+      ],
+      "nicht_erfasst": []
+    },
+    {
+      "id": "oekonomie_oekonomisch",
+      "name": "Ökonomie / ökonomisch",
+      "gruppe": "G5",
+      "unterkategorien": [
+        {
+          "name": "alle Formen",
+          "formen": [
+            "agraroekonomisch", "agraroekonomische", "agraroekonomischem", "agraroekonomischen",
+            "agraroekonomischer", "agraroekonomisches", "biooekonomie", "oekonomie", "oekonomik",
+            "oekonomisch", "oekonomische", "oekonomischem", "oekonomischen", "oekonomischer",
+            "oekonomischere", "oekonomischerem", "oekonomischeren", "oekonomischerer",
+            "oekonomischeres", "oekonomisches", "oekonomischste", "oekonomischstem",
+            "oekonomischsten", "oekonomischster", "oekonomischstes", "sozio-oekonomisch",
+            "sozio-oekonomische", "sozio-oekonomischem", "sozio-oekonomischen",
+            "sozio-oekonomischer", "sozio-oekonomisches", "soziooekonomisch", "soziooekonomische",
+            "soziooekonomischem", "soziooekonomischen", "soziooekonomischer", "soziooekonomisches",
+            "wirtschaftspolitik", "wirtschaftspolitiken"
+          ]
+        }
+      ],
+      "nicht_erfasst": [
+        {
+          "klasse": "Akteure, Branchen und Institutionen",
+          "formen": [
+            "agraroekonom", "agraroekonomen", "biooekonomierat"
+          ]
+        }
+      ],
+      "hinweise": [
+        "Wirtschaftspolitik ist als wirtschaftliches Politikfeld enthalten."
+      ]
+    },
+    {
+      "id": "effizienz_effizient",
+      "name": "Effizienz / effizient",
+      "gruppe": "G5",
+      "unterkategorien": [
+        {
+          "name": "alle Formen (auch Energie- und Ressourceneffizienz)",
+          "formen": [
+            "effizient", "effiziente", "effizientem", "effizienten", "effizienter", "effizientere",
+            "effizienterem", "effizienteren", "effizienterer", "effizienteres", "effizientes",
+            "effizienteste", "effizientestem", "effizientesten", "effizientester", "effizientestes",
+            "effizienz", "effizienzgesteigert", "effizienzgesteigerte", "effizienzgesteigertem",
+            "effizienzgesteigerten", "effizienzgesteigerter", "effizienzgesteigertes",
+            "energieeffizienz", "energieeffizienzgesetz", "ineffizient", "ineffiziente",
+            "ineffizientem", "ineffizienten", "ineffizienter", "ineffizientere", "ineffizienterem",
+            "ineffizienteren", "ineffizienterer", "ineffizienteres", "ineffizientes",
+            "ineffizienteste", "ineffizientestem", "ineffizientesten", "ineffizientester",
+            "ineffizientestes", "kosteneffizient", "kosteneffiziente", "kosteneffizientem",
+            "kosteneffizienten", "kosteneffizienter", "kosteneffizientere", "kosteneffizienterem",
+            "kosteneffizienteren", "kosteneffizienterer", "kosteneffizienteres",
+            "kosteneffizientes", "kosteneffizienteste", "kosteneffizientestem",
+            "kosteneffizientesten", "kosteneffizientester", "kosteneffizientestes",
+            "ressourceneffizient", "ressourceneffiziente", "ressourceneffizientem",
+            "ressourceneffizienten", "ressourceneffizienter", "ressourceneffizientere",
+            "ressourceneffizienterem", "ressourceneffizienteren", "ressourceneffizienterer",
+            "ressourceneffizienteres", "ressourceneffizientes", "ressourceneffizienteste",
+            "ressourceneffizientestem", "ressourceneffizientesten", "ressourceneffizientester",
+            "ressourceneffizientestes", "ressourceneffizienz", "stickstoffnutzungseffizienz"
+          ]
+        }
+      ],
+      "nicht_erfasst": [
+        {
+          "klasse": "Ausgewählte Mittelbereitstellungs-, Haushalts-, Programm- und fachfremde Begriffe",
+          "formen": [
+            "energieeffizienzprogramme"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "produktivitaet_produktiv",
+      "name": "Produktivität / produktiv",
+      "gruppe": "G5",
+      "unterkategorien": [
+        {
+          "name": "alle Formen",
+          "formen": [
+            "hochproduktiv", "hochproduktive", "hochproduktivem", "hochproduktiven",
+            "hochproduktiver", "hochproduktives", "produktiv", "produktive", "produktivem",
+            "produktiven", "produktiver", "produktivere", "produktiverem", "produktiveren",
+            "produktiverer", "produktiveres", "produktivitaet", "produktivitaetsentwicklung",
+            "produktivste", "produktivstem", "produktivsten", "produktivster", "produktivstes",
+            "unproduktiv", "unproduktive", "unproduktivem", "unproduktiven", "unproduktiver",
+            "unproduktivere", "unproduktiverem", "unproduktiveren", "unproduktiverer",
+            "unproduktiveres", "unproduktives", "unproduktivste", "unproduktivstem",
+            "unproduktivsten", "unproduktivster", "unproduktivstes"
+          ]
+        }
+      ],
+      "nicht_erfasst": [
+        {
+          "klasse": "anderes Wort desselben Stamms",
+          "formen": [
+            "kontraproduktiv", "nichtproduktive", "nichtproduktiver", "produktives", "reproduktiven"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "existenz_existenziell",
+      "name": "Existenz / existenziell",
+      "gruppe": "G5",
+      "unterkategorien": [
+        {
+          "name": "Grundwort und Adjektiv",
+          "formen": [
+            "existenz", "existenzen", "existenziell", "existenzielle", "existenziellem",
+            "existenziellen", "existenzieller", "existenzielles"
+          ]
+        },
+        {
+          "name": "Existenzgrundlage, Existenzbedrohung, Existenzsicherung",
+          "formen": [
+            "existenzaengste", "existenzaengsten", "existenzangst", "existenzbedrohend",
+            "existenzbedrohende", "existenzbedrohendem", "existenzbedrohenden",
+            "existenzbedrohender", "existenzbedrohendere", "existenzbedrohenderem",
+            "existenzbedrohenderen", "existenzbedrohenderer", "existenzbedrohenderes",
+            "existenzbedrohendes", "existenzbedrohendste", "existenzbedrohendstem",
+            "existenzbedrohendsten", "existenzbedrohendster", "existenzbedrohendstes",
+            "existenzbedroht", "existenzbedrohte", "existenzbedrohtem", "existenzbedrohten",
+            "existenzbedrohter", "existenzbedrohtes", "existenzbedrohung", "existenzerhalt",
+            "existenzgefaehrdend", "existenzgefaehrdende", "existenzgefaehrdendem",
+            "existenzgefaehrdenden", "existenzgefaehrdender", "existenzgefaehrdendere",
+            "existenzgefaehrdenderem", "existenzgefaehrdenderen", "existenzgefaehrdenderer",
+            "existenzgefaehrdenderes", "existenzgefaehrdendes", "existenzgefaehrdendste",
+            "existenzgefaehrdendstem", "existenzgefaehrdendsten", "existenzgefaehrdendster",
+            "existenzgefaehrdendstes", "existenzgefaehrdet", "existenzgefaehrdete",
+            "existenzgefaehrdetem", "existenzgefaehrdeten", "existenzgefaehrdeter",
+            "existenzgefaehrdetes", "existenzgruendung", "existenzgrundlage", "existenzgrundlagen",
+            "existenzkampf", "existenzkrise", "existenzminimum", "existenznoete", "existenznot",
+            "existenzsichernd", "existenzsichernde", "existenzsicherndem", "existenzsichernden",
+            "existenzsichernder", "existenzsicherndere", "existenzsichernderem",
+            "existenzsichernderen", "existenzsichernderer", "existenzsichernderes",
+            "existenzsicherndes", "existenzsicherndste", "existenzsicherndstem",
+            "existenzsicherndsten", "existenzsicherndster", "existenzsicherndstes", "existenzsorgen"
+          ]
+        }
+      ],
+      "nicht_erfasst": [
+        {
+          "klasse": "Akteure, Branchen und Institutionen",
+          "formen": [
+            "existenzgruender", "existenzgruenderinnen", "existenzgruendern"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "insolvenz_pleite_konkurs_bankrott",
+      "name": "Insolvenz / Pleite / Konkurs / Bankrott",
+      "gruppe": "G5",
+      "unterkategorien": [
+        {
+          "name": "alle Formen",
+          "formen": [
+            "bankrott", "bankrotte", "bankrottem", "bankrotten", "bankrotter", "bankrottes",
+            "betriebspleiten", "insolvenz", "insolvenzantrag", "insolvenzen", "insolvenzrecht",
+            "insolvenzwelle", "konkurs", "pleite", "pleitegegangen", "pleitegehen", "pleitewelle"
+          ]
+        }
+      ],
+      "nicht_erfasst": [
+        {
+          "klasse": "anderes Wort desselben Stamms",
+          "formen": [
+            "bankrotterklaerung"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "betriebsaufgabe_betriebsschliessung",
+      "name": "Betriebsaufgabe / Betriebsschließung",
+      "gruppe": "G5",
+      "unterkategorien": [
+        {
+          "name": "alle Formen",
+          "formen": [
+            "betriebsaufgabe", "betriebsschliessungen"
+          ]
+        }
+      ],
+      "nicht_erfasst": []
+    },
+    {
+      "id": "hofnachfolge",
+      "name": "Hofnachfolge",
+      "gruppe": "G5",
+      "unterkategorien": [
+        {
+          "name": "alle Formen",
+          "formen": [
+            "hofnachfolge", "hofnachfolgen"
+          ]
+        }
+      ],
+      "nicht_erfasst": [
+        {
+          "klasse": "Akteure, Branchen und Institutionen",
+          "formen": [
+            "betriebsnachfolgern", "hofnachfolger", "hofnachfolgerinnen", "hofnachfolgern"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "strukturwandel",
+      "name": "Strukturwandel",
+      "gruppe": "G5",
+      "unterkategorien": [
+        {
+          "name": "alle Formen",
+          "formen": [
+            "agrarstrukturwandel", "strukturwandel", "strukturwandels"
+          ]
+        }
+      ],
+      "nicht_erfasst": []
+    },
+    {
+      "id": "hoefesterben",
+      "name": "Höfesterben",
+      "gruppe": "G5",
+      "unterkategorien": [
+        {
+          "name": "alle Formen (auch Bauernsterben)",
+          "formen": [
+            "bauernsterben", "hoefesterben", "hoefesterbens"
+          ]
+        }
+      ],
+      "nicht_erfasst": []
+    },
+    {
+      "id": "direktzahlung",
+      "name": "Direktzahlung",
+      "gruppe": "G6",
+      "unterkategorien": [
+        {
+          "name": "alle Formen",
+          "formen": [
+            "direktzahlung", "direktzahlungen", "direktzahlungen-durchfuehrungsgesetz",
+            "direktzahlungen-durchfuehrungsgesetzes", "gap-direktzahlungen",
+            "gap-direktzahlungen-gesetz", "gap-direktzahlungsgesetze"
+          ]
+        }
+      ],
+      "nicht_erfasst": []
+    },
+    {
+      "id": "praemie",
+      "name": "Prämie",
+      "gruppe": "G6",
+      "unterkategorien": [
+        {
+          "name": "Grundwort",
+          "formen": [
+            "praemie", "praemien"
+          ]
+        },
+        {
+          "name": "GAP-Prämien und Tierprämien",
+          "formen": [
+            "100-prozent-gemeinwohlpraemie", "ausstiegspraemien", "basispraemie",
+            "eu-flaechenpraemien", "eu-weidetierpraemie", "flaechenpraemie", "flaechenpraemien",
+            "gemeinwohlpraemie", "gemeinwohlpraemien", "gemeinwohlpraemierung", "greeningpraemie",
+            "hektarpraemien", "junglandwirtepraemie", "kaufpraemie", "kopfpraemie",
+            "landesweidetierpraemie", "mutterkuhpraemien", "mutterschafpraemie", "oekopraemien",
+            "praemienkuerzungen", "pro-kopf-praemie", "umbaupraemie", "umstellungspraemien",
+            "umverteilungspraemie", "waldpraemie", "weidepraemie", "weidetierpraemie",
+            "weidetierpraemien"
+          ]
+        }
+      ],
+      "nicht_erfasst": [
+        {
+          "klasse": "Einzelfall aus einem anderen Feld",
+          "formen": [
+            "coronapraemie"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "zuschuss",
+      "name": "Zuschuss",
+      "gruppe": "G6",
+      "unterkategorien": [
+        {
+          "name": "Grundwort",
+          "formen": [
+            "bezuschussung", "zuschuesse", "zuschuessen", "zuschuss", "zuschusses"
+          ]
+        },
+        {
+          "name": "Zuschüsse (auch Bundeszuschuss zur Unfallversicherung, Familien-, Ausbildungszuschuss)",
+          "formen": [
+            "ausbildungszuschuessen", "beitragszuschuss", "betriebskostenzuschuessen",
+            "bundeszuschuesse", "bundeszuschuss", "bundeszuschusses", "familienzuschuss",
+            "heizkostenzuschuss", "investitionszuschuesse", "werbekostenzuschuesse",
+            "zuschussgeschaeft", "zuschusswesen"
+          ]
+        }
+      ],
+      "nicht_erfasst": [
+        {
+          "klasse": "Ausgewählte Mittelbereitstellungs-, Haushalts-, Programm- und fachfremde Begriffe",
+          "formen": [
+            "zuschussprogramm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "beihilfe",
+      "name": "Beihilfen und Dürrehilfe",
+      "gruppe": "G6",
+      "unterkategorien": [
+        {
+          "name": "alle Formen",
+          "formen": [
+            "agrarerzeugeranpassungsbeihilfe", "beihilfe", "beihilfen", "beihilfesystem",
+            "beihilfeverfahren", "betriebsbeihilfen", "eu-beihilfen", "eu-beihilfeverfahren",
+            "eu-hopfenbeihilfe", "eu-hopfenbeihilfen", "fischereibeihilfen", "hopfenbeihilfe",
+            "kleinbeihilfe", "krisenbeihilfe", "unionsbeihilfen"
+          ]
+        },
+        {
+          "name": "Dürrehilfe",
+          "formen": [
+            "duerrehilfe", "duerrehilfen"
+          ]
+        }
+      ],
+      "nicht_erfasst": [
+        {
+          "klasse": "Ausgewählte Mittelbereitstellungs-, Haushalts-, Programm- und fachfremde Begriffe",
+          "formen": [
+            "kleinbeihilfeprogramm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "entschaedigung_ausgleichszahlung_erschwernisausgleich_kompensation",
+      "name": "Entschädigung / Ausgleichszahlung / Erschwernisausgleich / Kompensation",
+      "gruppe": "G6",
+      "unterkategorien": [
+        {
+          "name": "alle Formen",
+          "formen": [
+            "ausgleichszahlungen", "dienstbarkeitsentschaedigungen", "entschaedigen",
+            "entschaedigt", "entschaedigung", "entschaedigungen", "entschaedigungs-",
+            "entschaedigungsleistungen", "entschaedigungsverfahren", "entschaedigungszahlungen",
+            "erschwernisausgleich", "kompensation", "kompensationen", "kompensationsmassnahmen",
+            "ueberkompensation"
+          ]
+        }
+      ],
+      "nicht_erfasst": []
+    },
+    {
+      "id": "entlastungspaket",
+      "name": "Entlastungspaket (nur Komposita)",
+      "gruppe": "G6",
+      "unterkategorien": [
+        {
+          "name": "Entlastungspaket, Entlastungsmaßnahme, Entlastungsprogramm, Entlastungsbetrag",
+          "formen": [
+            "entlastungsbetrag", "entlastungsmassnahme", "entlastungsmassnahmen",
+            "entlastungspaket", "entlastungspaketen", "entlastungspakets"
+          ]
+        }
+      ],
+      "nicht_erfasst": [
+        {
+          "klasse": "anderes Wort desselben Stamms",
+          "formen": [
+            "entlastung", "entlastungen", "entlastungsanmeldungen", "entlastungsmoeglichkeit"
+          ]
+        },
+        {
+          "klasse": "Ausgewählte Mittelbereitstellungs-, Haushalts-, Programm- und fachfremde Begriffe",
+          "formen": [
+            "entlastungsprogramm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "steuer",
+      "name": "Steuer",
+      "gruppe": "G6",
+      "unterkategorien": [
+        {
+          "name": "Grundwort und Adjektiv",
+          "formen": [
+            "besteuern", "besteuert", "besteuerung", "jahressteuergesetz", "steuer", "steuer-",
+            "steuerbereich", "steuergegenstand", "steuergesetz", "steuerlich", "steuerliche",
+            "steuerlichem", "steuerlichen", "steuerlicher", "steuerliches", "steuern",
+            "steuerpolitik", "steuerrecht", "steuerrechtlich", "steuerrechtliche",
+            "steuerrechtlichem", "steuerrechtlichen", "steuerrechtlicher", "steuerrechtliches",
+            "steuersystematik", "steuertarif", "versteuern", "versteuert"
+          ]
+        },
+        {
+          "name": "Steuerarten, Steuersätze, Steuerinstrumente",
+          "formen": [
+            "biermengenstaffelsteuersaetze", "biersteuer", "biersteuermengenstaffel",
+            "biersteuersaetze", "biersteuerstaffelsatz", "co2-besteuerung", "co2-steuer",
+            "durchschnittsbesteuerung", "durchschnittsbesteuerungssatzes",
+            "durchschnittssteuersatz", "durchschnittssteuersatzes", "einkommensteuer",
+            "einkommensteuergesetz", "einkommensteuergesetzes", "einkommensteuerrecht",
+            "einkommensteuerreform", "einkommensteuersenkung", "energiesteuer", "erbschaftsteuer",
+            "erbschaftsteuerrecht", "eu-mehrwertsteuerrichtlinie", "extrasteuer", "fleischsteuer",
+            "gastro-mehrwertsteuer", "gastrosteuer", "gastrosteuersenkung", "gewerbesteuer",
+            "grunderwerbsteuerrecht", "grundsteuer", "grundsteuerreform", "grundsteuerwert",
+            "grundsteuerwerten", "kfz-steuer", "kfz-steuer-subvention", "kfz-steuerbefreiung",
+            "kfz-steuerverguenstigungen", "koerperschaftsteuer", "konsumsteuern",
+            "kraftfahrzeugsteuer", "kraftfahrzeugsteuergesetzes", "kraftstoffsteuersenkung",
+            "limonadensteuer", "mehrwertsteuer", "mehrwertsteuerbefreiung",
+            "mehrwertsteuererhoehung", "mehrwertsteuerfrei", "mehrwertsteuerfreie",
+            "mehrwertsteuerfreiem", "mehrwertsteuerfreien", "mehrwertsteuerfreier",
+            "mehrwertsteuerfreies", "mehrwertsteuerrecht", "mehrwertsteuerreform",
+            "mehrwertsteuersaetze", "mehrwertsteuersatz", "mehrwertsteuersatzes",
+            "mehrwertsteuersenkung", "mehrwertsteuersystem", "mehrwertsteuerveraenderungen",
+            "mineraloelsteuer", "pauschalbesteuerung", "pauschalsteuer", "pauschalsteuersatz",
+            "pauschalversteuerung", "plastiksteuer", "schenkungsteuer", "steuererklaerung",
+            "steuererklaerungen", "steuersaetze", "steuersatz", "steuersatzes",
+            "steuerstaffelsaetze", "stromsteuer", "stromsteuerabsenkung", "stromsteuerentlastungen",
+            "stromsteuersenkung", "uebergewinnsteuer", "umsatzbesteuerung", "umsatzsteuer",
+            "umsatzsteuerermaessigung", "umsatzsteuerfrei", "umsatzsteuerfreie",
+            "umsatzsteuerfreiem", "umsatzsteuerfreien", "umsatzsteuerfreier", "umsatzsteuerfreies",
+            "umsatzsteuergesetz", "umsatzsteuerpauschale", "umsatzsteuerpauschalierung",
+            "umsatzsteuersaetze", "umsatzsteuersatz", "umsatzsteuersatzes", "umsatzsteuersenkung",
+            "umsatzsteuersonderregel", "unternehmensteuern", "unternehmensteuerrecht",
+            "unternehmensteuerreform", "unternehmensteuersenkung", "verbrauchssteuer",
+            "verbrauchsteuern", "vermoegensteuer", "versicherungsteuer", "versicherungsteuersatzes",
+            "vorsteuer", "vorsteuerabzug", "vorsteuerbelastung", "vorsteuerpauschalierung",
+            "vorsteuerpauschalierungssaetze", "zuckersteuer"
+          ]
+        },
+        {
+          "name": "Steuerbelastung und Steuerentlastung",
+          "formen": [
+            "dieselbesteuerung", "dieselsteuer", "dieselsteuern", "regelbesteuerung",
+            "steuerbefreit", "steuerbefreite", "steuerbefreitem", "steuerbefreiten",
+            "steuerbefreiter", "steuerbefreites", "steuerbefreiung", "steuerbefreiungen",
+            "steuerbeguenstigt", "steuerbeguenstigte", "steuerbeguenstigtem", "steuerbeguenstigten",
+            "steuerbeguenstigter", "steuerbeguenstigtes", "steuerentlastung", "steuerentlastungen",
+            "steuererhoehung", "steuererhoehungen", "steuererlass", "steuererleichterung",
+            "steuererleichterungen", "steuererstattung", "steuerfrei", "steuerfreie",
+            "steuerfreiem", "steuerfreien", "steuerfreier", "steuerfreies", "steuergeschenke",
+            "steuergeschenken", "steuerlast", "steuerlasten", "steuermehrbelastung",
+            "steuerprivilegien", "steuerreduzierung", "steuersenkung", "steuersenkungen",
+            "steuersubventionen", "steuersubventioniert", "steuersubventionierte",
+            "steuersubventioniertem", "steuersubventionierten", "steuersubventionierter",
+            "steuersubventioniertes", "steuerverguenstigung", "steuerverguenstigungen",
+            "steuerverguetung", "steuervorteilen", "steuerwettlauf"
+          ]
+        }
+      ],
+      "nicht_erfasst": [
+        {
+          "klasse": "Akteure, Branchen und Institutionen",
+          "formen": [
+            "steuerberater", "steuersenkungspartei", "steuerzahlende", "steuerzahlenden",
+            "steuerzahler", "steuerzahlerinnen", "steuerzahlern"
+          ]
+        },
+        {
+          "klasse": "staatliche Geberseite und Wirtschaftsordnung",
+          "formen": [
+            "agrardieselsteueraufkommen", "gemeinschaftssteuern", "gewerbesteuereinnahmen",
+            "steuerausfaellen", "steuereinnahmen", "steuerfahndung", "steuergeld", "steuergelder",
+            "steuergeldern", "steuergeldverschwendung", "steuermittel", "steuermitteln",
+            "steuermittelverschwendung", "umsatzsteuereinnahmen"
+          ]
+        },
+        {
+          "klasse": "anderes Wort desselben Stamms",
+          "formen": [
+            "computergesteuert", "entgegensteuern", "eu-gesteuerte", "gegensteuern",
+            "gegenzusteuern", "gesteuert", "gesteuerte", "gps-gesteuerte", "it-gesteuerte",
+            "nachgesteuert", "nachsteuern", "nachsteuerung", "prozesssteuerung", "sensorgesteuert",
+            "sensorgesteuerten", "steuerbar", "steuerstand", "steuert", "steuerung", "steuerungen",
+            "uebersteuerung", "umsteuern", "umsteuert", "verkehrssteuerung"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "abgabe",
+      "name": "Abgabe",
+      "gruppe": "G6",
+      "unterkategorien": [
+        {
+          "name": "alle Formen als Zahlungspflicht",
+          "formen": [
+            "abgabe", "abgaben", "co2-abgabe", "co2-abgaben", "pestizidabgabe", "verbrauchsabgabe",
+            "zollabgaben", "zuckerabgaben"
+          ]
+        }
+      ],
+      "nicht_erfasst": [
+        {
+          "klasse": "Einzelfall aus einem anderen Feld",
+          "formen": [
+            "waffenabgabe"
+          ]
+        },
+        {
+          "klasse": "anderes Wort desselben Stamms",
+          "formen": [
+            "abgabedatum", "abgabefristen", "abgabemenge", "abgabemengen", "hofabgabe",
+            "hofabgabeklausel", "hofabgabeverpflichtung", "landabgaberenten"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "zoll",
+      "name": "Zoll",
+      "gruppe": "G6",
+      "unterkategorien": [
+        {
+          "name": "alle Formen",
+          "formen": [
+            "schutzzoelle", "strafzoelle", "zoelle", "zoellen", "zollabgaben", "zollbeguenstigt",
+            "zollbeguenstigte", "zollbeguenstigtem", "zollbeguenstigten", "zollbeguenstigter",
+            "zollbeguenstigtes", "zollfrei", "zollfreie", "zollfreiem", "zollfreien", "zollfreier",
+            "zollfreies", "zollkontingente", "zollpolitik", "zollschranken"
+          ]
+        }
+      ],
+      "nicht_erfasst": [
+        {
+          "klasse": "Akteure, Branchen und Institutionen",
+          "formen": [
+            "zollverwaltung"
+          ]
+        },
+        {
+          "klasse": "staatliche Geberseite und Wirtschaftsordnung",
+          "formen": [
+            "zolleinnahmen"
+          ]
+        },
+        {
+          "klasse": "anderes Wort desselben Stamms",
+          "formen": [
+            "zollen", "zollkontrollen", "zollt"
+          ]
+        },
+        {
+          "klasse": "Mehrdeutige Singularformen; Plural und gelistete Komposita sind enthalten",
+          "formen": [
+            "zoll", "zolls"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "strafzahlung_bussgeld",
+      "name": "Strafzahlung / Bußgeld",
+      "gruppe": "G6",
+      "unterkategorien": [
+        {
+          "name": "alle Formen",
+          "formen": [
+            "bussgeld", "bussgelder", "bussgeldrahmens", "geldstrafen", "strafzahlung",
+            "strafzahlungen"
+          ]
+        }
+      ],
+      "nicht_erfasst": []
+    },
+    {
+      "id": "tarifglaettung_gewinnglaettung",
+      "name": "Tarifglättung / Gewinnglättung",
+      "gruppe": "G6",
+      "unterkategorien": [
+        {
+          "name": "alle Formen",
+          "formen": [
+            "gewinnglaettung", "tarifermaessigung", "tarifglaettung"
+          ]
+        }
+      ],
+      "nicht_erfasst": []
+    },
+    {
+      "id": "tierwohlabgabe_tierwohlcent",
+      "name": "Tierwohlabgabe / Tierwohlcent",
+      "gruppe": "G6",
+      "unterkategorien": [
+        {
+          "name": "alle Formen",
+          "formen": [
+            "tierschutzcent", "tierwohl-cent", "tierwohlabgabe", "tierwohlcent"
+          ]
+        }
+      ],
+      "nicht_erfasst": []
+    },
+    {
+      "id": "buerokratie",
+      "name": "Bürokratie",
+      "gruppe": "G6",
+      "unterkategorien": [
+        {
+          "name": "Bürokratie und bürokratisch",
+          "formen": [
+            "buerokratie", "buerokratisch", "buerokratische", "buerokratischem", "buerokratischen",
+            "buerokratischer", "buerokratischere", "buerokratischerem", "buerokratischeren",
+            "buerokratischerer", "buerokratischeres", "buerokratisches", "buerokratischste",
+            "buerokratischstem", "buerokratischsten", "buerokratischster", "buerokratischstes",
+            "buerokratismus"
+          ]
+        },
+        {
+          "name": "Bürokratieabbau, Entbürokratisierung, unbürokratisch",
+          "formen": [
+            "buerokratieabbau", "buerokratieabbaus", "buerokratieaermer", "buerokratieaermere",
+            "buerokratieaermerem", "buerokratieaermeren", "buerokratieaermerer",
+            "buerokratieaermeres", "buerokratieaermste", "buerokratieaermstem",
+            "buerokratieaermsten", "buerokratieaermster", "buerokratieaermstes", "buerokratiearm",
+            "buerokratiearme", "buerokratiearmem", "buerokratiearmen", "buerokratiearmer",
+            "buerokratiearmes", "buerokratieentlastung", "buerokratieentlastungspaket",
+            "buerokratievereinfachungsgruenden", "buerokratiewende", "entbuerokratisieren",
+            "entbuerokratisiert", "entbuerokratisierung", "entbuerokratisierungsmassnahmen",
+            "entbuerokratisierungspaket", "unbuerokratisch", "unbuerokratische",
+            "unbuerokratischem", "unbuerokratischen", "unbuerokratischer", "unbuerokratischere",
+            "unbuerokratischerem", "unbuerokratischeren", "unbuerokratischerer",
+            "unbuerokratischeres", "unbuerokratisches", "unbuerokratischste", "unbuerokratischstem",
+            "unbuerokratischsten", "unbuerokratischster", "unbuerokratischstes"
+          ]
+        },
+        {
+          "name": "Bürokratielast, Verwaltungsaufwand, Dokumentationspflicht",
+          "formen": [
+            "buerokratiearbeit", "buerokratieaufwand", "buerokratieaufwuchs",
+            "buerokratieausloeser", "buerokratiefehler", "buerokratiehemmnissen",
+            "buerokratiekonstrukt", "buerokratiekontrollen", "buerokratiekorsett",
+            "buerokratiekosten", "buerokratielast", "buerokratiemonster", "buerokratiemonsters",
+            "buerokratiewust", "buerokratisierung", "dokumentationspflicht",
+            "dokumentationspflichten", "ueberbuerokratisierung", "verwaltungsaufwand"
+          ]
+        }
+      ],
+      "nicht_erfasst": [
+        {
+          "klasse": "Akteure, Branchen und Institutionen",
+          "formen": [
+            "buerokraten", "schreibtischbuerokraten"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "agrardiesel",
+      "name": "Agrardiesel",
+      "gruppe": "G7",
+      "unterkategorien": [
+        {
+          "name": "Agrardiesel",
+          "formen": [
+            "agrardiesel", "agrardiesels"
+          ]
+        },
+        {
+          "name": "Agrardieselrückvergütung, -steuer, -subvention, -beihilfe, -kürzung",
+          "formen": [
+            "agrardiesel-", "agrardiesel-rueckverguetung", "agrardiesel-steuerentlastung",
+            "agrardieselantrag", "agrardieselaspektchen", "agrardieselbeguenstigung",
+            "agrardieselbeihilfe", "agrardieselbesteuerung", "agrardieseleinsparung",
+            "agrardieselentscheidung", "agrardieselfoerderung", "agrardieselhilfen",
+            "agrardieselkompromiss", "agrardieselkosten", "agrardieselkuerzung",
+            "agrardieselrueckerstattung", "agrardieselrueckerstattungen", "agrardieselrueckgewaehr",
+            "agrardieselrueckverguetung", "agrardieselsteuer", "agrardieselsteuerentlastung",
+            "agrardieselsteuerrueckerstattung", "agrardieselsteuerrueckverguetung",
+            "agrardieselstreichung", "agrardieselsubvention", "agrardieselsubventionen",
+            "agrardieselsubventionierung", "agrardieselverguenstigung", "agrardieselverguetung",
+            "dieselrueckverguetung", "dieselsubventionen", "rueckvergueten", "rueckverguetung",
+            "steuerrueckerstattung"
+          ]
+        }
+      ],
+      "nicht_erfasst": [
+        {
+          "klasse": "Akteure, Branchen und Institutionen",
+          "formen": [
+            "agrardieselfahrer"
+          ]
+        },
+        {
+          "klasse": "staatliche Geberseite und Wirtschaftsordnung",
+          "formen": [
+            "agrardieselsteueraufkommen"
+          ]
+        }
+      ]
+    }
+  ]
+}

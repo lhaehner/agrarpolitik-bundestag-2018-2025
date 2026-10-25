@@ -1,0 +1,44 @@
+MIT License
+
+Copyright (c) 2026 Linus Hähner
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+Geltungsbereich und weitere Inhalte
+
+Der MIT-Lizenztext oben gilt für die Python-Dateien und das Colab-Notebook
+einschließlich ihrer Kommentare und Erläuterungen.
+
+Die eigenen Inhalte von Linus Hähner in Codebuch, Wörterbüchern, Ergebnis- und
+Validierungsdateien und Dokumentation stehen unter Creative
+Commons Namensnennung 4.0 International (CC BY 4.0). Dies umfasst auch die
+eigenen Ergänzungen und Bearbeitungen der zum Release gehörenden Satzbasis.
+https://creativecommons.org/licenses/by/4.0/
+Vollständiger Lizenztext: https://creativecommons.org/licenses/by/4.0/legalcode.de
+
+Ausgangsquelle: Seán Fobbe, Corpus der Plenarprotokolle des Deutschen
+Bundestages (CPP-BT), Version 2026-01-17, CC0 1.0.
+https://doi.org/10.5281/zenodo.18177196
+Das unveränderte Quellarchiv wird über Zenodo bezogen. Die übernommenen
+Quellinhalte behalten ihre bestehende Freigabe. Die CC-BY-Lizenz für eigene
+Beiträge begründet keine zusätzlichen Einschränkungen an diesen Quellinhalten.
+Gesondert gekennzeichnete Fremdinhalte und verwendete Softwarebibliotheken
+unterliegen ihren jeweiligen Bedingungen.

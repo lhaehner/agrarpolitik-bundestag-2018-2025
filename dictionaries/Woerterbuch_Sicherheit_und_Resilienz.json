@@ -1,0 +1,1767 @@
+{
+  "schema_version": "sr-closed-forms-1.0",
+  "name": "Sicherheit und Resilienz",
+  "dimension_id": "sicherheit_resilienz",
+  "structure": [
+    "categories definiert die Themenkategorien; lexemes enthält die geschlossenen Formen.",
+    "direct_rules verbindet einen Direktbegriff mit seiner Kategorie.",
+    "cooccurrence_rules verbindet zwei Gruppen von Ausdrücken innerhalb eines Satzes.",
+    "local_exclusions maskiert nur die benannten Fundstellen in festgelegten Namen.",
+    "Nicht jedes Lexem zählt allein; einige dienen ausschließlich als Satzregelanker.",
+    "Die folgenden Erläuterungen beschreiben die Regeln; sie erweitern sie nicht."
+  ],
+  "description": [
+    "Präsenz der benannten Gegenstände im bereits bestimmten Agrar- und Ernährungskorpus.",
+    "Neutrale, bejahte, verneinte und hypothetische Thematisierungen zählen."
+  ],
+  "matching_policy": {
+    "unit": "Ein bereits segmentierter Satz je Aufruf.",
+    "counting": [
+      "Je Satz, Themenbereich und Kategorie höchstens 1.",
+      "Mehrere Kategorien und Themenbereiche dürfen im selben Satz zutreffen."
+    ],
+    "scope": "Direktbegriffe benötigen innerhalb des A&E-Korpus keinen weiteren Lebensmittelbezug.",
+    "normalization": [
+      "NFKC und casefold; ä/ö/ü zu ae/oe/ue, ß zu ss.",
+      "Leerraum vereinheitlichen, Soft-Hyphen entfernen, U+2010/U+2011 zu Bindestrich."
+    ],
+    "boundaries": [
+      "Geschlossene Ganzwort- und Mehrwortformen.",
+      "Zusätzliche Komposita und angehängte Bindestrich-Wortteile erzeugen keinen Teiltreffer."
+    ],
+    "word_forms": [
+      "Ausschließlich die ausdrücklich hinterlegten forms-Listen.",
+      "Keine Stammregeln, Lemmatisierung oder automatisch ergänzten Formen."
+    ],
+    "direct_rules": "Eine unmaskierte Fundstelle des lexeme_id genügt.",
+    "cooccurrence_rules": [
+      "Mindestens ein unmaskierter Ausdruck aus any_a und einer aus any_b im selben Satz.",
+      "Reihenfolge und Abstand sind beliebig.",
+      "Eine semantische Verknüpfung der beiden Ausdrücke wird nicht zusätzlich geprüft."
+    ],
+    "exclusions": [
+      "Nur die in local_exclusions benannten Fundstellen in festgelegten Namen maskieren.",
+      "Weitere Treffer bleiben gültig; kein Ausschluss des gesamten Satzes."
+    ],
+    "interpretation": [
+      "Thematisierung belegt weder eine Krise noch eine sicherheitspolitische Rahmung."
+    ]
+  },
+  "categories": [
+    {
+      "id": "SR1",
+      "label": "Ernährungssicherheit und Ernährungssicherung",
+      "nummer": 1
+    },
+    {
+      "id": "SR2",
+      "label": "Versorgung, Versorgungssicherung und Vorsorge",
+      "nummer": 2
+    },
+    {
+      "id": "SR3",
+      "label": "Krisen, Mangel, Knappheit und Engpässe",
+      "nummer": 3
+    },
+    {
+      "id": "SR4",
+      "label": "Selbstversorgung, Souveränität und Importabhängigkeit",
+      "nummer": 4
+    },
+    {
+      "id": "SR5",
+      "label": "Resilienz, Krisenfestigkeit und Systemrelevanz",
+      "nummer": 5
+    }
+  ],
+  "lexemes": [
+    {
+      "id": "L_ernaehrungs_und_lebensmittelsicherheit",
+      "label": "Ernährungs- und Lebensmittelsicherheit",
+      "forms": [
+        "Ernährungs- und Lebensmittelsicherheit",
+        "Ernährungs- und Lebensmittelsicherheiten"
+      ]
+    },
+    {
+      "id": "L_ernaehrungssicherheit",
+      "label": "Ernährungssicherheit",
+      "forms": [
+        "Ernährungssicherheit",
+        "Ernährungssicherheiten"
+      ]
+    },
+    {
+      "id": "L_ernaehrungssichernd",
+      "label": "ernährungssichernd",
+      "forms": [
+        "ernährungssichernd",
+        "ernährungssichernde",
+        "ernährungssichernden",
+        "ernährungssicherndem",
+        "ernährungssichernder",
+        "ernährungssicherndes"
+      ]
+    },
+    {
+      "id": "L_ernaehrungssicherung",
+      "label": "Ernährungssicherung",
+      "forms": [
+        "Ernährungssicherung",
+        "Ernährungssicherungen"
+      ]
+    },
+    {
+      "id": "L_ernaehrungsunsicherheit",
+      "label": "Ernährungsunsicherheit",
+      "forms": [
+        "Ernährungsunsicherheit",
+        "Ernährungsunsicherheiten"
+      ]
+    },
+    {
+      "id": "L_nahrungsmittelsicherheit",
+      "label": "Nahrungsmittelsicherheit",
+      "forms": [
+        "Nahrungsmittelsicherheit",
+        "Nahrungsmittelsicherheiten"
+      ]
+    },
+    {
+      "id": "L_nahrungsmittelsicherung",
+      "label": "Nahrungsmittelsicherung",
+      "forms": [
+        "Nahrungsmittelsicherung",
+        "Nahrungsmittelsicherungen"
+      ]
+    },
+    {
+      "id": "L_nahrungssicherheit",
+      "label": "Nahrungssicherheit",
+      "forms": [
+        "Nahrungssicherheit",
+        "Nahrungssicherheiten"
+      ]
+    },
+    {
+      "id": "L_duengemittelversorgung",
+      "label": "Düngemittelversorgung",
+      "forms": [
+        "Düngemittelversorgung",
+        "Düngemittelversorgungen"
+      ]
+    },
+    {
+      "id": "L_duengerversorgung",
+      "label": "Düngerversorgung",
+      "forms": [
+        "Düngerversorgung",
+        "Düngerversorgungen"
+      ]
+    },
+    {
+      "id": "L_duengervorrat",
+      "label": "Düngervorrat",
+      "forms": [
+        "Düngervorrat",
+        "Düngervorrats",
+        "Düngervorrates",
+        "Düngervorräte",
+        "Düngervorräten"
+      ]
+    },
+    {
+      "id": "L_ernaehrungsnotfallvorsorge",
+      "label": "Ernährungsnotfallvorsorge",
+      "forms": [
+        "Ernährungsnotfallvorsorge",
+        "Ernährungsnotfallvorsorgen"
+      ]
+    },
+    {
+      "id": "L_ernaehrungsversorgung",
+      "label": "Ernährungsversorgung",
+      "forms": [
+        "Ernährungsversorgung",
+        "Ernährungsversorgungen"
+      ]
+    },
+    {
+      "id": "L_futtermittelversorgung",
+      "label": "Futtermittelversorgung",
+      "forms": [
+        "Futtermittelversorgung",
+        "Futtermittelversorgungen"
+      ]
+    },
+    {
+      "id": "L_futterversorgung",
+      "label": "Futterversorgung",
+      "forms": [
+        "Futterversorgung",
+        "Futterversorgungen"
+      ]
+    },
+    {
+      "id": "L_getreideversorgung",
+      "label": "Getreideversorgung",
+      "forms": [
+        "Getreideversorgung",
+        "Getreideversorgungen"
+      ]
+    },
+    {
+      "id": "L_krisenvorsorge",
+      "label": "Krisenvorsorge",
+      "forms": [
+        "Krisenvorsorge",
+        "Krisenvorsorgen"
+      ]
+    },
+    {
+      "id": "L_lebensmittelbevorratung",
+      "label": "Lebensmittelbevorratung",
+      "forms": [
+        "Lebensmittelbevorratung",
+        "Lebensmittelbevorratungen"
+      ]
+    },
+    {
+      "id": "L_lebensmittelnotversorgung",
+      "label": "Lebensmittelnotversorgung",
+      "forms": [
+        "Lebensmittelnotversorgung",
+        "Lebensmittelnotversorgungen"
+      ]
+    },
+    {
+      "id": "L_lebensmittelnotvorrat",
+      "label": "Lebensmittelnotvorrat",
+      "forms": [
+        "Lebensmittelnotvorrat",
+        "Lebensmittelnotvorrats",
+        "Lebensmittelnotvorrates",
+        "Lebensmittelnotvorräte",
+        "Lebensmittelnotvorräten"
+      ]
+    },
+    {
+      "id": "L_lebensmittelversorgung",
+      "label": "Lebensmittelversorgung",
+      "forms": [
+        "Lebensmittelversorgung",
+        "Lebensmittelversorgungen"
+      ]
+    },
+    {
+      "id": "L_lebensmittelvorrat",
+      "label": "Lebensmittelvorrat",
+      "forms": [
+        "Lebensmittelvorrat",
+        "Lebensmittelvorrats",
+        "Lebensmittelvorrates",
+        "Lebensmittelvorräte",
+        "Lebensmittelvorräten"
+      ]
+    },
+    {
+      "id": "L_mineralduengerversorgung",
+      "label": "Mineraldüngerversorgung",
+      "forms": [
+        "Mineraldüngerversorgung",
+        "Mineraldüngerversorgungen"
+      ]
+    },
+    {
+      "id": "L_nahrungsmittelreserve",
+      "label": "Nahrungsmittelreserve",
+      "forms": [
+        "Nahrungsmittelreserve",
+        "Nahrungsmittelreserven"
+      ]
+    },
+    {
+      "id": "L_nahrungsmittelversorgung",
+      "label": "Nahrungsmittelversorgung",
+      "forms": [
+        "Nahrungsmittelversorgung",
+        "Nahrungsmittelversorgungen"
+      ]
+    },
+    {
+      "id": "L_nahrungsmittelvorrat",
+      "label": "Nahrungsmittelvorrat",
+      "forms": [
+        "Nahrungsmittelvorrat",
+        "Nahrungsmittelvorrats",
+        "Nahrungsmittelvorrates",
+        "Nahrungsmittelvorräte",
+        "Nahrungsmittelvorräten"
+      ]
+    },
+    {
+      "id": "L_notfallbevorratung",
+      "label": "Notfallbevorratung",
+      "forms": [
+        "Notfallbevorratung",
+        "Notfallbevorratungen"
+      ]
+    },
+    {
+      "id": "L_versorgungslage",
+      "label": "Versorgungslage",
+      "forms": [
+        "Versorgungslage",
+        "Versorgungslagen"
+      ]
+    },
+    {
+      "id": "L_versorgungssicherheit",
+      "label": "Versorgungssicherheit",
+      "forms": [
+        "Versorgungssicherheit",
+        "Versorgungssicherheiten"
+      ]
+    },
+    {
+      "id": "L_versorgungssicherung",
+      "label": "Versorgungssicherung",
+      "forms": [
+        "Versorgungssicherung",
+        "Versorgungssicherungen"
+      ]
+    },
+    {
+      "id": "L_versorgungssituation",
+      "label": "Versorgungssituation",
+      "forms": [
+        "Versorgungssituation",
+        "Versorgungssituationen"
+      ]
+    },
+    {
+      "id": "L_zivile_notfallreserve",
+      "label": "Zivile Notfallreserve",
+      "forms": [
+        "zivile Notfallreserve",
+        "zivilen Notfallreserve",
+        "ziviler Notfallreserve",
+        "zivile Notfallreserven",
+        "zivilen Notfallreserven",
+        "ziviler Notfallreserven"
+      ]
+    },
+    {
+      "id": "L_engpass",
+      "label": "Engpass",
+      "forms": [
+        "Engpass",
+        "Engpasses",
+        "engpässe",
+        "engpässen"
+      ]
+    },
+    {
+      "id": "L_ernaehrungskrise",
+      "label": "Ernährungskrise",
+      "forms": [
+        "Ernährungskrise",
+        "Ernährungskrisen"
+      ]
+    },
+    {
+      "id": "L_futtermangel",
+      "label": "Futtermangel",
+      "forms": [
+        "Futtermangel",
+        "Futtermangels",
+        "Futtermängel",
+        "Futtermängeln"
+      ]
+    },
+    {
+      "id": "L_hungerkatastrophe",
+      "label": "Hungerkatastrophe",
+      "forms": [
+        "Hungerkatastrophe",
+        "Hungerkatastrophen"
+      ]
+    },
+    {
+      "id": "L_hungerkrise",
+      "label": "Hungerkrise",
+      "forms": [
+        "Hungerkrise",
+        "Hungerkrisen"
+      ]
+    },
+    {
+      "id": "L_hungersnot",
+      "label": "Hungersnot",
+      "forms": [
+        "Hungersnot",
+        "Hungersnöte",
+        "Hungersnöten"
+      ]
+    },
+    {
+      "id": "L_knappheit",
+      "label": "Knappheit",
+      "forms": [
+        "Knappheit",
+        "Knappheiten"
+      ]
+    },
+    {
+      "id": "L_lebensmittelknappheit",
+      "label": "Lebensmittelknappheit",
+      "forms": [
+        "Lebensmittelknappheit",
+        "Lebensmittelknappheiten"
+      ]
+    },
+    {
+      "id": "L_lebensmittelkrise",
+      "label": "Lebensmittelkrise",
+      "forms": [
+        "Lebensmittelkrise",
+        "Lebensmittelkrisen"
+      ]
+    },
+    {
+      "id": "L_lebensmittelmangel",
+      "label": "Lebensmittelmangel",
+      "forms": [
+        "Lebensmittelmangel",
+        "Lebensmittelmangels",
+        "Lebensmittelmängel",
+        "Lebensmittelmängeln"
+      ]
+    },
+    {
+      "id": "L_lebensmittelverknappung",
+      "label": "Lebensmittelverknappung",
+      "forms": [
+        "Lebensmittelverknappung",
+        "Lebensmittelverknappungen"
+      ]
+    },
+    {
+      "id": "L_lieferengpass",
+      "label": "Lieferengpass",
+      "forms": [
+        "Lieferengpass",
+        "Lieferengpasses",
+        "Lieferengpässe",
+        "Lieferengpässen"
+      ]
+    },
+    {
+      "id": "L_mangellage",
+      "label": "Mangellage",
+      "forms": [
+        "Mangellage",
+        "Mangellagen"
+      ]
+    },
+    {
+      "id": "L_mineralduengerknappheit",
+      "label": "Mineraldüngerknappheit",
+      "forms": [
+        "Mineraldüngerknappheit",
+        "Mineraldüngerknappheiten"
+      ]
+    },
+    {
+      "id": "L_nahrungsmittelknappheit",
+      "label": "Nahrungsmittelknappheit",
+      "forms": [
+        "Nahrungsmittelknappheit",
+        "Nahrungsmittelknappheiten"
+      ]
+    },
+    {
+      "id": "L_nahrungsmittelkrise",
+      "label": "Nahrungsmittelkrise",
+      "forms": [
+        "Nahrungsmittelkrise",
+        "Nahrungsmittelkrisen"
+      ]
+    },
+    {
+      "id": "L_verknappung",
+      "label": "Verknappung",
+      "forms": [
+        "Verknappung",
+        "Verknappungen"
+      ]
+    },
+    {
+      "id": "L_versorgungsengpass",
+      "label": "Versorgungsengpass",
+      "forms": [
+        "Versorgungsengpass",
+        "Versorgungsengpasses",
+        "Versorgungsengpässe",
+        "Versorgungsengpässen"
+      ]
+    },
+    {
+      "id": "L_versorgungskrise",
+      "label": "Versorgungskrise",
+      "forms": [
+        "Versorgungskrise",
+        "Versorgungskrisen"
+      ]
+    },
+    {
+      "id": "L_versorgungsschwierigkeit",
+      "label": "Versorgungsschwierigkeit",
+      "forms": [
+        "Versorgungsschwierigkeit",
+        "Versorgungsschwierigkeiten"
+      ]
+    },
+    {
+      "id": "L_welternaehrungskrise",
+      "label": "Welternährungskrise",
+      "forms": [
+        "Welternährungskrise",
+        "Welternährungskrisen"
+      ]
+    },
+    {
+      "id": "L_eigenversorgung",
+      "label": "Eigenversorgung",
+      "forms": [
+        "Eigenversorgung",
+        "Eigenversorgungen"
+      ]
+    },
+    {
+      "id": "L_ernaehrungssouveraenitaet",
+      "label": "Ernährungssouveränität",
+      "forms": [
+        "Ernährungssouveränität",
+        "Ernährungssouveränitäten"
+      ]
+    },
+    {
+      "id": "L_importabhaengig",
+      "label": "importabhängig",
+      "forms": [
+        "importabhängig",
+        "importabhängige",
+        "importabhängigen",
+        "importabhängigem",
+        "importabhängiger",
+        "importabhängiges"
+      ]
+    },
+    {
+      "id": "L_importabhaengigkeit",
+      "label": "Importabhängigkeit",
+      "forms": [
+        "Importabhängigkeit",
+        "Importabhängigkeiten"
+      ]
+    },
+    {
+      "id": "L_importunabhaengig",
+      "label": "importunabhängig",
+      "forms": [
+        "importunabhängig",
+        "importunabhängige",
+        "importunabhängigen",
+        "importunabhängigem",
+        "importunabhängiger",
+        "importunabhängiges"
+      ]
+    },
+    {
+      "id": "L_lebensmittelautarkie",
+      "label": "Lebensmittelautarkie",
+      "forms": [
+        "Lebensmittelautarkie",
+        "Lebensmittelautarkien"
+      ]
+    },
+    {
+      "id": "L_lebensmittelsouveraenitaet",
+      "label": "Lebensmittelsouveränität",
+      "forms": [
+        "Lebensmittelsouveränität",
+        "Lebensmittelsouveränitäten"
+      ]
+    },
+    {
+      "id": "L_selbstversorgung",
+      "label": "Selbstversorgung",
+      "forms": [
+        "Selbstversorgung",
+        "Selbstversorgungen"
+      ]
+    },
+    {
+      "id": "L_selbstversorgungsgrad",
+      "label": "Selbstversorgungsgrad",
+      "forms": [
+        "Selbstversorgungsgrad",
+        "Selbstversorgungsgrads",
+        "Selbstversorgungsgrades",
+        "Selbstversorgungsgrade",
+        "Selbstversorgungsgraden"
+      ]
+    },
+    {
+      "id": "L_selbstversorgungsquote",
+      "label": "Selbstversorgungsquote",
+      "forms": [
+        "Selbstversorgungsquote",
+        "Selbstversorgungsquoten"
+      ]
+    },
+    {
+      "id": "L_krisenfest",
+      "label": "krisenfest",
+      "forms": [
+        "krisenfest",
+        "krisenfeste",
+        "krisenfesten",
+        "krisenfestem",
+        "krisenfester",
+        "krisenfestes"
+      ]
+    },
+    {
+      "id": "L_krisenresilient",
+      "label": "krisenresilient",
+      "forms": [
+        "krisenresilient",
+        "krisenresiliente",
+        "krisenresilienten",
+        "krisenresilientem",
+        "krisenresilienter",
+        "krisenresilientes"
+      ]
+    },
+    {
+      "id": "L_krisenresistent",
+      "label": "krisenresistent",
+      "forms": [
+        "krisenresistent",
+        "krisenresistente",
+        "krisenresistenten",
+        "krisenresistentem",
+        "krisenresistenter",
+        "krisenresistentes"
+      ]
+    },
+    {
+      "id": "L_krisensicher",
+      "label": "krisensicher",
+      "forms": [
+        "krisensicher",
+        "krisensichere",
+        "krisensicheren",
+        "krisensicherem",
+        "krisensicherer",
+        "krisensicheres"
+      ]
+    },
+    {
+      "id": "L_kritische_infrastruktur",
+      "label": "kritische Infrastruktur",
+      "forms": [
+        "kritische Infrastruktur",
+        "kritischen Infrastruktur",
+        "kritischer Infrastruktur",
+        "kritische Infrastrukturen",
+        "kritischen Infrastrukturen",
+        "kritischer Infrastrukturen"
+      ]
+    },
+    {
+      "id": "L_resilient",
+      "label": "resilient",
+      "forms": [
+        "resilient",
+        "resiliente",
+        "resilienten",
+        "resilientem",
+        "resilienter",
+        "resilientes"
+      ]
+    },
+    {
+      "id": "L_resilienz",
+      "label": "Resilienz",
+      "forms": [
+        "Resilienz",
+        "Resilienzen"
+      ]
+    },
+    {
+      "id": "L_systemrelevant",
+      "label": "systemrelevant",
+      "forms": [
+        "systemrelevant",
+        "systemrelevante",
+        "systemrelevanten",
+        "systemrelevantem",
+        "systemrelevanter",
+        "systemrelevantes"
+      ]
+    },
+    {
+      "id": "L_systemrelevanz",
+      "label": "Systemrelevanz",
+      "forms": [
+        "Systemrelevanz",
+        "Systemrelevanzen"
+      ]
+    },
+    {
+      "id": "L_lebensmittel",
+      "label": "Lebensmittel",
+      "forms": [
+        "Lebensmittel",
+        "Lebensmittels",
+        "Lebensmitteln"
+      ]
+    },
+    {
+      "id": "L_nahrungsmittel",
+      "label": "Nahrungsmittel",
+      "forms": [
+        "Nahrungsmittel",
+        "Nahrungsmittels",
+        "Nahrungsmitteln"
+      ]
+    },
+    {
+      "id": "L_grundnahrungsmittel",
+      "label": "Grundnahrungsmittel",
+      "forms": [
+        "Grundnahrungsmittel",
+        "Grundnahrungsmittels",
+        "Grundnahrungsmitteln"
+      ]
+    },
+    {
+      "id": "L_futtermittel",
+      "label": "Futtermittel",
+      "forms": [
+        "Futtermittel",
+        "Futtermittels",
+        "Futtermitteln"
+      ]
+    },
+    {
+      "id": "L_duenger",
+      "label": "Dünger",
+      "forms": [
+        "Dünger",
+        "Düngers",
+        "Düngern"
+      ]
+    },
+    {
+      "id": "L_duengemittel",
+      "label": "Düngemittel",
+      "forms": [
+        "Düngemittel",
+        "Düngemittels",
+        "Düngemitteln"
+      ]
+    },
+    {
+      "id": "L_ernaehrung",
+      "label": "Ernährung",
+      "forms": [
+        "Ernährung",
+        "Ernährungen"
+      ]
+    },
+    {
+      "id": "L_welternaehrung",
+      "label": "Welternährung",
+      "forms": [
+        "Welternährung",
+        "Welternährungen"
+      ]
+    },
+    {
+      "id": "L_sichern",
+      "label": "sichern",
+      "forms": [
+        "sichern",
+        "sicherst",
+        "sichert",
+        "sicherest",
+        "sicheret",
+        "sicherten",
+        "sicherte",
+        "sichertest",
+        "sichertet",
+        "gesichert",
+        "gesicherte",
+        "gesicherten",
+        "gesichertem",
+        "gesicherter",
+        "gesichertes",
+        "sichernd",
+        "sichernde",
+        "sichernden",
+        "sicherndem",
+        "sichernder",
+        "sicherndes"
+      ],
+      "hinweise": [
+        "sichere ist wegen der gleichlautenden Adjektivform nicht enthalten.",
+        "Keine Regel für getrennte Verbpartikeln."
+      ]
+    },
+    {
+      "id": "L_sicherung",
+      "label": "Sicherung",
+      "forms": [
+        "Sicherung",
+        "Sicherungen"
+      ]
+    },
+    {
+      "id": "L_sicherstellen",
+      "label": "sicherstellen",
+      "forms": [
+        "sicherstellen",
+        "sicherzustellen",
+        "sicherstelle",
+        "sicherstellst",
+        "sicherstellt",
+        "sicherstellet",
+        "sicherstellest",
+        "sicherstellte",
+        "sicherstelltest",
+        "sicherstellten",
+        "sicherstelltet",
+        "sichergestellt",
+        "sichergestellte",
+        "sichergestellten",
+        "sichergestelltem",
+        "sichergestellter",
+        "sichergestelltes",
+        "sicherstellend",
+        "sicherstellende",
+        "sicherstellenden",
+        "sicherstellendem",
+        "sicherstellender",
+        "sicherstellendes"
+      ],
+      "hinweise": [
+        "Getrenntes stellen … sicher wird nicht erfasst."
+      ]
+    },
+    {
+      "id": "L_sicherstellung",
+      "label": "Sicherstellung",
+      "forms": [
+        "Sicherstellung",
+        "Sicherstellungen"
+      ]
+    },
+    {
+      "id": "L_versorgung",
+      "label": "Versorgung",
+      "forms": [
+        "Versorgung",
+        "Versorgungen"
+      ]
+    },
+    {
+      "id": "L_versorgen",
+      "label": "versorgen",
+      "forms": [
+        "versorgen",
+        "versorge",
+        "versorgst",
+        "versorgt",
+        "versorgest",
+        "versorget",
+        "versorgte",
+        "versorgtest",
+        "versorgten",
+        "versorgtet",
+        "versorgtem",
+        "versorgter",
+        "versorgtes",
+        "versorgend",
+        "versorgende",
+        "versorgenden",
+        "versorgendem",
+        "versorgender",
+        "versorgendes"
+      ]
+    },
+    {
+      "id": "L_mangel",
+      "label": "Mangel",
+      "forms": [
+        "Mangel",
+        "Mangels",
+        "Mängel",
+        "Mängeln"
+      ]
+    },
+    {
+      "id": "L_mangeln",
+      "label": "mangeln",
+      "forms": [
+        "mangeln",
+        "mangle",
+        "mangel",
+        "mangele",
+        "mangelst",
+        "mangelt",
+        "mangelest",
+        "manglest",
+        "mangelet",
+        "manglet",
+        "mangelte",
+        "mangeltest",
+        "mangelten",
+        "mangeltet",
+        "gemangelt"
+      ],
+      "hinweise": [
+        "mangelnd und seine Adjektivformen sind nicht enthalten."
+      ]
+    },
+    {
+      "id": "L_import",
+      "label": "Import",
+      "forms": [
+        "Import",
+        "Imports",
+        "Importes",
+        "Importe",
+        "Importen"
+      ]
+    },
+    {
+      "id": "L_lebensmittelimport",
+      "label": "Lebensmittelimport",
+      "forms": [
+        "Lebensmittelimport",
+        "Lebensmittelimports",
+        "Lebensmittelimportes",
+        "Lebensmittelimporte",
+        "Lebensmittelimporten"
+      ]
+    },
+    {
+      "id": "L_nahrungsmittelimport",
+      "label": "Nahrungsmittelimport",
+      "forms": [
+        "Nahrungsmittelimport",
+        "Nahrungsmittelimports",
+        "Nahrungsmittelimportes",
+        "Nahrungsmittelimporte",
+        "Nahrungsmittelimporten"
+      ]
+    },
+    {
+      "id": "L_futterimport",
+      "label": "Futterimport",
+      "forms": [
+        "Futterimport",
+        "Futterimports",
+        "Futterimportes",
+        "Futterimporte",
+        "Futterimporten"
+      ]
+    },
+    {
+      "id": "L_futtermittelimport",
+      "label": "Futtermittelimport",
+      "forms": [
+        "Futtermittelimport",
+        "Futtermittelimports",
+        "Futtermittelimportes",
+        "Futtermittelimporte",
+        "Futtermittelimporten"
+      ]
+    },
+    {
+      "id": "L_getreideimport",
+      "label": "Getreideimport",
+      "forms": [
+        "Getreideimport",
+        "Getreideimports",
+        "Getreideimportes",
+        "Getreideimporte",
+        "Getreideimporten"
+      ]
+    },
+    {
+      "id": "L_weizenimport",
+      "label": "Weizenimport",
+      "forms": [
+        "Weizenimport",
+        "Weizenimports",
+        "Weizenimportes",
+        "Weizenimporte",
+        "Weizenimporten"
+      ]
+    },
+    {
+      "id": "L_duengerimport",
+      "label": "Düngerimport",
+      "forms": [
+        "Düngerimport",
+        "Düngerimports",
+        "Düngerimportes",
+        "Düngerimporte",
+        "Düngerimporten"
+      ]
+    },
+    {
+      "id": "L_duengemittelimport",
+      "label": "Düngemittelimport",
+      "forms": [
+        "Düngemittelimport",
+        "Düngemittelimports",
+        "Düngemittelimportes",
+        "Düngemittelimporte",
+        "Düngemittelimporten"
+      ]
+    },
+    {
+      "id": "L_agrarimport",
+      "label": "Agrarimport",
+      "forms": [
+        "Agrarimport",
+        "Agrarimports",
+        "Agrarimportes",
+        "Agrarimporte",
+        "Agrarimporten"
+      ]
+    },
+    {
+      "id": "L_abhaengigkeit",
+      "label": "Abhängigkeit",
+      "forms": [
+        "Abhängigkeit",
+        "Abhängigkeiten"
+      ]
+    },
+    {
+      "id": "L_abhaengig",
+      "label": "abhängig",
+      "forms": [
+        "abhängig",
+        "abhängige",
+        "abhängigen",
+        "abhängigem",
+        "abhängiger",
+        "abhängiges"
+      ]
+    },
+    {
+      "id": "L_unabhaengig",
+      "label": "unabhängig",
+      "forms": [
+        "unabhängig",
+        "unabhängige",
+        "unabhängigen",
+        "unabhängigem",
+        "unabhängiger",
+        "unabhängiges"
+      ]
+    },
+    {
+      "id": "L_angewiesen",
+      "label": "angewiesen",
+      "forms": [
+        "angewiesen",
+        "angewiesene",
+        "angewiesenen",
+        "angewiesenem",
+        "angewiesener",
+        "angewiesenes"
+      ]
+    },
+    {
+      "id": "L_lieferkette",
+      "label": "Lieferkette",
+      "forms": [
+        "Lieferkette",
+        "Lieferketten"
+      ]
+    },
+    {
+      "id": "L_stoerung",
+      "label": "Störung",
+      "forms": [
+        "Störung",
+        "Störungen"
+      ]
+    },
+    {
+      "id": "L_gestoert",
+      "label": "gestört",
+      "forms": [
+        "gestört",
+        "gestörte",
+        "gestörten",
+        "gestörtem",
+        "gestörter",
+        "gestörtes"
+      ]
+    },
+    {
+      "id": "L_unterbrechung",
+      "label": "Unterbrechung",
+      "forms": [
+        "Unterbrechung",
+        "Unterbrechungen"
+      ]
+    },
+    {
+      "id": "L_unterbrochen",
+      "label": "unterbrochen",
+      "forms": [
+        "unterbrochen",
+        "unterbrochene",
+        "unterbrochenen",
+        "unterbrochenem",
+        "unterbrochener",
+        "unterbrochenes"
+      ]
+    },
+    {
+      "id": "L_zusammenbruch",
+      "label": "Zusammenbruch",
+      "forms": [
+        "Zusammenbruch",
+        "Zusammenbruchs",
+        "Zusammenbruches",
+        "Zusammenbrüche",
+        "Zusammenbrüchen"
+      ]
+    },
+    {
+      "id": "L_zusammengebrochen",
+      "label": "zusammengebrochen",
+      "forms": [
+        "zusammengebrochen",
+        "zusammengebrochene",
+        "zusammengebrochenen",
+        "zusammengebrochenem",
+        "zusammengebrochener",
+        "zusammengebrochenes"
+      ]
+    },
+    {
+      "id": "L_notfallversorgung",
+      "label": "Notfallversorgung",
+      "forms": [
+        "Notfallversorgung",
+        "Notfallversorgungen"
+      ]
+    },
+    {
+      "id": "L_grundversorgung",
+      "label": "Grundversorgung",
+      "forms": [
+        "Grundversorgung",
+        "Grundversorgungen"
+      ]
+    },
+    {
+      "id": "L_krisenanfaellig",
+      "label": "krisenanfällig",
+      "forms": [
+        "krisenanfällig",
+        "krisenanfällige",
+        "krisenanfälligen",
+        "krisenanfälligem",
+        "krisenanfälliger",
+        "krisenanfälliges"
+      ]
+    },
+    {
+      "id": "L_krisenanfaelligkeit",
+      "label": "Krisenanfälligkeit",
+      "forms": [
+        "Krisenanfälligkeit",
+        "Krisenanfälligkeiten"
+      ]
+    },
+    {
+      "id": "L_ernaehrungsarmut",
+      "label": "Ernährungsarmut",
+      "forms": [
+        "Ernährungsarmut"
+      ]
+    },
+    {
+      "id": "L_ernaehrungssystem",
+      "label": "Ernährungssystem",
+      "forms": [
+        "Ernährungssystem",
+        "Ernährungssystems",
+        "Ernährungssystemes",
+        "Ernährungssysteme",
+        "Ernährungssystemen"
+      ],
+      "hinweise": [
+        "Nur Anker der Satzregel K1; kein eigenständiger Direktbegriff."
+      ]
+    }
+  ],
+  "direct_rules": [
+    {
+      "id": "D_ernaehrungs_und_lebensmittelsicherheit",
+      "category": "SR1",
+      "lexeme_id": "L_ernaehrungs_und_lebensmittelsicherheit"
+    },
+    {
+      "id": "D_ernaehrungssicherheit",
+      "category": "SR1",
+      "lexeme_id": "L_ernaehrungssicherheit"
+    },
+    {
+      "id": "D_ernaehrungssichernd",
+      "category": "SR1",
+      "lexeme_id": "L_ernaehrungssichernd"
+    },
+    {
+      "id": "D_ernaehrungssicherung",
+      "category": "SR1",
+      "lexeme_id": "L_ernaehrungssicherung"
+    },
+    {
+      "id": "D_ernaehrungsunsicherheit",
+      "category": "SR1",
+      "lexeme_id": "L_ernaehrungsunsicherheit"
+    },
+    {
+      "id": "D_nahrungsmittelsicherheit",
+      "category": "SR1",
+      "lexeme_id": "L_nahrungsmittelsicherheit"
+    },
+    {
+      "id": "D_nahrungsmittelsicherung",
+      "category": "SR1",
+      "lexeme_id": "L_nahrungsmittelsicherung"
+    },
+    {
+      "id": "D_nahrungssicherheit",
+      "category": "SR1",
+      "lexeme_id": "L_nahrungssicherheit"
+    },
+    {
+      "id": "D_duengemittelversorgung",
+      "category": "SR2",
+      "lexeme_id": "L_duengemittelversorgung"
+    },
+    {
+      "id": "D_duengerversorgung",
+      "category": "SR2",
+      "lexeme_id": "L_duengerversorgung"
+    },
+    {
+      "id": "D_duengervorrat",
+      "category": "SR2",
+      "lexeme_id": "L_duengervorrat"
+    },
+    {
+      "id": "D_ernaehrungsnotfallvorsorge",
+      "category": "SR2",
+      "lexeme_id": "L_ernaehrungsnotfallvorsorge"
+    },
+    {
+      "id": "D_ernaehrungsversorgung",
+      "category": "SR2",
+      "lexeme_id": "L_ernaehrungsversorgung"
+    },
+    {
+      "id": "D_futtermittelversorgung",
+      "category": "SR2",
+      "lexeme_id": "L_futtermittelversorgung"
+    },
+    {
+      "id": "D_futterversorgung",
+      "category": "SR2",
+      "lexeme_id": "L_futterversorgung"
+    },
+    {
+      "id": "D_getreideversorgung",
+      "category": "SR2",
+      "lexeme_id": "L_getreideversorgung"
+    },
+    {
+      "id": "D_krisenvorsorge",
+      "category": "SR2",
+      "lexeme_id": "L_krisenvorsorge"
+    },
+    {
+      "id": "D_lebensmittelbevorratung",
+      "category": "SR2",
+      "lexeme_id": "L_lebensmittelbevorratung"
+    },
+    {
+      "id": "D_lebensmittelnotversorgung",
+      "category": "SR2",
+      "lexeme_id": "L_lebensmittelnotversorgung"
+    },
+    {
+      "id": "D_lebensmittelnotvorrat",
+      "category": "SR2",
+      "lexeme_id": "L_lebensmittelnotvorrat"
+    },
+    {
+      "id": "D_lebensmittelversorgung",
+      "category": "SR2",
+      "lexeme_id": "L_lebensmittelversorgung"
+    },
+    {
+      "id": "D_lebensmittelvorrat",
+      "category": "SR2",
+      "lexeme_id": "L_lebensmittelvorrat"
+    },
+    {
+      "id": "D_mineralduengerversorgung",
+      "category": "SR2",
+      "lexeme_id": "L_mineralduengerversorgung"
+    },
+    {
+      "id": "D_nahrungsmittelreserve",
+      "category": "SR2",
+      "lexeme_id": "L_nahrungsmittelreserve"
+    },
+    {
+      "id": "D_nahrungsmittelversorgung",
+      "category": "SR2",
+      "lexeme_id": "L_nahrungsmittelversorgung"
+    },
+    {
+      "id": "D_nahrungsmittelvorrat",
+      "category": "SR2",
+      "lexeme_id": "L_nahrungsmittelvorrat"
+    },
+    {
+      "id": "D_notfallbevorratung",
+      "category": "SR2",
+      "lexeme_id": "L_notfallbevorratung"
+    },
+    {
+      "id": "D_versorgungslage",
+      "category": "SR2",
+      "lexeme_id": "L_versorgungslage"
+    },
+    {
+      "id": "D_versorgungssicherheit",
+      "category": "SR2",
+      "lexeme_id": "L_versorgungssicherheit"
+    },
+    {
+      "id": "D_versorgungssicherung",
+      "category": "SR2",
+      "lexeme_id": "L_versorgungssicherung"
+    },
+    {
+      "id": "D_versorgungssituation",
+      "category": "SR2",
+      "lexeme_id": "L_versorgungssituation"
+    },
+    {
+      "id": "D_zivile_notfallreserve",
+      "category": "SR2",
+      "lexeme_id": "L_zivile_notfallreserve"
+    },
+    {
+      "id": "D_notfallversorgung",
+      "category": "SR2",
+      "lexeme_id": "L_notfallversorgung"
+    },
+    {
+      "id": "D_grundversorgung",
+      "category": "SR2",
+      "lexeme_id": "L_grundversorgung"
+    },
+    {
+      "id": "D_engpass",
+      "category": "SR3",
+      "lexeme_id": "L_engpass"
+    },
+    {
+      "id": "D_ernaehrungskrise",
+      "category": "SR3",
+      "lexeme_id": "L_ernaehrungskrise"
+    },
+    {
+      "id": "D_futtermangel",
+      "category": "SR3",
+      "lexeme_id": "L_futtermangel"
+    },
+    {
+      "id": "D_hungerkatastrophe",
+      "category": "SR3",
+      "lexeme_id": "L_hungerkatastrophe"
+    },
+    {
+      "id": "D_hungerkrise",
+      "category": "SR3",
+      "lexeme_id": "L_hungerkrise"
+    },
+    {
+      "id": "D_hungersnot",
+      "category": "SR3",
+      "lexeme_id": "L_hungersnot"
+    },
+    {
+      "id": "D_knappheit",
+      "category": "SR3",
+      "lexeme_id": "L_knappheit"
+    },
+    {
+      "id": "D_lebensmittelknappheit",
+      "category": "SR3",
+      "lexeme_id": "L_lebensmittelknappheit"
+    },
+    {
+      "id": "D_lebensmittelkrise",
+      "category": "SR3",
+      "lexeme_id": "L_lebensmittelkrise"
+    },
+    {
+      "id": "D_lebensmittelmangel",
+      "category": "SR3",
+      "lexeme_id": "L_lebensmittelmangel"
+    },
+    {
+      "id": "D_lebensmittelverknappung",
+      "category": "SR3",
+      "lexeme_id": "L_lebensmittelverknappung"
+    },
+    {
+      "id": "D_lieferengpass",
+      "category": "SR3",
+      "lexeme_id": "L_lieferengpass"
+    },
+    {
+      "id": "D_mangellage",
+      "category": "SR3",
+      "lexeme_id": "L_mangellage"
+    },
+    {
+      "id": "D_mineralduengerknappheit",
+      "category": "SR3",
+      "lexeme_id": "L_mineralduengerknappheit"
+    },
+    {
+      "id": "D_nahrungsmittelknappheit",
+      "category": "SR3",
+      "lexeme_id": "L_nahrungsmittelknappheit"
+    },
+    {
+      "id": "D_nahrungsmittelkrise",
+      "category": "SR3",
+      "lexeme_id": "L_nahrungsmittelkrise"
+    },
+    {
+      "id": "D_verknappung",
+      "category": "SR3",
+      "lexeme_id": "L_verknappung"
+    },
+    {
+      "id": "D_versorgungsengpass",
+      "category": "SR3",
+      "lexeme_id": "L_versorgungsengpass"
+    },
+    {
+      "id": "D_versorgungskrise",
+      "category": "SR3",
+      "lexeme_id": "L_versorgungskrise"
+    },
+    {
+      "id": "D_versorgungsschwierigkeit",
+      "category": "SR3",
+      "lexeme_id": "L_versorgungsschwierigkeit"
+    },
+    {
+      "id": "D_welternaehrungskrise",
+      "category": "SR3",
+      "lexeme_id": "L_welternaehrungskrise"
+    },
+    {
+      "id": "D_ernaehrungsarmut",
+      "category": "SR3",
+      "lexeme_id": "L_ernaehrungsarmut"
+    },
+    {
+      "id": "D_eigenversorgung",
+      "category": "SR4",
+      "lexeme_id": "L_eigenversorgung"
+    },
+    {
+      "id": "D_ernaehrungssouveraenitaet",
+      "category": "SR4",
+      "lexeme_id": "L_ernaehrungssouveraenitaet"
+    },
+    {
+      "id": "D_importabhaengig",
+      "category": "SR4",
+      "lexeme_id": "L_importabhaengig"
+    },
+    {
+      "id": "D_importabhaengigkeit",
+      "category": "SR4",
+      "lexeme_id": "L_importabhaengigkeit"
+    },
+    {
+      "id": "D_importunabhaengig",
+      "category": "SR4",
+      "lexeme_id": "L_importunabhaengig"
+    },
+    {
+      "id": "D_lebensmittelautarkie",
+      "category": "SR4",
+      "lexeme_id": "L_lebensmittelautarkie"
+    },
+    {
+      "id": "D_lebensmittelsouveraenitaet",
+      "category": "SR4",
+      "lexeme_id": "L_lebensmittelsouveraenitaet"
+    },
+    {
+      "id": "D_selbstversorgung",
+      "category": "SR4",
+      "lexeme_id": "L_selbstversorgung"
+    },
+    {
+      "id": "D_selbstversorgungsgrad",
+      "category": "SR4",
+      "lexeme_id": "L_selbstversorgungsgrad"
+    },
+    {
+      "id": "D_selbstversorgungsquote",
+      "category": "SR4",
+      "lexeme_id": "L_selbstversorgungsquote"
+    },
+    {
+      "id": "D_krisenfest",
+      "category": "SR5",
+      "lexeme_id": "L_krisenfest"
+    },
+    {
+      "id": "D_krisenresilient",
+      "category": "SR5",
+      "lexeme_id": "L_krisenresilient"
+    },
+    {
+      "id": "D_krisenresistent",
+      "category": "SR5",
+      "lexeme_id": "L_krisenresistent"
+    },
+    {
+      "id": "D_krisensicher",
+      "category": "SR5",
+      "lexeme_id": "L_krisensicher"
+    },
+    {
+      "id": "D_kritische_infrastruktur",
+      "category": "SR5",
+      "lexeme_id": "L_kritische_infrastruktur"
+    },
+    {
+      "id": "D_resilient",
+      "category": "SR5",
+      "lexeme_id": "L_resilient"
+    },
+    {
+      "id": "D_resilienz",
+      "category": "SR5",
+      "lexeme_id": "L_resilienz"
+    },
+    {
+      "id": "D_systemrelevant",
+      "category": "SR5",
+      "lexeme_id": "L_systemrelevant"
+    },
+    {
+      "id": "D_systemrelevanz",
+      "category": "SR5",
+      "lexeme_id": "L_systemrelevanz"
+    },
+    {
+      "id": "D_krisenanfaellig",
+      "category": "SR5",
+      "lexeme_id": "L_krisenanfaellig"
+    },
+    {
+      "id": "D_krisenanfaelligkeit",
+      "category": "SR5",
+      "lexeme_id": "L_krisenanfaelligkeit"
+    }
+  ],
+  "cooccurrence_rules": [
+    {
+      "id": "K1",
+      "category": "SR1",
+      "label": "Ernährung, Welternährung oder Ernährungssystem und Sicherung",
+      "any_a": [
+        "L_ernaehrung",
+        "L_welternaehrung",
+        "L_ernaehrungssystem"
+      ],
+      "any_b": [
+        "L_sichern",
+        "L_sicherung",
+        "L_sicherstellen",
+        "L_sicherstellung"
+      ]
+    },
+    {
+      "id": "K2",
+      "category": "SR2",
+      "label": "Lebensmittel und Versorgung",
+      "any_a": [
+        "L_lebensmittel",
+        "L_nahrungsmittel",
+        "L_grundnahrungsmittel"
+      ],
+      "any_b": [
+        "L_versorgung",
+        "L_versorgen"
+      ]
+    },
+    {
+      "id": "K3",
+      "category": "SR3",
+      "label": "Benannte Güter und Mangel",
+      "any_a": [
+        "L_lebensmittel",
+        "L_nahrungsmittel",
+        "L_grundnahrungsmittel",
+        "L_futtermittel",
+        "L_duenger",
+        "L_duengemittel"
+      ],
+      "any_b": [
+        "L_mangel",
+        "L_mangeln"
+      ]
+    },
+    {
+      "id": "K4",
+      "category": "SR4",
+      "label": "Import und Abhängigkeit oder Unabhängigkeit",
+      "any_a": [
+        "L_import",
+        "L_lebensmittelimport",
+        "L_nahrungsmittelimport",
+        "L_futterimport",
+        "L_futtermittelimport",
+        "L_getreideimport",
+        "L_weizenimport",
+        "L_duengerimport",
+        "L_duengemittelimport",
+        "L_agrarimport"
+      ],
+      "any_b": [
+        "L_abhaengigkeit",
+        "L_abhaengig",
+        "L_unabhaengig",
+        "L_angewiesen"
+      ]
+    },
+    {
+      "id": "K5",
+      "category": "SR3",
+      "label": "Lieferkette und Störung",
+      "any_a": [
+        "L_lieferkette"
+      ],
+      "any_b": [
+        "L_stoerung",
+        "L_gestoert",
+        "L_unterbrechung",
+        "L_unterbrochen",
+        "L_zusammenbruch",
+        "L_zusammengebrochen"
+      ]
+    }
+  ],
+  "local_exclusions": [
+    {
+      "id": "X_buendnis_globale_ernaehrungssicherheit",
+      "forms": [
+        "Bündnis für globale Ernährungssicherheit",
+        "Bündnisses für globale Ernährungssicherheit",
+        "globales Bündnis für Ernährungssicherheit",
+        "globalen Bündnis für Ernährungssicherheit",
+        "globalem Bündnis für Ernährungssicherheit",
+        "globalen Bündnisses für Ernährungssicherheit"
+      ],
+      "lexeme_ids": [
+        "L_ernaehrungssicherheit"
+      ],
+      "description": [
+        "Nur Ernährungssicherheit innerhalb der aufgeführten Organisationsnamen maskieren.",
+        "Weitere Sachbegriffe außerhalb des Namens bleiben gültig."
+      ]
+    },
+    {
+      "id": "X_ministertitel_ernaehrung_landwirtschaft",
+      "forms": [
+        "Minister für Ernährung und Landwirtschaft",
+        "Ministers für Ernährung und Landwirtschaft",
+        "Ministern für Ernährung und Landwirtschaft",
+        "Ministerin für Ernährung und Landwirtschaft",
+        "Ministerinnen für Ernährung und Landwirtschaft",
+        "Ministerium für Ernährung und Landwirtschaft",
+        "Ministeriums für Ernährung und Landwirtschaft",
+        "Ministerien für Ernährung und Landwirtschaft",
+        "Bundesminister für Ernährung und Landwirtschaft",
+        "Bundesministers für Ernährung und Landwirtschaft",
+        "Bundesministern für Ernährung und Landwirtschaft",
+        "Bundesministerin für Ernährung und Landwirtschaft",
+        "Bundesministerinnen für Ernährung und Landwirtschaft",
+        "Bundesministerium für Ernährung und Landwirtschaft",
+        "Bundesministeriums für Ernährung und Landwirtschaft",
+        "Bundesministerien für Ernährung und Landwirtschaft"
+      ],
+      "lexeme_ids": [
+        "L_ernaehrung"
+      ],
+      "description": [
+        "Nur Ernährung innerhalb der hinterlegten Minister-/Ministeriumsbezeichnungen maskieren.",
+        "Weitere Ernährungsanker und Direktbegriffe im selben Satz bleiben gültig."
+      ]
+    }
+  ],
+  "selection_notes": [
+    "Futterversorgung und Futtermittelversorgung zählen unmittelbar.",
+    "Resilienzen ist als Plural von Resilienz enthalten.",
+    "Düngerversorgung, Düngemittelversorgung und Mineraldüngerversorgung sind Direktbegriffe.",
+    "Düngeversorgung ohne r ist nicht enthalten.",
+    "Dünger/Düngemittel plus Versorgung/versorgen gehört nicht zur Satzregel K2.",
+    "Dünger und Düngemittel dienen als Anker von K3 (Mangel).",
+    "Lebensmittelsicherheit allein ist kein Direktbegriff.",
+    "Ernährungs- und Lebensmittelsicherheit ist als feste Verbindung enthalten.",
+    "Nahrungsmittelsicherheit und Nahrungssicherheit zählen unmittelbar.",
+    "Für gültige Direktbegriffe bestehen keine zusätzlichen Bereichsausschlüsse.",
+    "knapp, Mangel, mangeln, Lieferkette und Hunger zählen nicht allein.",
+    "Bezahlbarkeit, robust und belastbar zählen nicht allein.",
+    "Die maschinellen Namensmasken stehen vollständig in local_exclusions.",
+    "Ernährungsarmut zählt unmittelbar als Ausdruck eingeschränkter Ernährungsmöglichkeiten.",
+    "Klimaresilienz, klimaresilient, Krisenbewältigung und Risikovorsorge zählen nicht."
+  ],
+  "compatibility": {
+    "matcher": "sr_matcher.py",
+    "schema": "schema_version bezeichnet das technische Datenformat, keinen Bearbeitungsstand."
+  }
+}

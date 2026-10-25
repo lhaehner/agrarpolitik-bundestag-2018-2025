@@ -1,0 +1,4553 @@
+{
+  "name": "Agrar und Ernährung",
+  "schema_version": "5.0-role-based",
+  "description": [
+    "Feldwörterbuch zur Auswahl agrar- und ernährungsbezogener Sätze aus dem Plenarkorpus.",
+    "Wortfamilien und Mehrwortausdrücke werden durch ausdrückliche Kontextregeln ergänzt.",
+    "Die Auswahl bildet das Korpus für Ökologie, Ökonomie sowie Sicherheit und Resilienz."
+  ],
+  "scope": [
+    "Landwirtschaftliche Erzeugung, Produktionsgrundlagen, Betriebe und Feldakteure.",
+    "Nutztierhaltung, Fischerei und Aquakultur.",
+    "Lebensmittelherstellung, Verarbeitung, Handel und Verpflegung.",
+    "Ernährungsweisen, Lebensmittelversorgung und einschlägige politische Instrumente.",
+    "Angrenzende Themen werden nach den Fach- und Kontextregeln erfasst.",
+    "Namen und Kurzformen sind regelgebunden ausgewählt; die Auswahl ist nicht vollständig."
+  ],
+  "meta": {
+    "language": "de",
+    "analysis_unit": "Satz",
+    "application": "Gesamtes Plenarkorpus 2018–2025"
+  },
+  "structure": [
+    "description und scope beschreiben Zweck und fachliche Reichweite.",
+    "matching_logic und field_guide erläutern das Regelschema.",
+    "normalization_assumption beschreibt die Textvorbereitung im Matcher.",
+    "patterns enthält Direktregeln, Kontextregeln und lokale Ausschlüsse.",
+    "role bezeichnet die Funktion jeder Regel.",
+    "Kennungspräfixe sind keine Kategorien."
+  ],
+  "matching_logic": [
+    "Jede positive Regel wird unabhängig geprüft. Positive Treffer verdrängen einander nicht.",
+    "Ein gültiger Treffer genügt für die Aufnahme des Satzes. Weitere Treffer erhöhen den Wert nicht.",
+    "Ausschlüsse sperren nur betroffene Fundstellen; unabhängige Treffer bleiben wirksam.",
+    "masks_positive_context=true sperrt betroffene Fundstellen auch als positive Kontextpartner.",
+    "exception_rule_keys benennt ausdrückliche Ausnahmen von einem lokalen Ausschluss.",
+    "priority ist eine technische Angabe und entscheidet nicht über die Aufnahme eines Satzes.",
+    "Es gibt keine pauschale Sperre für Akteurs-, Minister- oder Ministeriumsnennungen.",
+    "Einzelne ausdrücklich benannte Institutions- und Organisationsnamen werden lokal maskiert."
+  ],
+  "normalization_assumption": [
+    "Unicode-Normalisierung NFC; Unicode-Kurzbindestriche werden ASCII-Bindestriche.",
+    "Soft-Hyphens entfernen; Worttrennungen an Zeilenumbrüchen verbinden.",
+    "Whitespace vereinheitlichen; Kleinschreibung; ä/ö/ü/ß werden ae/oe/ue/ss.",
+    "Die vorsegmentierten Satzzeilen bleiben erhalten."
+  ],
+  "field_guide": {
+    "schema_version": [
+      "Technische Schemakennung für die Matcherkompatibilität, kein Bearbeitungsstand."
+    ],
+    "key": "Stabile Regelkennung; Präfixe wie stem:, phrase: oder shadow: sind Teil der Kennung.",
+    "regex": "Suchmuster für den normalisierten Satz.",
+    "role": [
+      "direct: Direktregel ohne erforderlichen positiven Kontextpartner.",
+      "context: Kontextregel mit erforderlichem positiven Kontextpartner.",
+      "exclusion: lokaler Ausschluss für festgelegte Fundstellen. Andere gültige Treffer desselben Satzes bleiben wirksam.",
+      "Auch Direktregeln können negative Kontextbedingungen enthalten."
+    ],
+    "priority": "Technische Angabe; keine Gewichtung oder Verdrängung positiver Treffer.",
+    "evidence_family": "Kennung einer gemeinsamen Begriffsfamilie; keine zusätzliche Gewichtung.",
+    "tags": "Inhaltliche Orientierung; keine Themenbereichszuordnung im späteren Satzmaster.",
+    "label": "Optionale lesbare Bezeichnung.",
+    "notes": "Kurze fachliche Erläuterung; ohne Matchingwirkung. Arrayzeilen bilden einen Hinweis.",
+    "context_window": "Maximaler Zeichenabstand zwischen den Fundstellen; sonst gesamter Satz.",
+    "context_any": "Mindestens ein positiver Kontextpartner erforderlich (ODER).",
+    "context_none": "Negativer Kontext sperrt diese Fundstelle, nicht den gesamten Satz.",
+    "context_distinct": "true: positiver Kontextpartner darf die Fundstelle nicht überlappen.",
+    "context_boundary": "clause: Satzteil endet an . ; : ! ?; ein Komma begrenzt ihn nicht.",
+    "block_scope": "overlapping_match: lokale Sperre bei sich überlappenden Fundstellen.",
+    "blocks_roles": "Positive Regelrollen, auf die der lokale Ausschluss wirkt.",
+    "masks_positive_context": "true: gesperrte Spannen sind als positive Kontextpartner ungültig.",
+    "exception_rule_keys": [
+      "Regelkennungen, die vom jeweiligen Ausschluss ausdrücklich ausgenommen sind."
+    ]
+  },
+  "interpretation_limit": [
+    "Treffer zeigen regeldefinierte sprachliche Bezüge zum Agrar- und Ernährungsfeld.",
+    "Sie belegen allein weder Bewertungen noch Frames, Positionen oder Ursachen."
+  ],
+  "patterns": [
+    {
+      "key": "phrase:ackerbau_strategie_2035",
+      "regex": "\\backerbau(?:-|\\s)?strategie\\s*2035\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:agrar_und_ernaehrungssysteme",
+      "regex": "\\bagrar-?\\s*und\\s+ernaehrungssystem(?:e|en)?\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:alternative_proteinquellen",
+      "regex": "\\balternativ[a-z]*\\s+proteinquelle(?:n)?\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:artgerechte_tierhaltung",
+      "regex": "\\bartgerecht[a-z]*\\s+tierhaltung\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:ausser_haus_verpflegung",
+      "regex": "\\bausser(?:-|\\s)?haus(?:-|\\s)?verpflegung\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:baeuerliche_landwirtschaft",
+      "regex": "\\bbaeuerlich[a-z]*\\s+landwirtschaft\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:bezahlbare_lebensmittel",
+      "regex": "\\bbezahlbar[a-z]*\\s+lebensmittel(?:n)?\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:bio_ahv_verordnung",
+      "regex": "\\bbio(?:-|\\s)?ahv(?:-|\\s)?verordnung\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:bio_ausser_haus_verpflegung_verordnung",
+      "regex": "\\bbio(?:-|\\s)?ausser(?:-|\\s)?haus(?:-|\\s)?verpflegung(?:s)?(?:-|\\s)+verordnung\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:bio_betrieb",
+      "regex": "\\bbio(?:-|\\s)?betrieb(?:e|en|es|s)?\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:bio_strategie_2030",
+      "regex": "\\bbio(?:-|\\s)?strategie\\s*2030\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:biologische_landwirtschaft",
+      "regex": "\\bbiologisch[a-z]*\\s+landwirtschaft\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:borchert_kommission",
+      "regex": "\\bborchert(?:-|\\s)?kommission\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:bundesweiter_ueberwachungsplan",
+      "regex": "\\bbundesweit[a-z]*\\s+(?:ueberwachungsplan(?:s)?|ueberwachungsplaen(?:e|en))\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:ernaehrung_im_wandel",
+      "regex": "\\bernaehrung\\s+im\\s+wandel\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:farm_to_fork_strategie",
+      "regex": "\\bfarm(?:-|\\s)to(?:-|\\s)fork(?:(?:-|\\s)strategie)?\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:gap_reform",
+      "regex": "\\bgap(?:-|\\s)?reform[a-z]*\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:gemeinsame_agrarpolitik",
+      "regex": "\\bgemeinsam[a-z]*\\s+agrarpolitik\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:gemeinsame_marktorganisation",
+      "regex": "\\bgemeinsam[a-z]*(?:-|\\s)+marktorganisation\\b",
+      "priority": 2,
+      "tags": [
+        "oekonomie"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "phrase:gemeinwohlleistungen_der_landwirtschaft",
+      "regex": "\\bgemeinwohlleistung(?:en)?\\s+der\\s+landwirtschaft\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:gruene_gentechnik",
+      "regex": "\\bgruen[a-z]*\\s+gentechnik\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:guter_landwirtschaftlicher_und_oekologischer_zustand",
+      "regex": "\\bgut[a-z]*\\s+landwirtschaftlich[a-z]*\\s+und\\s+oekologisch[a-z]*\\s+zustand(?:es|s)?\\b",
+      "priority": 2,
+      "tags": [
+        "oekologie"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "phrase:gutes_essen_fuer_alle",
+      "regex": "\\bgutes\\s+essen\\s+fuer\\s+alle\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:hochprozessierte_lebensmittel",
+      "regex": "\\bhochprozessiert[a-z]*\\s+lebensmittel(?:n)?\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:integrierter_pflanzenschutz",
+      "regex": "\\bintegriert[a-z]*\\s+pflanzenschutz\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:klimarobuste_pflanzensorten",
+      "regex": "\\bklimarobust[a-z]*\\s+pflanzensorte(?:n)?\\b",
+      "priority": 2,
+      "tags": [
+        "oekologie"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "phrase:konventionelle_landwirtschaft",
+      "regex": "\\bkonventionell[a-z]*\\s+landwirtschaft\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:lebensmittel_und_futtermittelgesetzbuch",
+      "regex": "\\blebensmittel(?:-\\s*|\\s+)und\\s+futtermittelgesetzbuch\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:lebensmittelinformations_durchfuehrungsverordnung",
+      "regex": "\\blebensmittel(?:-|\\s)?informations(?:-|\\s)?durchfuehrungsverordnung\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:lebensmittelinformationsverordnung",
+      "regex": "\\blebensmittel(?:-|\\s)?informationsverordnung\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:maul_und_klauenseuche",
+      "regex": "\\bmaul-?\\s*und\\s+klauenseuche\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:mehrjaehriger_nationaler_kontrollplan",
+      "regex": "\\bmehrjaehrig[a-z]*\\s+national[a-z]*\\s+(?:kontrollplan(?:s)?|kontrollplaen(?:e|en))\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:nachhaltige_ernaehrung",
+      "regex": "\\bnachhaltig[a-z]*\\s+ernaehrung\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:nachhaltige_ernaehrungssysteme",
+      "regex": "\\bnachhaltig[a-z]*\\s+ernaehrungssystem(?:e|en)?\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:nachhaltige_landwirtschaft",
+      "regex": "\\bnachhaltig[a-z]*\\s+landwirtschaft\\b",
+      "priority": 2,
+      "tags": [
+        "oekologie"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "phrase:nationale_ernaehrungsstrategie",
+      "regex": "\\bnational[a-z]*\\s+ernaehrungsstrategie(?:n)?\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:neue_genomische_techniken",
+      "regex": "\\bneu[a-z]*(?:-|\\s)+genomisch[a-z]*(?:-|\\s)+technik[a-z]*\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:nutri_score",
+      "regex": "\\bnutri(?:-|\\s)?score\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:oeko_regelung",
+      "regex": "\\boeko(?:-|\\s)?regelung(?:en)?\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:oekologische_landwirtschaft",
+      "regex": "\\boekologisch[a-z]*\\s+landwirtschaft\\b",
+      "priority": 2,
+      "tags": [
+        "oekologie"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "phrase:oekologischer_landbau",
+      "regex": "\\boekologisch[a-z]*\\s+landbau\\b",
+      "priority": 2,
+      "tags": [
+        "oekologie"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "phrase:pflanzliche_proteine",
+      "regex": "\\bpflanzlich[a-z]*\\s+protein(?:e|en)?\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:pflanzliche_proteinquellen",
+      "regex": "\\bpflanzlich[a-z]*\\s+proteinquelle(?:n)?\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:reduktion_des_antibiotika_einsatzes",
+      "regex": "\\breduktion\\s+des\\s+antibiotika(?:-|\\s)?einsatz(?:es)?\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:regionale_lebensmittel",
+      "regex": "\\bregional[a-z]*\\s+lebensmittel(?:n)?\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:staatliche_tierhaltungskennzeichnung",
+      "regex": "\\bstaatlich[a-z]*\\s+tierhaltungskennzeichnung\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:stark_verarbeitete_lebensmittel",
+      "regex": "\\bstark\\s+verarbeitet[a-z]*\\s+lebensmittel(?:n)?\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:tank_oder_teller",
+      "regex": "\\btank\\s+oder\\s+teller\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:ultra_verarbeitete_lebensmittel",
+      "regex": "\\bultra(?:-|\\s)?verarbeitet[a-z]*\\s+lebensmittel(?:n)?\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:umbau_der_tierhaltung",
+      "regex": "\\bumbau(?:s)?\\s+der\\s+tierhaltung\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:zu_gut_fuer_die_tonne",
+      "regex": "\\bzu\\s+gut\\s+fuer\\s+die\\s+tonne\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:zukunftskommission_landwirtschaft",
+      "regex": "\\bzukunftskommission(?:-|\\s)+landwirtschaft\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "stem:aecker",
+      "regex": "\\baecker[a-z]*\\b",
+      "priority": 3,
+      "evidence_family": "arable_land",
+      "notes": [
+        "Äcker/Äckern bezeichnet unmittelbar landwirtschaftliche Nutzfläche."
+      ],
+      "context_none": [],
+      "role": "direct"
+    },
+    {
+      "key": "stem:agrar",
+      "regex": "\\bagrar(?![-\\s]?heute\\b)[a-z]*\\b",
+      "priority": 1,
+      "notes": [
+        "Agrar* ist eine positive Wortfamilie; der Publikationstitel Agrarheute/Agrar-heute/Agrar",
+        "heute ist ausgeschlossen."
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:agroforst",
+      "regex": "\\bagroforst[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "oekologie"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:baeuerin_nen",
+      "regex": "\\bbaeuerin(?:nen)?\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:baeuerlich",
+      "regex": "\\bbaeuerlich[a-z]*\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:bauer",
+      "regex": "\\bbauer(?:s)?\\b",
+      "priority": 3,
+      "evidence_family": "farmer_occupation",
+      "notes": [
+        "Bauer ist zugleich Familienname und Bestandteil von Redewendungen; nur",
+        "Berufs-/Produktionskontext zählt."
+      ],
+      "context_any": [
+        "(?<![a-z])(?:(?:(?:agrar[a-z]*|landwirtschaft[a-z]*|landwirt[a-z]*|acker[a-z]*|feld(?:er|es|en)?|hof(?:e|es|en|s)?|hoef[a-z]*|ernte[a-z]*|anbau[a-z]*|pflanzenbau[a-z]*|gartenbau[a-z]*|kulturpflanz[a-z]*)|(?:nutztiere?[a-z]*|tierhalt[a-z]*|intensivtierhalt[a-z]*|stall[a-z]*|rind[a-z]*|kuh|kueh[a-z]*|kalb|kaelb[a-z]*|schwein[a-z]*|ferkel[a-z]*|gefluegel[a-z]*|huhn|huehn[a-z]*|pute[a-z]*|schaf(?:e|es|en|herd[a-z]*|halt[a-z]*|zucht[a-z]*|fleisch[a-z]*|wolle[a-z]*)?|ziege[a-z]*|mastvieh[a-z]*|vieh[a-z]*|milchvieh[a-z]*|schlacht[a-z]*)|dueng[a-z]*|pflueg[a-z]*|bewirtschaft[a-z]*|ertrag[a-z]*|diesel[a-z]*))(?![a-z])"
+      ],
+      "context_none": [
+        "(?<![a-z])(?:(?:\\b(?:frau|herr|kollegin|kollege|abgeordnet[a-z]*|ministerin)\\s+(?:nicole\\s+|theresia\\s+|fritz\\s+)?bauer\\b|\\b(?:nicole|fritz|theresia)\\s+bauer\\b|\\bwas\\s+der\\s+bauer\\s+nicht\\b|\\bwenn\\s+der\\s+bauer\\s+nicht\\s+schwimmen\\b|\\bendgueltiges\\s+ergebnis\\s+abgegebene\\s+stimmen\\b))(?![a-z])"
+      ],
+      "context_window": 140,
+      "context_distinct": true,
+      "role": "context"
+    },
+    {
+      "key": "stem:bauern",
+      "regex": "\\bbauern(?!schaft)(?!aufsta(?:nd|end)[a-z]*\\b|befrei[a-z]*\\b|dorf[a-z]*\\b|haus[a-z]*\\b|gut[a-z]*\\b|opfer|faenger|fanger|krieg|staat|-?(?:partei|diktatur|staat)\\b|-?feind\\b)[a-z]*\\b",
+      "priority": 1,
+      "notes": [
+        "Erfasst Bauern* außerhalb der im Muster hinterlegten fachfremden historischen,",
+        "politischen und sonstigen Komposita; bauernfeindlich* bleibt erfassbar."
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:bio_ahvv",
+      "regex": "\\bbio(?:-|\\s)?ahvv\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:biolandwirtschaft",
+      "regex": "\\bbiolandwirtschaft[a-z]*\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:bodenfruchtbarkeit",
+      "regex": "\\bbodenfruchtbarkeit[a-z]*\\b",
+      "priority": 2,
+      "tags": [
+        "oekologie"
+      ],
+      "notes": [
+        "Bodenfruchtbarkeit wird unmittelbar als A&E-Gegenstand erfasst."
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:bse",
+      "regex": "\\bbse\\b",
+      "priority": 3,
+      "notes": [
+        "BSE wird als Bezeichnung der Rinderseuche unmittelbar erfasst."
+      ],
+      "evidence_family": "bovine_disease_bse",
+      "context_none": [],
+      "role": "direct"
+    },
+    {
+      "key": "stem:buep",
+      "regex": "\\bbuep\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:butterberg_e_en",
+      "regex": "\\bbutterberg(?:e|en)?\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:dioxin",
+      "regex": "\\bdioxin\\b",
+      "priority": 3,
+      "notes": [
+        "Dioxin allein kann allgemeines Umweltgift sein; Lebensmittel-/Futtermittel-/Agrarkontext",
+        "ist erforderlich."
+      ],
+      "evidence_family": "food_contaminant_dioxin",
+      "context_any": [
+        "(?<![a-z])(?:(?:(?:(?:lebensmittel[a-z]*|nahrungsmittel[a-z]*|futtermittel[a-z]*|ernaehr[a-z]*|essen[a-z]*|speise[a-z]*|getraenk[a-z]*|fleisch[a-z]*|wurst[a-z]*|milch[a-z]*|ei(?:er|es|ern)?|kaese[a-z]*|brot[a-z]*|gemuese[a-z]*|obst[a-z]*|getreide[a-z]*|kartoffel[a-z]*|zucker[a-z]*|bier[a-z]*|wein[a-z]*)|lebensmittel[a-z]*(?:lieferkett|wertschoepfungskett|einzelhandel|handel|verarbeit|herstell)[a-z]*|nahrungsmittel[a-z]*(?:lieferkett|wertschoepfungskett|handel|verarbeit|herstell)[a-z]*|agrar[a-z]*(?:lieferkett|wertschoepfungskett|handel|markt)[a-z]*|supermarkt[a-z]*|molkerei[a-z]*|schlachtkonzern[a-z]*|discounter[a-z]*)|(?:agrar[a-z]*|landwirtschaft[a-z]*|landwirt[a-z]*|acker[a-z]*|feld(?:er|es|en)?|hof(?:e|es|en|s)?|hoef[a-z]*|bauern[a-z]*|baeuerlich[a-z]*|ernte[a-z]*|anbau[a-z]*|pflanzenbau[a-z]*|gartenbau[a-z]*|kulturpflanz[a-z]*)|(?:nutztiere?[a-z]*|tierhalt[a-z]*|intensivtierhalt[a-z]*|stall[a-z]*|rind[a-z]*|kuh|kueh[a-z]*|kalb|kaelb[a-z]*|schwein[a-z]*|ferkel[a-z]*|gefluegel[a-z]*|huhn|huehn[a-z]*|pute[a-z]*|schaf(?:e|es|en|herd[a-z]*|halt[a-z]*|zucht[a-z]*|fleisch[a-z]*|wolle[a-z]*)?|ziege[a-z]*|mastvieh[a-z]*|vieh[a-z]*|milchvieh[a-z]*|schlacht[a-z]*)|kontamin[a-z]*|verunreinig[a-z]*|rueckruf[a-z]*))(?![a-z])"
+      ],
+      "context_none": [],
+      "context_window": 160,
+      "context_distinct": true,
+      "role": "context"
+    },
+    {
+      "key": "stem:dueng",
+      "regex": "(?<!nicht jeder )(?<!praevention ist quasi der )(?<!praevention ist der )(?<!praevention der )\\bdueng[a-z]*\\b(?!\\s+braucht\\s+es\\s+auch\\b)(?!\\s+dafuer,\\s+dass\\b)(?!\\s+(?:fuer|des)\\s+(?:(?:die|der|den|das|eine|einer|einen|unser(?:e|er|en)?|sein(?:e|er|en)?|ihr(?:e|er|en)?)\\s+)?(?:demokrati[a-z]*|hass(?:es)?|antisemit[a-z]*|rassis[a-z]*|extremis[a-z]*|menschenfeind[a-z]*)\\b)(?![^.!?]{0,160}\\b(?:demokrati[a-z]*|hass(?:es)?|antisemit[a-z]*|rassis[a-z]*|extremis[a-z]*|menschenfeind[a-z]*|mitschuldig[a-z]*|gewalt[a-z]*|toleranz[a-z]*|impf[a-z]*|autobomb[a-z]*|sprengstoff[a-z]*|geoengineering[a-z]*|phytoplankton[a-z]*|algenwachstum[a-z]*)\\b)(?!\\s+(?:des|der|in\\s+(?:den|dem))\\s+(?:ozean|meer)[a-z]*\\b)",
+      "priority": 1,
+      "tags": [
+        "oekologie"
+      ],
+      "notes": [
+        "Erfasst den agrarisch einschlägigen Stamm Düng*. Die hinterlegten politischen, Gewalt-,",
+        "Impf- und Präventionsmetaphern sowie Sprengstoff-/Autobomben- und",
+        "Meeres-Geoengineering-Kontexte sind ausgeschlossen."
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:eco_scheme_s",
+      "regex": "\\beco(?:-|\\s)?schemes?\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:ehec",
+      "regex": "\\behec\\b",
+      "priority": 3,
+      "notes": [
+        "EHEC kann als allgemeiner epidemiologischer Vergleich auftreten;",
+        "Lebensmittel-/Erzeugerkontext erforderlich."
+      ],
+      "evidence_family": "foodborne_ehec",
+      "context_any": [
+        "(?<![a-z])(?:(?:(?:(?:lebensmittel[a-z]*|nahrungsmittel[a-z]*|futtermittel[a-z]*|ernaehr[a-z]*|essen[a-z]*|speise[a-z]*|getraenk[a-z]*|fleisch[a-z]*|wurst[a-z]*|milch[a-z]*|ei(?:er|es|ern)?|kaese[a-z]*|brot[a-z]*|gemuese[a-z]*|obst[a-z]*|getreide[a-z]*|kartoffel[a-z]*|zucker[a-z]*|bier[a-z]*|wein[a-z]*)|lebensmittel[a-z]*(?:lieferkett|wertschoepfungskett|einzelhandel|handel|verarbeit|herstell)[a-z]*|nahrungsmittel[a-z]*(?:lieferkett|wertschoepfungskett|handel|verarbeit|herstell)[a-z]*|agrar[a-z]*(?:lieferkett|wertschoepfungskett|handel|markt)[a-z]*|supermarkt[a-z]*|molkerei[a-z]*|schlachtkonzern[a-z]*|discounter[a-z]*)|(?:agrar[a-z]*|landwirtschaft[a-z]*|landwirt[a-z]*|acker[a-z]*|feld(?:er|es|en)?|hof(?:e|es|en|s)?|hoef[a-z]*|bauern[a-z]*|baeuerlich[a-z]*|ernte[a-z]*|anbau[a-z]*|pflanzenbau[a-z]*|gartenbau[a-z]*|kulturpflanz[a-z]*)|gurke[a-z]*|spross[a-z]*|keim[a-z]*|lebensmittelinfektion[a-z]*|ausbruch[a-z]*))(?![a-z])"
+      ],
+      "context_none": [],
+      "context_window": 180,
+      "context_distinct": true,
+      "role": "context"
+    },
+    {
+      "key": "stem:eiweissfuttermittel",
+      "regex": "\\beiweissfuttermittel[a-z]*\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:eiweisspflanzenstrategie",
+      "regex": "\\beiweisspflanzenstrategie[a-z]*\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:eutroph",
+      "regex": "\\beutroph[a-z]*\\b",
+      "priority": 3,
+      "tags": [
+        "oekologie"
+      ],
+      "evidence_family": "agri_eutrophication",
+      "notes": [
+        "Eutrophierung ohne landwirtschaftliche Ursache ist Umwelt-, nicht automatisch A&E-Thema."
+      ],
+      "context_any": [
+        "(?<![a-z])(?:(?:(?:agrar[a-z]*|landwirtschaft[a-z]*|landwirt[a-z]*|acker[a-z]*|feld(?:er|es|en)?|hof(?:e|es|en|s)?|hoef[a-z]*|bauern[a-z]*|baeuerlich[a-z]*|ernte[a-z]*|anbau[a-z]*|pflanzenbau[a-z]*|gartenbau[a-z]*|kulturpflanz[a-z]*)|dueng[a-z]*|gedueng[a-z]*|guelle[a-z]*|naehrstoff[a-z]*|phosphat[a-z]*|stickstoff[a-z]*))(?![a-z])"
+      ],
+      "context_none": [],
+      "context_window": 180,
+      "context_distinct": true,
+      "role": "context"
+    },
+    {
+      "key": "stem:ferkelaufzucht",
+      "regex": "\\bferkel(?:-|\\s)?aufzucht[a-z]*\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:ferkelkastration_en",
+      "regex": "\\bferkelkastration(?:en)?\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:fipronil",
+      "regex": "\\bfipronil\\b",
+      "priority": 3,
+      "notes": [
+        "Fipronil wird nur im Eier-/Geflügel-/Lebensmittel- oder Agrarkontext A&E-relevant."
+      ],
+      "evidence_family": "food_contaminant_fipronil",
+      "context_any": [
+        "(?<![a-z])(?:(?:(?:(?:lebensmittel[a-z]*|nahrungsmittel[a-z]*|futtermittel[a-z]*|ernaehr[a-z]*|essen[a-z]*|speise[a-z]*|getraenk[a-z]*|fleisch[a-z]*|wurst[a-z]*|milch[a-z]*|ei(?:er|es|ern)?|kaese[a-z]*|brot[a-z]*|gemuese[a-z]*|obst[a-z]*|getreide[a-z]*|kartoffel[a-z]*|zucker[a-z]*|bier[a-z]*|wein[a-z]*)|lebensmittel[a-z]*(?:lieferkett|wertschoepfungskett|einzelhandel|handel|verarbeit|herstell)[a-z]*|nahrungsmittel[a-z]*(?:lieferkett|wertschoepfungskett|handel|verarbeit|herstell)[a-z]*|agrar[a-z]*(?:lieferkett|wertschoepfungskett|handel|markt)[a-z]*|supermarkt[a-z]*|molkerei[a-z]*|schlachtkonzern[a-z]*|discounter[a-z]*)|(?:agrar[a-z]*|landwirtschaft[a-z]*|landwirt[a-z]*|acker[a-z]*|feld(?:er|es|en)?|hof(?:e|es|en|s)?|hoef[a-z]*|bauern[a-z]*|baeuerlich[a-z]*|ernte[a-z]*|anbau[a-z]*|pflanzenbau[a-z]*|gartenbau[a-z]*|kulturpflanz[a-z]*)|(?:nutztiere?[a-z]*|tierhalt[a-z]*|intensivtierhalt[a-z]*|stall[a-z]*|rind[a-z]*|kuh|kueh[a-z]*|kalb|kaelb[a-z]*|schwein[a-z]*|ferkel[a-z]*|gefluegel[a-z]*|huhn|huehn[a-z]*|pute[a-z]*|schaf(?:e|es|en|herd[a-z]*|halt[a-z]*|zucht[a-z]*|fleisch[a-z]*|wolle[a-z]*)?|ziege[a-z]*|mastvieh[a-z]*|vieh[a-z]*|milchvieh[a-z]*|schlacht[a-z]*)|huehnerei[a-z]*|legehenn[a-z]*|kontamin[a-z]*|rueckruf[a-z]*))(?![a-z])"
+      ],
+      "context_none": [],
+      "context_window": 180,
+      "context_distinct": true,
+      "role": "context"
+    },
+    {
+      "key": "stem:flaechenpraemi",
+      "regex": "\\bflaechenpraemi[a-z]*\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:flaechensubvention",
+      "regex": "\\bflaechensubvention[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "oekonomie"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:fleischindustrie",
+      "regex": "\\bfleisch(?:-|\\s)?industr[a-z]*\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:fleischwirtschaft",
+      "regex": "\\bfleisch(?:-|\\s)?wirtschaft[a-z]*\\b",
+      "priority": 1,
+      "notes": [
+        "Eigenständige sektorale Bezeichnung neben Fleischindustrie."
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:futtermittel",
+      "regex": "\\bfuttermittel[a-z]*\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:gammelfleisch",
+      "regex": "\\bgammelfleisch\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:gap",
+      "regex": "\\bgap-(?:reform|strategiepl[a-z]*|konditionalitaet(?:en)?|konditionalitaeten(?:-)?(?:gesetz(?:e|en)?|regelung(?:en)?)|konditionalitaet(?:-)?(?:gesetz(?:e|en)?|regelung(?:en)?)|gloez|oekoregelung(?:en)?|eco(?:-|\\s)?schemes?|direktzahlung(?:en)?|direktzahlungs(?:gesetz(?:e|en)?|regel(?:n)?)|direktzahlungs(?:gesetz(?:e|en)?|regel(?:n)?)|basispraemie|umverteilungspraemie|junglandwirte(?:praemie)?|intervention(?:en)?|sektorprogramm(?:e|en)?|gesetze?|gesetzgebung|gesetzesentwurf|verordnung(?:en)?|verhandlungen|umsetzung|vorschrift(?:en)?|regel(?:n)?|richtlinie(?:n)?|mittel|gelder|foerdermittel|haushaltsmittel|uebergangszeitraum)\\b[a-z-]*",
+      "priority": 1,
+      "tags": [
+        "oekonomie"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:gartenbau",
+      "regex": "\\bgartenbau[a-z]*\\b",
+      "priority": 3,
+      "evidence_family": "horticulture",
+      "notes": [
+        "Gartenbau und Gartenbaubetriebe sind Primärproduktion; reine Vereinsnamen und kommunale",
+        "Grünpflege werden ausgeschlossen."
+      ],
+      "context_none": [
+        "(?<![a-z])(?:(?:obst(?:-|\\s)+und(?:-|\\s)+gartenbauverein[a-z]*|gartenbauverein[a-z]*|kommunal[a-z]*.{0,80}gartenbaubetrieb[a-z]*|garten(?:-|\\s)+und(?:-|\\s)+gruenpflege))(?![a-z])"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:gefluegelbetrieb",
+      "regex": "\\bgefluegel(?:-|\\s)?betrieb[a-z]*\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:gefluegelhaltung",
+      "regex": "\\bgefluegelhalt[a-z]*\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:gefluegelindustrie",
+      "regex": "\\bgefluegel(?:-|\\s)?industr[a-z]*\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:gefluegelmast",
+      "regex": "\\bgefluegelmast[a-z]*\\b|\\bgefluegel(?:-|\\s)?mast[a-z]*\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:gemeinwohlleistung",
+      "regex": "\\bgemeinwohlleistung(?:en)?\\b",
+      "priority": 3,
+      "evidence_family": "agri_public_goods",
+      "notes": [
+        "Gemeinwohlleistungen sind sektorenübergreifend; agrarpolitischer Förder-/Flächenkontext",
+        "erforderlich. Ökosystemdienstleistung allein ist kein Agrarbeleg."
+      ],
+      "context_any": [
+        "(?<![a-z])(?:(?:(?:agrar[a-z]*|landwirtschaft[a-z]*|landwirt[a-z]*|acker[a-z]*|feld(?:er|es|en)?|hof(?:e|es|en|s)?|hoef[a-z]*|bauern[a-z]*|baeuerlich[a-z]*|ernte[a-z]*|anbau[a-z]*|pflanzenbau[a-z]*|gartenbau[a-z]*|kulturpflanz[a-z]*)|(?:nutztiere?[a-z]*|tierhalt[a-z]*|intensivtierhalt[a-z]*|stall[a-z]*|rind[a-z]*|kuh|kueh[a-z]*|kalb|kaelb[a-z]*|schwein[a-z]*|ferkel[a-z]*|gefluegel[a-z]*|huhn|huehn[a-z]*|pute[a-z]*|schaf(?:e|es|en|herd[a-z]*|halt[a-z]*|zucht[a-z]*|fleisch[a-z]*|wolle[a-z]*)?|ziege[a-z]*|mastvieh[a-z]*|vieh[a-z]*|milchvieh[a-z]*|schlacht[a-z]*)|\\bgap\\b|(?:erste|zweite)[a-z]*\\s+saeule[a-z]*|direktzahlung[a-z]*|hektar[a-z]*|agrarumwelt[a-z]*))(?![a-z])"
+      ],
+      "context_none": [],
+      "context_window": 180,
+      "context_distinct": true,
+      "role": "context"
+    },
+    {
+      "key": "stem:gemeinwohlpraemi",
+      "regex": "\\bgemeinwohlpraemi[a-z]*\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:getreideversorgung",
+      "regex": "\\bgetreideversorgung[a-z]*\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:gloez",
+      "regex": "\\bgloez\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:glyphosat",
+      "regex": "\\bglyphosat\\b",
+      "priority": 1,
+      "tags": [
+        "oekologie"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:guell",
+      "regex": "\\bguell(?!ner[a-z]*\\b)[a-z]*\\b",
+      "priority": 1,
+      "notes": [
+        "Erfasst Gülle-Wortformen, schließt aber den Nachnamen Güllner aus."
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:herdenschutz",
+      "regex": "\\bherdenschutz[a-z]*\\b",
+      "priority": 1,
+      "notes": [
+        "Lokale Fundstelle mit ausdrücklich hinterlegten negativen Kontexten."
+      ],
+      "context_none": [
+        "\\b(?:herdenimmunitaet|gruppenimmunitaet|kohortenimmunitaet|immunitaet|geimpft[a-z]*|impf(?:en|ung[a-z]*|stoff[a-z]*))\\b",
+        "\\bherdenschutzesel[a-z]*\\b"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:herkunftskennzeichnung",
+      "regex": "\\bherkunftskennzeichn[a-z]*\\b",
+      "priority": 3,
+      "context_any": [
+        "(?<![a-z])(?:agrar[a-z]*|landwirtschaft[a-z]*|landwirt[a-z]*|bauer(?:n|s)?|baeuer[a-z]*|acker[a-z]*|pflanzenbau[a-z]*|gartenbau[a-z]*|kulturpflanz[a-z]*|nutztiere?[a-z]*|tierhalt[a-z]*|rinderhalt[a-z]*|schweinehalt[a-z]*|gefluegelhalt[a-z]*|milchvieh[a-z]*|vieh[a-z]*|lebensmittel[a-z]*|nahrungsmittel[a-z]*|ernaehrungs[a-z]*|fleisch[a-z]*|wurst[a-z]*|milch[a-z]*|kaese[a-z]*|eier[a-z]*|brot[a-z]*|gemuese[a-z]*|obst[a-z]*|getreide[a-z]*|kartoffel[a-z]*|molkerei[a-z]*|schlacht[a-z]*|baeckerei[a-z]*|metzgerei[a-z]*|lebensmitteleinzelhandel[a-z]*|lebensmittelhandel[a-z]*|verpflegung[a-z]*)(?![a-z])",
+        "\\b(?:frischfleisch[a-z]*|bio(?:-|\\s)?lebensmittel[a-z]*)\\b"
+      ],
+      "context_none": [],
+      "context_window": 180,
+      "context_distinct": true,
+      "notes": [
+        "Nur mit ausdrücklichem Agrar-, Lebensmittel- oder Verpflegungskontext. Frischfleisch und",
+        "Biolebensmittel zählen zu den zugelassenen Kontextpartnern."
+      ],
+      "role": "context"
+    },
+    {
+      "key": "stem:hoefesterb",
+      "regex": "\\b(?:hoefesterb[a-z]*|hoefe\\s+sterben|sterbens?\\s+(?:der\\s+hoefe|von\\s+hoefen))\\b",
+      "priority": 1,
+      "role": "direct",
+      "notes": [
+        "Erfasst Höfesterben, Höfe sterben sowie Sterben der Höfe und Sterben von Höfen. Hof und",
+        "Höfe allein lösen über diese Regel keinen Treffer aus."
+      ]
+    },
+    {
+      "key": "stem:kastenstand",
+      "regex": "\\bkastenstand[a-z]*\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:kuekentoeten",
+      "regex": "\\bkuekentoet[a-z]*\\b",
+      "priority": 1,
+      "notes": [
+        "Erfasst Kükentöten einschließlich flektierter und abgeleiteter Formen."
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:landwirt_schaft",
+      "regex": "\\blandwirt(?!schaft)[a-z]*\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:lebensmittel",
+      "regex": "\\blebensmittel(?!punkt[a-z]*\\b)[a-z]*\\b",
+      "priority": 1,
+      "notes": [
+        "Lebensmittelbezüge lösen direkt einen Treffer aus; Lebensmittelpunkt* ist als fachfremde",
+        "Wortfamilie ausgeschlossen."
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:lebensmittelampel",
+      "regex": "\\blebensmittelampel[a-z]*\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "stem:lebensmittelbetrug",
+      "regex": "\\blebensmittel(?:-|\\s)?betrug[a-z]*\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "stem:lebensmitteleinzelhandel",
+      "regex": "\\blebensmittel(?:-|\\s)?einzelhandel[a-z]*\\b",
+      "priority": 2,
+      "tags": [
+        "oekonomie"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:lebensmittelhygiene",
+      "regex": "\\blebensmittel(?:-|\\s)?hygien[a-z]*\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "stem:lebensmittelindustrie",
+      "regex": "\\blebensmittel(?:-|\\s)?industr[a-z]*\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "stem:lebensmittelkennzeichnung",
+      "regex": "\\blebensmittel(?:-|\\s)?kennzeichn[a-z]*\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "stem:lebensmittelkontrolle",
+      "regex": "\\blebensmittel(?:-|\\s)?kontroll[a-z]*\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "stem:lebensmittelsicherheit",
+      "regex": "\\blebensmittel(?:-|\\s)?sicher[a-z]*\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "stem:lebensmitteltaeuschung",
+      "regex": "\\blebensmittel(?:-|\\s)?taeusch[a-z]*\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "stem:lebensmittelueberwachung",
+      "regex": "\\blebensmittel(?:-|\\s)?ueberwach[a-z]*\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "stem:lebensmittelverarbeitung",
+      "regex": "\\blebensmittel(?:-|\\s)?verarbeit[a-z]*\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "stem:leguminos",
+      "regex": "\\bleguminos[a-z]*\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:leh",
+      "regex": "\\bleh\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:lfgb",
+      "regex": "\\blfgb\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:listerien",
+      "regex": "\\blisteri[a-z]*\\b",
+      "priority": 3,
+      "notes": [
+        "Listerien können medizinisch/mikrobiologisch erwähnt werden; Lebensmittel-/Betriebsbezug",
+        "erforderlich."
+      ],
+      "evidence_family": "foodborne_listeria",
+      "context_any": [
+        "(?<![a-z])(?:(?:(?:(?:lebensmittel[a-z]*|nahrungsmittel[a-z]*|futtermittel[a-z]*|ernaehr[a-z]*|essen[a-z]*|speise[a-z]*|getraenk[a-z]*|fleisch[a-z]*|wurst[a-z]*|milch[a-z]*|ei(?:er|es|ern)?|kaese[a-z]*|brot[a-z]*|gemuese[a-z]*|obst[a-z]*|getreide[a-z]*|kartoffel[a-z]*|zucker[a-z]*|bier[a-z]*|wein[a-z]*)|lebensmittel[a-z]*(?:lieferkett|wertschoepfungskett|einzelhandel|handel|verarbeit|herstell)[a-z]*|nahrungsmittel[a-z]*(?:lieferkett|wertschoepfungskett|handel|verarbeit|herstell)[a-z]*|agrar[a-z]*(?:lieferkett|wertschoepfungskett|handel|markt)[a-z]*|supermarkt[a-z]*|molkerei[a-z]*|schlachtkonzern[a-z]*|discounter[a-z]*)|betrieb[a-z]*|kontamin[a-z]*|verunreinig[a-z]*|rueckruf[a-z]*|gurkenscheib[a-z]*))(?![a-z])"
+      ],
+      "context_none": [],
+      "context_window": 180,
+      "context_distinct": true,
+      "role": "context"
+    },
+    {
+      "key": "stem:lmidv",
+      "regex": "\\blmidv\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:lmiv",
+      "regex": "\\blmiv\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:massentier",
+      "regex": "\\bmassentier[a-z]*\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:milchsee_n",
+      "regex": "\\bmilchsee(?:n)?\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:milchvieh",
+      "regex": "\\bmilchvieh[a-z]*\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:mnkp",
+      "regex": "\\bmnkp\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:molkerei",
+      "regex": "\\bmolkerei[a-z]*\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:mutterkuh",
+      "regex": "\\bmutter(?:-|\\s)?k(?:uh[a-z]*|ueh(?:e|en)?)\\b",
+      "priority": 1,
+      "notes": [
+        "Mutterkuh/Mutterkühe-Morphologie."
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:naehrwertampel",
+      "regex": "\\bnaehrwertampel[a-z]*\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:naehrwertkennzeichnung",
+      "regex": "\\bnaehrwertkennzeichn[a-z]*\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:nahrungsmittel",
+      "regex": "\\bnahrungsmittel[a-z]*\\b",
+      "priority": 1,
+      "notes": [
+        "Explizite Nahrungsmittelbezüge sind für den sektoralen A&E-Filter hinreichend eindeutig."
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:ngt",
+      "regex": "\\bngt\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:nitrat",
+      "regex": "\\bnitrat[a-z]*\\b",
+      "priority": 3,
+      "tags": [
+        "oekologie"
+      ],
+      "evidence_family": "agri_nitrate",
+      "notes": [
+        "Nitrat im Wasser ist allein Umwelt/Wasser; A&E nur bei agrarischer Ursache,",
+        "Produktionsbezug oder zuständigem Agrarressort."
+      ],
+      "context_any": [
+        "(?<![a-z])(?:(?:(?:agrar[a-z]*|landwirtschaft[a-z]*|landwirt[a-z]*|acker[a-z]*|feld(?:er|es|en)?|hof(?:e|es|en|s)?|hoef[a-z]*|bauern[a-z]*|baeuerlich[a-z]*|ernte[a-z]*|anbau[a-z]*|pflanzenbau[a-z]*|gartenbau[a-z]*|kulturpflanz[a-z]*)|(?:nutztiere?[a-z]*|tierhalt[a-z]*|intensivtierhalt[a-z]*|stall[a-z]*|rind[a-z]*|kuh|kueh[a-z]*|kalb|kaelb[a-z]*|schwein[a-z]*|ferkel[a-z]*|gefluegel[a-z]*|huhn|huehn[a-z]*|pute[a-z]*|schaf(?:e|es|en|herd[a-z]*|halt[a-z]*|zucht[a-z]*|fleisch[a-z]*|wolle[a-z]*)?|ziege[a-z]*|mastvieh[a-z]*|vieh[a-z]*|milchvieh[a-z]*|schlacht[a-z]*)|dueng[a-z]*|gedueng[a-z]*|guelle[a-z]*|biogas[a-z]*|ueberdueng[a-z]*|(?:\\bbmel\\b|bundesministerium(?:s)?\\s+fuer\\s+ernaehrung\\s+und\\s+landwirtschaft|bundesanstalt\\s+fuer\\s+landwirtschaft\\s+und\\s+ernaehrung|\\bble\\b|landwirtschaftsminister[a-z]*)))(?![a-z])"
+      ],
+      "context_none": [
+        "(?<![a-z])(?:(?:verkehr[a-z]*|diesel(?:-|\\s)?pkw[a-z]*))(?![a-z])"
+      ],
+      "context_window": 180,
+      "context_distinct": true,
+      "role": "context"
+    },
+    {
+      "key": "stem:nutzpflanze",
+      "regex": "\\bnutzpflanz[a-z]*\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:oekolandbau",
+      "regex": "\\boekolandbau[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "oekologie"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:oekoregelung",
+      "regex": "\\boekoregelung[a-z]*\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:pestizid",
+      "regex": "\\bpestizid[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "oekologie"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:pferdefleisch",
+      "regex": "\\bpferdefleisch\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:pflanzenschutz",
+      "regex": "\\bpflanzenschutz[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "oekologie"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:rinderhaltung",
+      "regex": "\\brinderhalt[a-z]*\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:rindermast",
+      "regex": "\\brindermast[a-z]*\\b|\\brinder(?:-|\\s)?mast[a-z]*\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:saatgut",
+      "regex": "\\bsaatgut[a-z]*\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:salmonellen",
+      "regex": "\\bsalmonell[a-z]*\\b",
+      "priority": 3,
+      "notes": [
+        "Lebensmittel-/Nutztierkontext einschließen, Reptilien-/Heimtierkontext ausschließen."
+      ],
+      "evidence_family": "foodborne_salmonella",
+      "context_any": [
+        "(?<![a-z])(?:(?:(?:(?:lebensmittel[a-z]*|nahrungsmittel[a-z]*|futtermittel[a-z]*|ernaehr[a-z]*|essen[a-z]*|speise[a-z]*|getraenk[a-z]*|fleisch[a-z]*|wurst[a-z]*|milch[a-z]*|ei(?:er|es|ern)?|kaese[a-z]*|brot[a-z]*|gemuese[a-z]*|obst[a-z]*|getreide[a-z]*|kartoffel[a-z]*|zucker[a-z]*|bier[a-z]*|wein[a-z]*)|lebensmittel[a-z]*(?:lieferkett|wertschoepfungskett|einzelhandel|handel|verarbeit|herstell)[a-z]*|nahrungsmittel[a-z]*(?:lieferkett|wertschoepfungskett|handel|verarbeit|herstell)[a-z]*|agrar[a-z]*(?:lieferkett|wertschoepfungskett|handel|markt)[a-z]*|supermarkt[a-z]*|molkerei[a-z]*|schlachtkonzern[a-z]*|discounter[a-z]*)|(?:nutztiere?[a-z]*|tierhalt[a-z]*|intensivtierhalt[a-z]*|stall[a-z]*|rind[a-z]*|kuh|kueh[a-z]*|kalb|kaelb[a-z]*|schwein[a-z]*|ferkel[a-z]*|gefluegel[a-z]*|huhn|huehn[a-z]*|pute[a-z]*|schaf(?:e|es|en|herd[a-z]*|halt[a-z]*|zucht[a-z]*|fleisch[a-z]*|wolle[a-z]*)?|ziege[a-z]*|mastvieh[a-z]*|vieh[a-z]*|milchvieh[a-z]*|schlacht[a-z]*)|kontamin[a-z]*|rueckruf[a-z]*|schokolad[a-z]*))(?![a-z])"
+      ],
+      "context_none": [
+        "(?<![a-z])(?:(?:reptil[a-z]*|heimtier[a-z]*|haustier[a-z]*|schildkroet[a-z]*|echse[a-z]*|schlange[a-z]*))(?![a-z])"
+      ],
+      "context_window": 180,
+      "context_distinct": true,
+      "role": "context"
+    },
+    {
+      "key": "stem:sauenhaltung",
+      "regex": "\\bsauenhalt[a-z]*\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:schlachtbetrieb",
+      "regex": "\\bschlachtbetrieb[a-z]*\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:schlachthof",
+      "regex": "\\bschlachth(?:of|oef)[a-z]*\\b",
+      "priority": 1,
+      "notes": [
+        "Singular und Umlautplural einschließlich Schlachthöfen."
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:schweinehaltung",
+      "regex": "\\bschweinehalt[a-z]*\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:schweinemast",
+      "regex": "\\bschweinemast[a-z]*\\b|\\bschweine(?:-|\\s)?mast[a-z]*\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:schweinepest",
+      "regex": "\\bschweinepest\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:separatorenfleisch",
+      "regex": "\\bseparatorenfleisch\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:sojaimport",
+      "regex": "\\bsoja(?:-|\\s)?import[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "oekonomie"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:sonderkultur",
+      "regex": "\\bsonderkultur[a-z]*\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:tierhalt",
+      "regex": "\\btierhalt[a-z]*\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:tierwohl",
+      "regex": "\\btierwohl[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "oekologie"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:weidehaltung",
+      "regex": "\\bweidehaltung[a-z]*\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:weideland",
+      "regex": "\\bweideland[a-z]*\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:weidetier",
+      "regex": "\\bweidetier[a-z]*\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:zkl",
+      "regex": "\\bzkl\\b",
+      "priority": 3,
+      "evidence_family": "future_commission_agriculture",
+      "notes": [
+        "ZKL bezeichnet im Korpus spezifisch die Zukunftskommission Landwirtschaft und deren",
+        "agrarpolitische Empfehlungen."
+      ],
+      "context_none": [],
+      "role": "direct"
+    },
+    {
+      "key": "stem:ernaehrungssicherheit",
+      "regex": "(?:\\bernaehrungssicherheit[a-z]*\\b|\\bernaehrungssicher(?!heit|ung)[a-z]*\\b)",
+      "priority": 2,
+      "tags": [
+        "sicherheit_resilienz"
+      ],
+      "notes": [
+        "Erfasst Ernährungssicherheit sowie adjektivische und partizipiale Formen wie",
+        "ernährungssicher und ernährungssichernd."
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:ernaehrungsunsicherheit",
+      "regex": "\\bernaehrungsunsicherheit[a-z]*\\b",
+      "priority": 2,
+      "tags": [
+        "sicherheit_resilienz"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:ernaehrungswirtschaft",
+      "regex": "\\bernaehrungswirtschaft[a-z]*\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "stem:ernaehrungspolitik",
+      "regex": "\\bernaehrungspolitik[a-z]*\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "stem:ernaehrungspolitisch",
+      "regex": "\\bernaehrungspolitisch[a-z]*\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "stem:landwirtschaft_n",
+      "regex": "\\blandwirtschaft\\b",
+      "priority": 2,
+      "label": "Landwirtschaft (Nomen)",
+      "notes": [
+        "Eigenständige positive Regel für das Substantiv Landwirtschaft."
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:landwirtschafts",
+      "regex": "\\blandwirtschafts[a-z]*\\b",
+      "priority": 1,
+      "label": "Landwirtschafts- (Komposita)",
+      "notes": [
+        "Wortfamilie Landwirtschafts- einschließlich Amts- und Ministeriumsbezeichnungen;",
+        "besondere lokale Ausschlüsse anderer Eigennamen bleiben wirksam."
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:landwirtschaftlich",
+      "regex": "\\blandwirtschaftlich[a-z]*\\b",
+      "priority": 1,
+      "label": "landwirtschaftlich (Adj.)",
+      "notes": [
+        "Explizite adjektivische Landwirtschaftsbezüge sind für den sektoralen A&E-Filter",
+        "hinreichend eindeutig."
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "phrase:solidarische_landwirtschaft",
+      "regex": "\\bsolidarisch[a-z]*\\s+landwirtschaft\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:ernaehrungssouveraenitaet",
+      "regex": "\\bernaehrungssouveraenitaet\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:ernaehrungsrat",
+      "regex": "\\bernaehrungs(?:rat(?:es|s|e|en)?|raet(?:e|en))\\b",
+      "priority": 2,
+      "notes": [
+        "Ernährungsrat/Ernährungsräte-Morphologie."
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "phrase:vertical_farming",
+      "regex": "\\bvertical(?:-|\\s)?farming\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:praezisionsfermentation",
+      "regex": "\\bpraezisionsferment[a-z]*\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:zellkultiviertes_fleisch",
+      "regex": "\\bzellkultivier[a-z]*\\s+fleisch\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:novel_food_verordnung",
+      "regex": "\\bnovel(?:-|\\s)?food(?:-|\\s)?verordnung\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:novel_food",
+      "regex": "\\bnovel(?:-|\\s)?food\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:lebensmittelverluste",
+      "regex": "\\blebensmittelverlust(?:e|en)?\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:unfaire_handelspraktiken",
+      "regex": "\\bunfair[a-z]*\\s+handelspraktik(?:en)?\\b",
+      "priority": 3,
+      "tags": [
+        "oekonomie"
+      ],
+      "notes": [
+        "Unfaire Handelspraktiken sind global mehrdeutig; Agrar-/Lebensmittellieferkette",
+        "erforderlich. Das Akronym UTP ist nur ein Alias des Ankers und kein Kontextbeleg."
+      ],
+      "evidence_family": "utp_food_chain",
+      "context_any": [
+        "(?<![a-z])(?:(?:(?:(?:lebensmittel[a-z]*|nahrungsmittel[a-z]*|futtermittel[a-z]*|ernaehr[a-z]*|essen[a-z]*|speise[a-z]*|getraenk[a-z]*|fleisch[a-z]*|wurst[a-z]*|milch[a-z]*|ei(?:er|es|ern)?|kaese[a-z]*|brot[a-z]*|gemuese[a-z]*|obst[a-z]*|getreide[a-z]*|kartoffel[a-z]*|zucker[a-z]*|bier[a-z]*|wein[a-z]*)|lebensmittel[a-z]*(?:lieferkett|wertschoepfungskett|einzelhandel|handel|verarbeit|herstell)[a-z]*|nahrungsmittel[a-z]*(?:lieferkett|wertschoepfungskett|handel|verarbeit|herstell)[a-z]*|agrar[a-z]*(?:lieferkett|wertschoepfungskett|handel|markt)[a-z]*|supermarkt[a-z]*|molkerei[a-z]*|schlachtkonzern[a-z]*|discounter[a-z]*)|(?:agrar[a-z]*|landwirtschaft[a-z]*|landwirt[a-z]*|acker[a-z]*|feld(?:er|es|en)?|hof(?:e|es|en|s)?|hoef[a-z]*|bauern[a-z]*|baeuerlich[a-z]*|ernte[a-z]*|anbau[a-z]*|pflanzenbau[a-z]*|gartenbau[a-z]*|kulturpflanz[a-z]*)|(?:nutztiere?[a-z]*|tierhalt[a-z]*|intensivtierhalt[a-z]*|stall[a-z]*|rind[a-z]*|kuh|kueh[a-z]*|kalb|kaelb[a-z]*|schwein[a-z]*|ferkel[a-z]*|gefluegel[a-z]*|huhn|huehn[a-z]*|pute[a-z]*|schaf(?:e|es|en|herd[a-z]*|halt[a-z]*|zucht[a-z]*|fleisch[a-z]*|wolle[a-z]*)?|ziege[a-z]*|mastvieh[a-z]*|vieh[a-z]*|milchvieh[a-z]*|schlacht[a-z]*)|(?:erzeuger[a-z]*.{0,100}lieferkett[a-z]*|lieferkett[a-z]*.{0,100}erzeuger[a-z]*)|lebensmittellieferant[a-z]*|agrarlieferant[a-z]*))(?![a-z])"
+      ],
+      "context_none": [],
+      "context_window": 220,
+      "context_distinct": true,
+      "role": "context"
+    },
+    {
+      "key": "phrase:lebensmittelbezogene_ernaehrungsempfehlungen",
+      "regex": "\\blebensmittelbezogen[a-z]*\\s+ernaehrungsempfehlung(?:en)?\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:dge_qualitaetsstandards",
+      "regex": "\\bdge(?:-|\\s)?qualitaetsstandard(?:s|e|en)?\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:planetary_health_diet",
+      "regex": "\\bplanetary(?:-|\\s)?health(?:-|\\s)?diet\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:haltungskennzeichnung_gesetz",
+      "regex": "\\bhaltungskennzeichnung(?:s)?(?:-|\\s)?gesetz\\b|\\bhaltungskennzeichnungsgesetz\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:rueckverfolgbarkeit_von_lebensmitteln",
+      "regex": "\\brueckverfolgbarkeit\\s+von\\s+lebensmittel[n]?\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:herkunftsnachweis",
+      "regex": "\\bherkunftsnachweis(?!register[a-z]*\\b)[a-z]*\\b(?!\\s+(?:fuer|von)\\s+(?:(?:strom|gas|wasserstoff|waerme|kaelte)\\b|gasfoermig[a-z]*\\s+energietraeg[a-z]*|erneuerbar[a-z]*\\s+energie[a-z]*))",
+      "priority": 3,
+      "notes": [
+        "Nur Herkunftsnachweise von Lebensmitteln/Agrarprodukten; Energie- und Vermögensnachweise",
+        "bleiben ausgeschlossen."
+      ],
+      "evidence_family": "food_origin_proof",
+      "context_any": [
+        "(?<![a-z])(?:(?:(?:(?:lebensmittel[a-z]*|nahrungsmittel[a-z]*|futtermittel[a-z]*|ernaehr[a-z]*|essen[a-z]*|speise[a-z]*|getraenk[a-z]*|fleisch[a-z]*|wurst[a-z]*|milch[a-z]*|ei(?:er|es|ern)?|kaese[a-z]*|brot[a-z]*|gemuese[a-z]*|obst[a-z]*|getreide[a-z]*|kartoffel[a-z]*|zucker[a-z]*|bier[a-z]*|wein[a-z]*)|lebensmittel[a-z]*(?:lieferkett|wertschoepfungskett|einzelhandel|handel|verarbeit|herstell)[a-z]*|nahrungsmittel[a-z]*(?:lieferkett|wertschoepfungskett|handel|verarbeit|herstell)[a-z]*|agrar[a-z]*(?:lieferkett|wertschoepfungskett|handel|markt)[a-z]*|supermarkt[a-z]*|molkerei[a-z]*|schlachtkonzern[a-z]*|discounter[a-z]*)|(?:agrar[a-z]*|landwirtschaft[a-z]*|landwirt[a-z]*|acker[a-z]*|feld(?:er|es|en)?|hof(?:e|es|en|s)?|hoef[a-z]*|bauern[a-z]*|baeuerlich[a-z]*|ernte[a-z]*|anbau[a-z]*|pflanzenbau[a-z]*|gartenbau[a-z]*|kulturpflanz[a-z]*)|(?:nutztiere?[a-z]*|tierhalt[a-z]*|intensivtierhalt[a-z]*|stall[a-z]*|rind[a-z]*|kuh|kueh[a-z]*|kalb|kaelb[a-z]*|schwein[a-z]*|ferkel[a-z]*|gefluegel[a-z]*|huhn|huehn[a-z]*|pute[a-z]*|schaf(?:e|es|en|herd[a-z]*|halt[a-z]*|zucht[a-z]*|fleisch[a-z]*|wolle[a-z]*)?|ziege[a-z]*|mastvieh[a-z]*|vieh[a-z]*|milchvieh[a-z]*|schlacht[a-z]*)|herkunftskennzeichn[a-z]*|region[a-z]*\\s+produkt[a-z]*))(?![a-z])"
+      ],
+      "context_none": [
+        "(?<![a-z])(?:(?:strom[a-z]*|energie[a-z]*|gas[a-z]*|wasserstoff[a-z]*|waerme[a-z]*|kaelte[a-z]*|energietraeg[a-z]*|grubengas[a-z]*|darl[e]?hen[a-z]*|vermoeg[a-z]*))(?![a-z])"
+      ],
+      "context_window": 180,
+      "context_distinct": true,
+      "role": "context"
+    },
+    {
+      "key": "phrase:zutatenliste",
+      "regex": "\\bzutatenliste[n]?\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:mindesthaltbarkeitsdatum",
+      "regex": "\\bmindesthaltbarkeitsdatum(?:s)?\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:nationale_reserve_getreide",
+      "regex": "\\bnational[a-z]*\\s+reserve\\s+getreide\\b|\\bnationale\\s+getreidereserve\\b",
+      "priority": 2,
+      "tags": [
+        "sicherheit_resilienz"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "phrase:saatgutautonomie",
+      "regex": "\\bsaatgutautonomi[a-z]*\\b",
+      "priority": 2,
+      "tags": [
+        "sicherheit_resilienz"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "phrase:notfallvorsorge_ernaehrung",
+      "regex": "\\bnotfallvorsorg[a-z]*\\s+ernaehrung\\b",
+      "priority": 2,
+      "tags": [
+        "sicherheit_resilienz"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "phrase:kreislaufwirtschaft_im_ernaehrungssystem",
+      "regex": "\\bkreislaufwirtschaft\\s+im\\s+ernaehrungssystem\\b|\\bkreislaufwirtschaft\\s+im\\s+agrar(?:-\\s*|\\s+)und\\s+ernaehrungssystem\\b",
+      "priority": 2,
+      "tags": [
+        "oekologie"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "phrase:agrar_umwelt_massnahmen",
+      "regex": "\\bagrar(?:-|\\s)?umwelt(?:-|\\s)?massnahme(?:n)?\\b|\\bagrarumweltmassnahme(?:n)?\\b",
+      "priority": 2,
+      "tags": [
+        "oekologie"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "phrase:pestizidreduktionsstrategie",
+      "regex": "\\bpestizid(?:-|\\s)?reduktionsstrategie\\b|\\bpestizidreduktionsstrategie\\b",
+      "priority": 2,
+      "tags": [
+        "oekologie"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "phrase:erzeuger_verbraucher_gemeinschaft",
+      "regex": "\\berzeuger(?:-|\\s)?verbraucher(?:-|\\s)?gemeinschaft\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "stem:zellfleisch",
+      "regex": "\\bzell(?:-|\\s)?fleisch\\b|\\bzellfleisch\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:neuartig_e_lebensmittel",
+      "regex": "\\bneuartig[a-z]*\\s+lebensmittel\\b|\\bneuartig[a-z]*\\s+nahrungsmittel\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:direktvermarktung",
+      "regex": "\\bdirektvermarkt[a-z]*\\b",
+      "priority": 3,
+      "tags": [
+        "oekonomie"
+      ],
+      "notes": [
+        "Nur mit ausdrücklichem Agrar-, Lebensmittel- oder Verpflegungskontext. Fachfremde",
+        "Energieverwendungen sind ausgeschlossen."
+      ],
+      "context_none": [
+        "\\b(?:pv(?:-|\\s)?anlagen?|photovoltaik|solar(?:anlagen?)?|windkraft(?:anlagen?)?|windenergie|eeg(?:-|\\s)?konto|eeg|enwg|smart\\s+meter[n]?|strom(?:markt|preis|versorgung|netz)?|negative\\s+preise|systemdienlichkeit|steuerbarkeit|ausgefoerdert[a-z]*\\s+anlagen?|ausschreibung[a-z]*)\\b",
+        "\\bdirektvermarktung(?:s)?(?:pflicht|schwelle|schwellen)[a-z]*\\b",
+        "\\b(?:an\\s+der\\s+direktvermarktung\\s+teil(?:nehmen|zunehmen)|teilnahme\\s+an\\s+der\\s+direktvermarktung)\\b"
+      ],
+      "context_any": [
+        "(?<![a-z])(?:agrar[a-z]*|landwirtschaft[a-z]*|landwirt[a-z]*|bauer(?:n|s)?|baeuer[a-z]*|acker[a-z]*|pflanzenbau[a-z]*|gartenbau[a-z]*|kulturpflanz[a-z]*|nutztiere?[a-z]*|tierhalt[a-z]*|rinderhalt[a-z]*|schweinehalt[a-z]*|gefluegelhalt[a-z]*|milchvieh[a-z]*|vieh[a-z]*|lebensmittel[a-z]*|nahrungsmittel[a-z]*|ernaehrungs[a-z]*|fleisch[a-z]*|wurst[a-z]*|milch[a-z]*|kaese[a-z]*|eier[a-z]*|brot[a-z]*|gemuese[a-z]*|obst[a-z]*|getreide[a-z]*|kartoffel[a-z]*|molkerei[a-z]*|schlacht[a-z]*|baeckerei[a-z]*|metzgerei[a-z]*|lebensmitteleinzelhandel[a-z]*|lebensmittelhandel[a-z]*|verpflegung[a-z]*)(?![a-z])",
+        "\\b(?:frischfleisch[a-z]*|bio(?:-|\\s)?lebensmittel[a-z]*)\\b",
+        "\\b(?:gruenlandumbruch[a-z]*|gruenlandumbruech[a-z]*)\\b"
+      ],
+      "context_window": 180,
+      "context_distinct": true,
+      "role": "context"
+    },
+    {
+      "key": "stem:gentechnik_frei",
+      "regex": "\\bgentechnik(?:-|\\s)?frei\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:junglandwirt",
+      "regex": "\\bjunglandwirt[a-z]*\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:feldrobotik",
+      "regex": "\\bfeldrobotik\\b|\\bfeld(?:-|\\s)?robotik\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:praezisionslandwirtschaft",
+      "regex": "\\bpraezisions(?:-|\\s)?landwirtschaft[a-z]*\\b|\\bprecision(?:-|\\s)?farming\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:zwischenfrucht",
+      "regex": "\\bzwischenfrucht[a-z]*\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:fruchtfolge",
+      "regex": "\\b(?:fruchtfolge[n]?|fruchtwechsel(?:s|n)?)\\b",
+      "priority": 1,
+      "tags": [
+        "oekologie"
+      ],
+      "notes": [
+        "Erfasst Fruchtfolge und Fruchtwechsel."
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:tiertransport",
+      "regex": "\\btiertransport[a-z]*\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:bruderkueken",
+      "regex": "\\bbruderkueken\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:agrophotovoltaik",
+      "regex": "\\bagro(?:-|\\s)?photovoltaik\\b|\\bagrophotovoltaik\\b|\\bagri(?:-|\\s)?pv\\b",
+      "priority": 1,
+      "tags": [
+        "oekologie"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:carbonfarming",
+      "regex": "\\bcarbon(?:-|\\s)?farming\\b|\\bcarbonfarming\\b",
+      "priority": 1,
+      "tags": [
+        "oekologie"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:agraroekologie",
+      "regex": "\\bagraroekologi[a-z]*\\b",
+      "priority": 2,
+      "tags": [
+        "oekologie"
+      ],
+      "notes": [
+        "Spezifischer A&E-Begriff."
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:pachtpreisbremse",
+      "regex": "\\bpachtpreisbremse\\b",
+      "priority": 1,
+      "tags": [
+        "oekonomie"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:deckungsbeitrag",
+      "regex": "\\bdeckungsbeitrag[a-z]*\\b",
+      "priority": 3,
+      "tags": [
+        "oekonomie"
+      ],
+      "notes": [
+        "Allgemeiner betriebswirtschaftlicher Begriff; Agrar-/Lebensmittelgegenstand",
+        "erforderlich."
+      ],
+      "evidence_family": "agri_contribution_margin",
+      "context_any": [
+        "(?<![a-z])(?:(?:(?:agrar[a-z]*|landwirtschaft[a-z]*|landwirt[a-z]*|acker[a-z]*|feld(?:er|es|en)?|hof(?:e|es|en|s)?|hoef[a-z]*|bauern[a-z]*|baeuerlich[a-z]*|ernte[a-z]*|anbau[a-z]*|pflanzenbau[a-z]*|gartenbau[a-z]*|kulturpflanz[a-z]*)|(?:nutztiere?[a-z]*|tierhalt[a-z]*|intensivtierhalt[a-z]*|stall[a-z]*|rind[a-z]*|kuh|kueh[a-z]*|kalb|kaelb[a-z]*|schwein[a-z]*|ferkel[a-z]*|gefluegel[a-z]*|huhn|huehn[a-z]*|pute[a-z]*|schaf(?:e|es|en|herd[a-z]*|halt[a-z]*|zucht[a-z]*|fleisch[a-z]*|wolle[a-z]*)?|ziege[a-z]*|mastvieh[a-z]*|vieh[a-z]*|milchvieh[a-z]*|schlacht[a-z]*)|(?:lebensmittel[a-z]*|nahrungsmittel[a-z]*|futtermittel[a-z]*|ernaehr[a-z]*|essen[a-z]*|speise[a-z]*|getraenk[a-z]*|fleisch[a-z]*|wurst[a-z]*|milch[a-z]*|ei(?:er|es|ern)?|kaese[a-z]*|brot[a-z]*|gemuese[a-z]*|obst[a-z]*|getreide[a-z]*|kartoffel[a-z]*|zucker[a-z]*|bier[a-z]*|wein[a-z]*)|hektar[a-z]*|flaech[a-z]*))(?![a-z])"
+      ],
+      "context_none": [],
+      "context_window": 180,
+      "context_distinct": true,
+      "role": "context"
+    },
+    {
+      "key": "stem:gemeinschaftsverpflegung",
+      "regex": "\\bgemeinschaftsverpflegung[a-z]*\\b",
+      "priority": 1,
+      "notes": [
+        "Erfasst auch flektierte und zusammengesetzte Formen."
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:besatzdichte",
+      "regex": "\\bbesatzdichte[n]?\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:clean_labeling",
+      "regex": "\\bclean(?:-|\\s)?label(?:ing)?\\b",
+      "priority": 3,
+      "evidence_family": "clean_label_food",
+      "notes": [
+        "Clean Label nur als Lebensmittel-/Zutatenkennzeichnung."
+      ],
+      "context_any": [
+        "(?<![a-z])(?:(?:(?:(?:lebensmittel[a-z]*|nahrungsmittel[a-z]*|futtermittel[a-z]*|ernaehr[a-z]*|essen[a-z]*|speise[a-z]*|getraenk[a-z]*|fleisch[a-z]*|wurst[a-z]*|milch[a-z]*|ei(?:er|es|ern)?|kaese[a-z]*|brot[a-z]*|gemuese[a-z]*|obst[a-z]*|getreide[a-z]*|kartoffel[a-z]*|zucker[a-z]*|bier[a-z]*|wein[a-z]*)|lebensmittel[a-z]*(?:lieferkett|wertschoepfungskett|einzelhandel|handel|verarbeit|herstell)[a-z]*|nahrungsmittel[a-z]*(?:lieferkett|wertschoepfungskett|handel|verarbeit|herstell)[a-z]*|agrar[a-z]*(?:lieferkett|wertschoepfungskett|handel|markt)[a-z]*|supermarkt[a-z]*|molkerei[a-z]*|schlachtkonzern[a-z]*|discounter[a-z]*)|zutat[a-z]*|kennzeichn[a-z]*|etikett[a-z]*|zusatzstoff[a-z]*))(?![a-z])"
+      ],
+      "context_none": [],
+      "context_window": 160,
+      "context_distinct": true,
+      "role": "context"
+    },
+    {
+      "key": "phrase:erzeugergemeinschaft",
+      "regex": "\\berzeugergemeinschaft(?:en)?\\b",
+      "priority": 3,
+      "evidence_family": "producer_group",
+      "notes": [
+        "Erzeugergemeinschaft bezeichnet im Korpus den agrarischen Zusammenschluss von",
+        "Produzenten."
+      ],
+      "context_none": [],
+      "role": "direct"
+    },
+    {
+      "key": "phrase:wertschaetzung_von_lebensmitteln",
+      "regex": "\\bwertschaetz[a-z]*\\s+von\\s+lebensmittel[n]?\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:krisenvorsorgelager",
+      "regex": "\\bkrisen(?:-|\\s)?vorsorgelager[a-z]*\\b",
+      "priority": 3,
+      "tags": [
+        "sicherheit_resilienz"
+      ],
+      "evidence_family": "food_emergency_stock",
+      "notes": [
+        "Krisenvorsorgelager nur bei Lebensmitteln/Ernährung, nicht für allgemeine Material- oder",
+        "Medizinlager."
+      ],
+      "context_any": [
+        "(?<![a-z])(?:(?:(?:lebensmittel[a-z]*|nahrungsmittel[a-z]*|futtermittel[a-z]*|ernaehr[a-z]*|essen[a-z]*|speise[a-z]*|getraenk[a-z]*|fleisch[a-z]*|wurst[a-z]*|milch[a-z]*|ei(?:er|es|ern)?|kaese[a-z]*|brot[a-z]*|gemuese[a-z]*|obst[a-z]*|getreide[a-z]*|kartoffel[a-z]*|zucker[a-z]*|bier[a-z]*|wein[a-z]*)|ernaehrungsvorsorge[a-z]*|notfallreserve[a-z]*|zivile[a-z]*\\s+notfallreserve[a-z]*))(?![a-z])"
+      ],
+      "context_none": [],
+      "context_window": 180,
+      "context_distinct": true,
+      "role": "context"
+    },
+    {
+      "key": "phrase:virtuelles_wasser_in_lebensmitteln",
+      "regex": "\\bvirtuell[a-z]*\\s+wasser\\s+in\\s+lebensmittel[n]?\\b",
+      "priority": 2,
+      "tags": [
+        "oekologie"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "phrase:humusbilanz",
+      "regex": "\\bhumusbilanz(?:en)?\\b",
+      "priority": 3,
+      "tags": [
+        "oekologie"
+      ],
+      "evidence_family": "agri_humus",
+      "notes": [
+        "Humusbilanz nur mit landwirtschaftlichem Boden-/Bewirtschaftungskontext."
+      ],
+      "context_any": [
+        "(?<![a-z])(?:(?:(?:agrar[a-z]*|landwirtschaft[a-z]*|landwirt[a-z]*|acker[a-z]*|feld(?:er|es|en)?|hof(?:e|es|en|s)?|hoef[a-z]*|bauern[a-z]*|baeuerlich[a-z]*|ernte[a-z]*|anbau[a-z]*|pflanzenbau[a-z]*|gartenbau[a-z]*|kulturpflanz[a-z]*)|dueng[a-z]*|boden[a-z]*|fruchtfolg[a-z]*|kulturpflanz[a-z]*))(?![a-z])"
+      ],
+      "context_none": [],
+      "context_window": 180,
+      "context_distinct": true,
+      "role": "context"
+    },
+    {
+      "key": "stem:fermentation",
+      "regex": "\\bferment[a-z]*\\b",
+      "priority": 3,
+      "evidence_family": "food_fermentation",
+      "notes": [
+        "Fermentation ist technisch breit; Lebensmittel-, Getränke-, Futter- oder",
+        "Proteinherstellung erforderlich."
+      ],
+      "context_any": [
+        "(?<![a-z])(?:(?:(?:(?:lebensmittel[a-z]*|nahrungsmittel[a-z]*|futtermittel[a-z]*|ernaehr[a-z]*|essen[a-z]*|speise[a-z]*|getraenk[a-z]*|fleisch[a-z]*|wurst[a-z]*|milch[a-z]*|ei(?:er|es|ern)?|kaese[a-z]*|brot[a-z]*|gemuese[a-z]*|obst[a-z]*|getreide[a-z]*|kartoffel[a-z]*|zucker[a-z]*|bier[a-z]*|wein[a-z]*)|lebensmittel[a-z]*(?:lieferkett|wertschoepfungskett|einzelhandel|handel|verarbeit|herstell)[a-z]*|nahrungsmittel[a-z]*(?:lieferkett|wertschoepfungskett|handel|verarbeit|herstell)[a-z]*|agrar[a-z]*(?:lieferkett|wertschoepfungskett|handel|markt)[a-z]*|supermarkt[a-z]*|molkerei[a-z]*|schlachtkonzern[a-z]*|discounter[a-z]*)|gaer[a-z]*|brau[a-z]*|zutat[a-z]*|protein[a-z]*))(?![a-z])"
+      ],
+      "context_none": [
+        "(?<![a-z])(?:(?:industrie[a-z]*\\s+ferment[a-z]*|bioreaktor[a-z]*|arzneimittel[a-z]*))(?![a-z])"
+      ],
+      "context_window": 180,
+      "context_distinct": true,
+      "role": "context"
+    },
+    {
+      "key": "stem:hochverarbeitet",
+      "regex": "\\bhochverarbeit[a-z]*\\b",
+      "priority": 3,
+      "evidence_family": "processed_food",
+      "notes": [
+        "Hochverarbeitet nur bei Lebensmitteln/Ernährung/Produkten."
+      ],
+      "context_any": [
+        "(?<![a-z])(?:(?:(?:(?:lebensmittel[a-z]*|nahrungsmittel[a-z]*|futtermittel[a-z]*|ernaehr[a-z]*|essen[a-z]*|speise[a-z]*|getraenk[a-z]*|fleisch[a-z]*|wurst[a-z]*|milch[a-z]*|ei(?:er|es|ern)?|kaese[a-z]*|brot[a-z]*|gemuese[a-z]*|obst[a-z]*|getreide[a-z]*|kartoffel[a-z]*|zucker[a-z]*|bier[a-z]*|wein[a-z]*)|lebensmittel[a-z]*(?:lieferkett|wertschoepfungskett|einzelhandel|handel|verarbeit|herstell)[a-z]*|nahrungsmittel[a-z]*(?:lieferkett|wertschoepfungskett|handel|verarbeit|herstell)[a-z]*|agrar[a-z]*(?:lieferkett|wertschoepfungskett|handel|markt)[a-z]*|supermarkt[a-z]*|molkerei[a-z]*|schlachtkonzern[a-z]*|discounter[a-z]*)|produkt[a-z]*|kost[a-z]*|mahlzeit[a-z]*|vegan[a-z]*|vegetar[a-z]*|fleischersatz[a-z]*))(?![a-z])"
+      ],
+      "context_none": [],
+      "context_window": 140,
+      "context_distinct": true,
+      "role": "context"
+    },
+    {
+      "key": "stem:discounter",
+      "regex": "\\bdiscounter\\b",
+      "priority": 3,
+      "tags": [
+        "oekonomie"
+      ],
+      "evidence_family": "food_discount_retail",
+      "notes": [
+        "Discounter mit Lebensmittel-/Preis-/Konsumkontext; Bücher- und",
+        "Parkplatz/Ladeinfrastrukturkontexte ausgeschlossen."
+      ],
+      "context_any": [
+        "(?<![a-z])(?:(?:(?:(?:lebensmittel[a-z]*|nahrungsmittel[a-z]*|futtermittel[a-z]*|ernaehr[a-z]*|essen[a-z]*|speise[a-z]*|getraenk[a-z]*|fleisch[a-z]*|wurst[a-z]*|milch[a-z]*|ei(?:er|es|ern)?|kaese[a-z]*|brot[a-z]*|gemuese[a-z]*|obst[a-z]*|getreide[a-z]*|kartoffel[a-z]*|zucker[a-z]*|bier[a-z]*|wein[a-z]*)|lebensmittel[a-z]*(?:lieferkett|wertschoepfungskett|einzelhandel|handel|verarbeit|herstell)[a-z]*|nahrungsmittel[a-z]*(?:lieferkett|wertschoepfungskett|handel|verarbeit|herstell)[a-z]*|agrar[a-z]*(?:lieferkett|wertschoepfungskett|handel|markt)[a-z]*|supermarkt[a-z]*|molkerei[a-z]*|schlachtkonzern[a-z]*|discounter[a-z]*)|lebensmitteleinzelhandel[a-z]*|preis[a-z]*|verbraucher[a-z]*|lebensmittellieferant[a-z]*))(?![a-z])"
+      ],
+      "context_none": [
+        "(?<![a-z])(?:(?:buecher[a-z]*|park(?:-|\\s)?plaetz[a-z]*|stellplaetz[a-z]*|ladesaeul[a-z]*))(?![a-z])"
+      ],
+      "context_window": 180,
+      "context_distinct": true,
+      "role": "context"
+    },
+    {
+      "key": "stem:mangelernaehrung",
+      "regex": "\\bmangelernaehrung[a-z]*\\b",
+      "priority": 3,
+      "tags": [
+        "gesundheit_ambig"
+      ],
+      "notes": [
+        "Keine Direktregel. Erfasst nur gesellschaftliche bzw. versorgungspolitische",
+        "Verwendungen mit explizitem Zugangs-/Versorgungskontext; rein klinische und",
+        "behandlungsbezogene Verwendungen werden ausgeschlossen."
+      ],
+      "context_any": [
+        "(?<![a-z])(?:ernaehrungssicherheit[a-z]*|ernaehrungsunsicherheit[a-z]*|lebensmittelversorgung[a-z]*|nahrungsmittelversorgung[a-z]*|lebensmittelzugang[a-z]*|nahrungsmittelzugang[a-z]*|ernaehrungsarmut[a-z]*|armut[a-z]*|versorgungslage[a-z]*|versorgungssicher[a-z]*|lebensmittelhilfe[a-z]*|nahrungsmittelhilfe[a-z]*)(?![a-z])"
+      ],
+      "context_none": [
+        "(?<![a-z])(?:patient[a-z]*|klinisch[a-z]*|therap[a-z]*|diagnos[a-z]*|krankheit[a-z]*|stationaer[a-z]*|intensivmedizin[a-z]*|palliativ[a-z]*|medizinisch[a-z]*|behandlung[a-z]*)(?![a-z])"
+      ],
+      "context_window": 180,
+      "context_distinct": true,
+      "role": "context"
+    },
+    {
+      "key": "stem:ernaehrungswende",
+      "regex": "\\bernaehrungswende\\b",
+      "priority": 2,
+      "tags": [
+        "oekologie",
+        "food_policy_anchor"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:kantinenessen",
+      "regex": "\\bkantinenessen\\b|\\bkantine(?:n)?essen\\b",
+      "priority": 1,
+      "role": "direct"
+    },
+    {
+      "key": "stem:flexitarier",
+      "regex": "\\bflexitarier[a-z]*\\b",
+      "priority": 3,
+      "tags": [
+        "gesundheit_ambig"
+      ],
+      "evidence_family": "dietary_pattern",
+      "notes": [
+        "Flexitarier ist Teil derselben Ernährungsweisenfamilie wie vegan/vegetarisch; diese",
+        "Aliasgruppe bestätigt sich nicht selbst."
+      ],
+      "context_any": [
+        "(?<![a-z])(?:(?:lebensmittel[a-z]*|nahrungsmittel[a-z]*|ernaehrungsweise[a-z]*|ernaehrungsart[a-z]*|konsum[a-z]*|absatz[a-z]*|lebensmitteleinzelhandel[a-z]*|produkt[a-z]*|angebot[a-z]*|speiseplan[a-z]*|gemeinschaftsverpfleg[a-z]*))(?![a-z])"
+      ],
+      "context_none": [],
+      "context_window": 180,
+      "context_distinct": true,
+      "role": "context"
+    },
+    {
+      "key": "stem:veganismus",
+      "regex": "\\bveganismus\\b|\\bvegan[a-z]*\\b",
+      "priority": 3,
+      "tags": [
+        "gesundheit_ambig"
+      ],
+      "evidence_family": "dietary_pattern",
+      "notes": [
+        "Vegane Produkt-, Kennzeichnungs-, Angebots- und institutionelle Ernährungsbezüge",
+        "einschließen; private Ernährungspräferenz allein nicht."
+      ],
+      "context_any": [
+        "(?<![a-z])(?:(?:lebensmittel[a-z]*|nahrungsmittel[a-z]*|ernaehrungsweise[a-z]*|ernaehrungsart[a-z]*|konsum[a-z]*|absatz[a-z]*|lebensmitteleinzelhandel[a-z]*|produkt[a-z]*|angebot[a-z]*|speiseplan[a-z]*|rezept[a-z]*|kennzeichn[a-z]*|bezeichnungsverb[a-z]*|etikett[a-z]*|packung[a-z]*|kita[a-z]*|schule[a-z]*|kantine[a-z]*|gemeinschaftsverpfleg[a-z]*|buerger(?:-|\\s)?rat[a-z]*|fleischersatz[a-z]*))(?![a-z])"
+      ],
+      "context_none": [
+        "(?<![a-z])(?:(?:wie\\s+ein\\s+veganer\\s+fuer\\s+die\\s+bratwurst|glaeubig[a-z]*\\s+gemeinschaft\\s+der\\s+heilig[a-z]*\\s+vegania))(?![a-z])"
+      ],
+      "context_window": 180,
+      "context_distinct": true,
+      "role": "context"
+    },
+    {
+      "key": "stem:suessungsmittel",
+      "regex": "\\bsuessungsmittel[a-z]*\\b",
+      "priority": 3,
+      "tags": [
+        "gesundheit_ambig"
+      ],
+      "evidence_family": "food_sweetener",
+      "notes": [
+        "Süßungsmittel nur als Lebensmittel-/Getränkezutat; technische Naturstofflisten werden",
+        "nicht durch bloße Koexistenz qualifiziert."
+      ],
+      "context_any": [
+        "(?<![a-z])(?:(?:(?:(?:lebensmittel[a-z]*|nahrungsmittel[a-z]*|futtermittel[a-z]*|ernaehr[a-z]*|essen[a-z]*|speise[a-z]*|getraenk[a-z]*|fleisch[a-z]*|wurst[a-z]*|milch[a-z]*|ei(?:er|es|ern)?|kaese[a-z]*|brot[a-z]*|gemuese[a-z]*|obst[a-z]*|getreide[a-z]*|kartoffel[a-z]*|zucker[a-z]*|bier[a-z]*|wein[a-z]*)|lebensmittel[a-z]*(?:lieferkett|wertschoepfungskett|einzelhandel|handel|verarbeit|herstell)[a-z]*|nahrungsmittel[a-z]*(?:lieferkett|wertschoepfungskett|handel|verarbeit|herstell)[a-z]*|agrar[a-z]*(?:lieferkett|wertschoepfungskett|handel|markt)[a-z]*|supermarkt[a-z]*|molkerei[a-z]*|schlachtkonzern[a-z]*|discounter[a-z]*)|stevia[a-z]*|zutat[a-z]*|zusatzstoff[a-z]*|zucker[a-z]*|getraenk[a-z]*))(?![a-z])"
+      ],
+      "context_none": [],
+      "context_window": 160,
+      "context_distinct": true,
+      "role": "context"
+    },
+    {
+      "key": "stem:qualzucht",
+      "regex": "\\bqualzucht[a-z]*\\b",
+      "priority": 3,
+      "evidence_family": "livestock_breeding_welfare",
+      "notes": [
+        "Qualzucht im Nutztierbereich einschließen; Heimtier-, Zirkus- und Versuchstierkontexte",
+        "ausschließen."
+      ],
+      "context_any": [
+        "(?<![a-z])(?:(?:(?:nutztiere?[a-z]*|tierhalt[a-z]*|intensivtierhalt[a-z]*|stall[a-z]*|rind[a-z]*|kuh|kueh[a-z]*|kalb|kaelb[a-z]*|schwein[a-z]*|ferkel[a-z]*|gefluegel[a-z]*|huhn|huehn[a-z]*|pute[a-z]*|schaf(?:e|es|en|herd[a-z]*|halt[a-z]*|zucht[a-z]*|fleisch[a-z]*|wolle[a-z]*)?|ziege[a-z]*|mastvieh[a-z]*|vieh[a-z]*|milchvieh[a-z]*|schlacht[a-z]*)|intensivtierhalt[a-z]*|nutz[a-z]*\\s+tier[a-z]*|anbindehalt[a-z]*|landwirtschaft[a-z]*))(?![a-z])"
+      ],
+      "context_none": [
+        "(?<![a-z])(?:(?:hund[a-z]*|katze[a-z]*|heimtier[a-z]*|haustier[a-z]*|exot[a-z]*|zirkus[a-z]*|versuchstier[a-z]*|tierversuch[a-z]*))(?![a-z])"
+      ],
+      "context_window": 180,
+      "context_distinct": true,
+      "role": "context"
+    },
+    {
+      "key": "stem:nitratbelastung",
+      "regex": "\\bnitratbelastung[a-z]*\\b",
+      "priority": 3,
+      "tags": [
+        "oekologie"
+      ],
+      "notes": [
+        "Benötigt den ausdrücklich hinterlegten Agrarkontext; Begriffsfamilie wie stem:nitrat."
+      ],
+      "evidence_family": "agri_nitrate",
+      "context_any": [
+        "(?<![a-z])(?:(?:(?:agrar[a-z]*|landwirtschaft[a-z]*|landwirt[a-z]*|acker[a-z]*|feld(?:er|es|en)?|hof(?:e|es|en|s)?|hoef[a-z]*|bauern[a-z]*|baeuerlich[a-z]*|ernte[a-z]*|anbau[a-z]*|pflanzenbau[a-z]*|gartenbau[a-z]*|kulturpflanz[a-z]*)|(?:nutztiere?[a-z]*|tierhalt[a-z]*|intensivtierhalt[a-z]*|stall[a-z]*|rind[a-z]*|kuh|kueh[a-z]*|kalb|kaelb[a-z]*|schwein[a-z]*|ferkel[a-z]*|gefluegel[a-z]*|huhn|huehn[a-z]*|pute[a-z]*|schaf(?:e|es|en|herd[a-z]*|halt[a-z]*|zucht[a-z]*|fleisch[a-z]*|wolle[a-z]*)?|ziege[a-z]*|mastvieh[a-z]*|vieh[a-z]*|milchvieh[a-z]*|schlacht[a-z]*)|dueng[a-z]*|gedueng[a-z]*|guelle[a-z]*|biogas[a-z]*|ueberdueng[a-z]*|(?:\\bbmel\\b|bundesministerium(?:s)?\\s+fuer\\s+ernaehrung\\s+und\\s+landwirtschaft|bundesanstalt\\s+fuer\\s+landwirtschaft\\s+und\\s+ernaehrung|\\bble\\b|landwirtschaftsminister[a-z]*)))(?![a-z])"
+      ],
+      "context_none": [
+        "(?<![a-z])(?:(?:verkehr[a-z]*|diesel(?:-|\\s)?pkw[a-z]*))(?![a-z])"
+      ],
+      "context_window": 180,
+      "context_distinct": true,
+      "role": "context"
+    },
+    {
+      "key": "stem:humusaufbau",
+      "regex": "\\bhumusaufbau\\b",
+      "priority": 3,
+      "tags": [
+        "oekologie"
+      ],
+      "evidence_family": "agri_humus",
+      "notes": [
+        "Humusaufbau mit Acker-/Agrarbodenbezug; Wald-/Waldgartenkontext allein nicht A&E."
+      ],
+      "context_any": [
+        "(?<![a-z])(?:(?:(?:agrar[a-z]*|landwirtschaft[a-z]*|landwirt[a-z]*|acker[a-z]*|feld(?:er|es|en)?|hof(?:e|es|en|s)?|hoef[a-z]*|bauern[a-z]*|baeuerlich[a-z]*|ernte[a-z]*|anbau[a-z]*|pflanzenbau[a-z]*|gartenbau[a-z]*|kulturpflanz[a-z]*)|dueng[a-z]*|boden[a-z]*|fruchtfolg[a-z]*|kulturpflanz[a-z]*|eiweisspflanz[a-z]*))(?![a-z])"
+      ],
+      "context_none": [
+        "(?<![a-z])(?:(?:waldumbau[a-z]*|wiederbewald[a-z]*|waldgarten[a-z]*))(?![a-z])"
+      ],
+      "context_window": 180,
+      "context_distinct": true,
+      "role": "context"
+    },
+    {
+      "key": "stem:monokultur",
+      "regex": "\\bmonokultur[a-z]*\\b",
+      "priority": 3,
+      "tags": [
+        "oekologie"
+      ],
+      "evidence_family": "agri_monoculture",
+      "notes": [
+        "Agrarische Anbau-Monokulturen einschließen; soziale Metaphern und Forstmonokulturen",
+        "ausschließen."
+      ],
+      "context_any": [
+        "(?<![a-z])(?:(?:(?:agrar[a-z]*|landwirtschaft[a-z]*|landwirt[a-z]*|acker[a-z]*|feld(?:er|es|en)?|hof(?:e|es|en|s)?|hoef[a-z]*|bauern[a-z]*|baeuerlich[a-z]*|ernte[a-z]*|anbau[a-z]*|pflanzenbau[a-z]*|gartenbau[a-z]*|kulturpflanz[a-z]*)|mais[a-z]*|raps[a-z]*|soja[a-z]*|energiemais[a-z]*|plantag[a-z]*|biogas[a-z]*|obst[a-z]*|gemuese[a-z]*))(?![a-z])"
+      ],
+      "context_none": [
+        "(?<![a-z])(?:(?:monoethn[a-z]*|demokrati[a-z]*|gesellschaft[a-z]*|unternehmensspitz[a-z]*|aufsichtsrat[a-z]*|technologieoffenheit[a-z]*|ideolog[a-z]*|fichten[a-z]*|kiefer[a-z]*|nadelholz[a-z]*|monokulturwald[a-z]*|mischwald[a-z]*|waldumbau[a-z]*))(?![a-z])"
+      ],
+      "context_window": 200,
+      "context_distinct": true,
+      "role": "context"
+    },
+    {
+      "key": "stem:stickstoffueberschuss",
+      "regex": "\\bstickstoffueberschuss[a-z]*\\b",
+      "priority": 3,
+      "tags": [
+        "oekologie"
+      ],
+      "evidence_family": "agri_nitrogen_surplus",
+      "notes": [
+        "Stickstoffüberschuss nur bei landwirtschaftlicher Nährstoff-/Düngungsursache."
+      ],
+      "context_any": [
+        "(?<![a-z])(?:(?:(?:agrar[a-z]*|landwirtschaft[a-z]*|landwirt[a-z]*|acker[a-z]*|feld(?:er|es|en)?|hof(?:e|es|en|s)?|hoef[a-z]*|bauern[a-z]*|baeuerlich[a-z]*|ernte[a-z]*|anbau[a-z]*|pflanzenbau[a-z]*|gartenbau[a-z]*|kulturpflanz[a-z]*)|(?:nutztiere?[a-z]*|tierhalt[a-z]*|intensivtierhalt[a-z]*|stall[a-z]*|rind[a-z]*|kuh|kueh[a-z]*|kalb|kaelb[a-z]*|schwein[a-z]*|ferkel[a-z]*|gefluegel[a-z]*|huhn|huehn[a-z]*|pute[a-z]*|schaf(?:e|es|en|herd[a-z]*|halt[a-z]*|zucht[a-z]*|fleisch[a-z]*|wolle[a-z]*)?|ziege[a-z]*|mastvieh[a-z]*|vieh[a-z]*|milchvieh[a-z]*|schlacht[a-z]*)|dueng[a-z]*|guelle[a-z]*|naehrstoff[a-z]*))(?![a-z])"
+      ],
+      "context_none": [
+        "(?<![a-z])(?:(?:verkehr[a-z]*|diesel[a-z]*|abgas[a-z]*|pkw[a-z]*))(?![a-z])"
+      ],
+      "context_window": 180,
+      "context_distinct": true,
+      "role": "context"
+    },
+    {
+      "key": "stem:methanausstoss",
+      "regex": "\\bmethan(?:-|\\s)?ausstoss[a-z]*\\b|\\bmethanausstoss[a-z]*\\b",
+      "priority": 3,
+      "tags": [
+        "oekologie"
+      ],
+      "evidence_family": "livestock_methane",
+      "notes": [
+        "Methan aus Tierhaltung/Landwirtschaft einschließen; fossile Förderung/Energie",
+        "ausschließen."
+      ],
+      "context_any": [
+        "(?<![a-z])(?:(?:(?:agrar[a-z]*|landwirtschaft[a-z]*|landwirt[a-z]*|acker[a-z]*|feld(?:er|es|en)?|hof(?:e|es|en|s)?|hoef[a-z]*|bauern[a-z]*|baeuerlich[a-z]*|ernte[a-z]*|anbau[a-z]*|pflanzenbau[a-z]*|gartenbau[a-z]*|kulturpflanz[a-z]*)|(?:nutztiere?[a-z]*|tierhalt[a-z]*|intensivtierhalt[a-z]*|stall[a-z]*|rind[a-z]*|kuh|kueh[a-z]*|kalb|kaelb[a-z]*|schwein[a-z]*|ferkel[a-z]*|gefluegel[a-z]*|huhn|huehn[a-z]*|pute[a-z]*|schaf(?:e|es|en|herd[a-z]*|halt[a-z]*|zucht[a-z]*|fleisch[a-z]*|wolle[a-z]*)?|ziege[a-z]*|mastvieh[a-z]*|vieh[a-z]*|milchvieh[a-z]*|schlacht[a-z]*)|guelle[a-z]*|wiederkaeu[a-z]*|tierproduktion[a-z]*))(?![a-z])"
+      ],
+      "context_none": [
+        "(?<![a-z])(?:(?:fossil[a-z]*|erdgas[a-z]*|brennstoff[a-z]*|gasfoerder[a-z]*|pipeline[a-z]*))(?![a-z])"
+      ],
+      "context_window": 180,
+      "context_distinct": true,
+      "role": "context"
+    },
+    {
+      "key": "stem:nuetzlingspopulation",
+      "regex": "\\bnuetzlingspopulation[a-z]*\\b",
+      "priority": 3,
+      "evidence_family": "agri_beneficial_insects",
+      "notes": [
+        "Nützlingspopulation nur mit Kulturpflanzen-/Pflanzenschutzkontext."
+      ],
+      "context_any": [
+        "(?<![a-z])(?:(?:(?:agrar[a-z]*|landwirtschaft[a-z]*|landwirt[a-z]*|acker[a-z]*|feld(?:er|es|en)?|hof(?:e|es|en|s)?|hoef[a-z]*|bauern[a-z]*|baeuerlich[a-z]*|ernte[a-z]*|anbau[a-z]*|pflanzenbau[a-z]*|gartenbau[a-z]*|kulturpflanz[a-z]*)|(?:pestizid[a-z]*|pflanzenschutz[a-z]*|herbizid[a-z]*|insektizid[a-z]*|fungizid[a-z]*|glyphosat[a-z]*|wirkstoff[a-z]*|rueckstand[a-z]*)|bestaeub[a-z]*|schadorganism[a-z]*))(?![a-z])"
+      ],
+      "context_none": [],
+      "context_window": 180,
+      "context_distinct": true,
+      "role": "context"
+    },
+    {
+      "key": "stem:selbstversorgungsgrad",
+      "regex": "\\bselbstversorgungsgrad[a-z]*\\b",
+      "priority": 3,
+      "tags": [
+        "sicherheit_resilienz"
+      ],
+      "evidence_family": "food_self_sufficiency",
+      "notes": [
+        "Der feste Indikator Selbstversorgungsgrad wird unmittelbar erfasst."
+      ],
+      "context_none": [],
+      "role": "direct"
+    },
+    {
+      "key": "stem:ernaehrungsnotfallvorsorgegesetz",
+      "regex": "\\bernaehrungsnotfallvorsorge[a-z]*\\b",
+      "priority": 2,
+      "tags": [
+        "sicherheit_resilienz"
+      ],
+      "notes": [
+        "Erfasst Ernährungsnotfallvorsorge einschließlich Gesetzesformen."
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:exportorientierung",
+      "regex": "\\bexportorientier[a-z]*\\b",
+      "priority": 3,
+      "tags": [
+        "oekonomie"
+      ],
+      "evidence_family": "agri_food_exports",
+      "notes": [
+        "Exportorientierung ist meist gesamtwirtschaftlich; konkretes Agrar-/Lebensmittelprodukt",
+        "erforderlich."
+      ],
+      "context_any": [
+        "(?<![a-z])(?:(?:(?:agrar[a-z]*|landwirtschaft[a-z]*|landwirt[a-z]*|acker[a-z]*|feld(?:er|es|en)?|hof(?:e|es|en|s)?|hoef[a-z]*|bauern[a-z]*|baeuerlich[a-z]*|ernte[a-z]*|anbau[a-z]*|pflanzenbau[a-z]*|gartenbau[a-z]*|kulturpflanz[a-z]*)|(?:nutztiere?[a-z]*|tierhalt[a-z]*|intensivtierhalt[a-z]*|stall[a-z]*|rind[a-z]*|kuh|kueh[a-z]*|kalb|kaelb[a-z]*|schwein[a-z]*|ferkel[a-z]*|gefluegel[a-z]*|huhn|huehn[a-z]*|pute[a-z]*|schaf(?:e|es|en|herd[a-z]*|halt[a-z]*|zucht[a-z]*|fleisch[a-z]*|wolle[a-z]*)?|ziege[a-z]*|mastvieh[a-z]*|vieh[a-z]*|milchvieh[a-z]*|schlacht[a-z]*)|(?:lebensmittel[a-z]*|nahrungsmittel[a-z]*|futtermittel[a-z]*|ernaehr[a-z]*|essen[a-z]*|speise[a-z]*|getraenk[a-z]*|fleisch[a-z]*|wurst[a-z]*|milch[a-z]*|ei(?:er|es|ern)?|kaese[a-z]*|brot[a-z]*|gemuese[a-z]*|obst[a-z]*|getreide[a-z]*|kartoffel[a-z]*|zucker[a-z]*|bier[a-z]*|wein[a-z]*)|tierproduktion[a-z]*|agrarproduktion[a-z]*|lebensmittelproduktion[a-z]*))(?![a-z])"
+      ],
+      "context_none": [],
+      "context_window": 220,
+      "context_distinct": true,
+      "role": "context"
+    },
+    {
+      "key": "stem:marktkonzentration",
+      "regex": "\\bmarktkonzentration[a-z]*\\b",
+      "priority": 3,
+      "tags": [
+        "oekonomie"
+      ],
+      "evidence_family": "agri_food_market_concentration",
+      "notes": [
+        "Marktkonzentration ist sektorenübergreifend; konkreter A&E-Markt/Lieferkettengegenstand",
+        "erforderlich."
+      ],
+      "context_any": [
+        "(?<![a-z])(?:(?:(?:agrar[a-z]*|landwirtschaft[a-z]*|landwirt[a-z]*|acker[a-z]*|feld(?:er|es|en)?|hof(?:e|es|en|s)?|hoef[a-z]*|bauern[a-z]*|baeuerlich[a-z]*|ernte[a-z]*|anbau[a-z]*|pflanzenbau[a-z]*|gartenbau[a-z]*|kulturpflanz[a-z]*)|(?:nutztiere?[a-z]*|tierhalt[a-z]*|intensivtierhalt[a-z]*|stall[a-z]*|rind[a-z]*|kuh|kueh[a-z]*|kalb|kaelb[a-z]*|schwein[a-z]*|ferkel[a-z]*|gefluegel[a-z]*|huhn|huehn[a-z]*|pute[a-z]*|schaf(?:e|es|en|herd[a-z]*|halt[a-z]*|zucht[a-z]*|fleisch[a-z]*|wolle[a-z]*)?|ziege[a-z]*|mastvieh[a-z]*|vieh[a-z]*|milchvieh[a-z]*|schlacht[a-z]*)|(?:lebensmittel[a-z]*|nahrungsmittel[a-z]*|futtermittel[a-z]*|ernaehr[a-z]*|essen[a-z]*|speise[a-z]*|getraenk[a-z]*|fleisch[a-z]*|wurst[a-z]*|milch[a-z]*|ei(?:er|es|ern)?|kaese[a-z]*|brot[a-z]*|gemuese[a-z]*|obst[a-z]*|getreide[a-z]*|kartoffel[a-z]*|zucker[a-z]*|bier[a-z]*|wein[a-z]*)|lebensmitteleinzelhandel[a-z]*|agrarmarkt[a-z]*|schlachtkonzern[a-z]*|molkerei[a-z]*))(?![a-z])"
+      ],
+      "context_none": [],
+      "context_window": 220,
+      "context_distinct": true,
+      "role": "context"
+    },
+    {
+      "key": "stem:mrl",
+      "regex": "\\bmrl\\b",
+      "priority": 3,
+      "evidence_family": "pesticide_mrl",
+      "notes": [
+        "MRL ist ein mehrdeutiges Kürzel; nur Pflanzenschutz-/Rückstands-/Lebensmittelkontext."
+      ],
+      "context_any": [
+        "(?<![a-z])(?:(?:(?:pestizid[a-z]*|pflanzenschutz[a-z]*|herbizid[a-z]*|insektizid[a-z]*|fungizid[a-z]*|glyphosat[a-z]*|wirkstoff[a-z]*|rueckstand[a-z]*)|(?:(?:lebensmittel[a-z]*|nahrungsmittel[a-z]*|futtermittel[a-z]*|ernaehr[a-z]*|essen[a-z]*|speise[a-z]*|getraenk[a-z]*|fleisch[a-z]*|wurst[a-z]*|milch[a-z]*|ei(?:er|es|ern)?|kaese[a-z]*|brot[a-z]*|gemuese[a-z]*|obst[a-z]*|getreide[a-z]*|kartoffel[a-z]*|zucker[a-z]*|bier[a-z]*|wein[a-z]*)|lebensmittel[a-z]*(?:lieferkett|wertschoepfungskett|einzelhandel|handel|verarbeit|herstell)[a-z]*|nahrungsmittel[a-z]*(?:lieferkett|wertschoepfungskett|handel|verarbeit|herstell)[a-z]*|agrar[a-z]*(?:lieferkett|wertschoepfungskett|handel|markt)[a-z]*|supermarkt[a-z]*|molkerei[a-z]*|schlachtkonzern[a-z]*|discounter[a-z]*)|rueckstandsgrenzwert[a-z]*))(?![a-z])"
+      ],
+      "context_none": [],
+      "context_window": 160,
+      "context_distinct": true,
+      "role": "context"
+    },
+    {
+      "key": "stem:lebensmittelverschwendung",
+      "regex": "\\blebensmittelverschwend[a-z]*\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:duengeverordnung",
+      "regex": "\\bduengeverordnung\\b|\\bduenge(?:-|\\s)?verordnung\\b",
+      "priority": 2,
+      "tags": [
+        "oekologie"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:stoffstrombilanz",
+      "regex": "\\bstoffstrombilanz[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "oekologie"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:pflanzenschutzmittel",
+      "regex": "\\bpflanzenschutzmittel[a-z]*\\b",
+      "priority": 2,
+      "tags": [
+        "oekologie"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:psm",
+      "regex": "\\bpsm\\b",
+      "priority": 1,
+      "tags": [
+        "oekologie"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:pflschanwv",
+      "regex": "\\bpflschanwv\\b",
+      "priority": 1,
+      "tags": [
+        "oekologie"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "phrase:pflanzenschutz_anwendungsverordnung",
+      "regex": "\\bpflanzenschutz(?:-|\\s)?anwendungsverordnung\\b",
+      "priority": 2,
+      "tags": [
+        "oekologie"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "phrase:tierarzneimittelgesetz",
+      "regex": "\\btierarzneimittelgesetz[a-z]*\\b",
+      "priority": 2,
+      "tags": [
+        "gesundheit"
+      ],
+      "notes": [
+        "Flexions- und Kompositumformen des eindeutigen Gesetzesbegriffs werden erfasst."
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:tamg",
+      "regex": "\\btamg\\b",
+      "priority": 1,
+      "tags": [
+        "gesundheit"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:agrardiesel",
+      "regex": "\\bagrardiesel[a-z]*\\b",
+      "priority": 2,
+      "tags": [
+        "oekonomie"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "phrase:dieselrueckverguetung",
+      "regex": "\\bdiesel(?:-|\\s)?rueckverguetung[a-z]*\\b|\\bdiesel(?:-|\\s)?rueckerstattung[a-z]*\\b",
+      "priority": 3,
+      "tags": [
+        "oekonomie"
+      ],
+      "evidence_family": "agri_diesel_refund",
+      "notes": [
+        "Dieselrückvergütung ist ohne land-/forst-/fischereilichen Begünstigten nicht",
+        "sektorspezifisch."
+      ],
+      "context_any": [
+        "(?<![a-z])(?:(?:(?:agrar[a-z]*|landwirtschaft[a-z]*|landwirt[a-z]*|acker[a-z]*|feld(?:er|es|en)?|hof(?:e|es|en|s)?|hoef[a-z]*|bauern[a-z]*|baeuerlich[a-z]*|ernte[a-z]*|anbau[a-z]*|pflanzenbau[a-z]*|gartenbau[a-z]*|kulturpflanz[a-z]*)|(?:nutztiere?[a-z]*|tierhalt[a-z]*|intensivtierhalt[a-z]*|stall[a-z]*|rind[a-z]*|kuh|kueh[a-z]*|kalb|kaelb[a-z]*|schwein[a-z]*|ferkel[a-z]*|gefluegel[a-z]*|huhn|huehn[a-z]*|pute[a-z]*|schaf(?:e|es|en|herd[a-z]*|halt[a-z]*|zucht[a-z]*|fleisch[a-z]*|wolle[a-z]*)?|ziege[a-z]*|mastvieh[a-z]*|vieh[a-z]*|milchvieh[a-z]*|schlacht[a-z]*)|fischerei[a-z]*|fischer[a-z]*|traktor[a-z]*|trecker[a-z]*|agrardiesel[a-z]*))(?![a-z])"
+      ],
+      "context_none": [],
+      "context_window": 200,
+      "context_distinct": true,
+      "role": "context"
+    },
+    {
+      "key": "phrase:energiesteuerrueckverguetung",
+      "regex": "\\benergiesteuer(?:-|\\s)?rueckverguetung[a-z]*\\b|\\benergiesteuer(?:-|\\s)?rueckerstattung[a-z]*\\b",
+      "priority": 3,
+      "tags": [
+        "oekonomie"
+      ],
+      "evidence_family": "agri_energy_tax_refund",
+      "notes": [
+        "Energiesteuerrückvergütung nur für agrar-/fischereibezogene Begünstigte."
+      ],
+      "context_any": [
+        "(?<![a-z])(?:(?:(?:agrar[a-z]*|landwirtschaft[a-z]*|landwirt[a-z]*|acker[a-z]*|feld(?:er|es|en)?|hof(?:e|es|en|s)?|hoef[a-z]*|bauern[a-z]*|baeuerlich[a-z]*|ernte[a-z]*|anbau[a-z]*|pflanzenbau[a-z]*|gartenbau[a-z]*|kulturpflanz[a-z]*)|(?:nutztiere?[a-z]*|tierhalt[a-z]*|intensivtierhalt[a-z]*|stall[a-z]*|rind[a-z]*|kuh|kueh[a-z]*|kalb|kaelb[a-z]*|schwein[a-z]*|ferkel[a-z]*|gefluegel[a-z]*|huhn|huehn[a-z]*|pute[a-z]*|schaf(?:e|es|en|herd[a-z]*|halt[a-z]*|zucht[a-z]*|fleisch[a-z]*|wolle[a-z]*)?|ziege[a-z]*|mastvieh[a-z]*|vieh[a-z]*|milchvieh[a-z]*|schlacht[a-z]*)|fischerei[a-z]*|fischer[a-z]*|agrardiesel[a-z]*))(?![a-z])"
+      ],
+      "context_none": [],
+      "context_window": 200,
+      "context_distinct": true,
+      "role": "context"
+    },
+    {
+      "key": "phrase:ernteausfall",
+      "regex": "\\bernte(?:-|\\s)?ausf(?:all|aell)[a-z]*\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:ernteschaeden",
+      "regex": "\\bernte(?:-|\\s)?(?:sch(?:ad|aed)[a-z]*|einbusse(?:n)?)\\b",
+      "priority": 2,
+      "notes": [
+        "Erfasst Ernteschäden und Ernteeinbußen."
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "phrase:erntehelfer",
+      "regex": "\\bernte(?:-|\\s)?helfer(?:in|innen|n)?\\b",
+      "priority": 3,
+      "notes": [
+        "Erntehelfer wird direkt erfasst; die benannte Personenmetapher wird lokal maskiert."
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "phrase:bauernverband",
+      "regex": "\\b(?:landes|bundes)?bauern(?:verband|verbaend)[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "akteur"
+      ],
+      "notes": [
+        "Expliziter Feldmarker für Bauernverband, Bauernverbände und entsprechende",
+        "Landes-/Bundesverbandsformen. Die bloße Kurzform DBV erhält keine direkte Positivregel."
+      ],
+      "role": "direct",
+      "label": "Bauernverband und Bauernverbände"
+    },
+    {
+      "key": "phrase:land_schafft_verbindung",
+      "regex": "\\bland\\s+schafft\\s+verbindung\\b",
+      "priority": 2,
+      "tags": [
+        "akteur"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "phrase:landwirtschaft_verbindet_deutschland",
+      "regex": "\\blandwirtschaft\\s+verbindet\\s+deutschland\\b",
+      "priority": 2,
+      "tags": [
+        "akteur"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "phrase:arbeitsgemeinschaft_baeuerliche_landwirtschaft",
+      "regex": "\\barbeitsgemeinschaft\\s+baeuerlich[a-z]*\\s+landwirtschaft\\b",
+      "priority": 2,
+      "tags": [
+        "akteur"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "phrase:zuckerreduktionsstrategie",
+      "regex": "\\bzuckerreduktionsstrategie[a-z]*\\b",
+      "priority": 2,
+      "tags": [
+        "food_policy_anchor"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "phrase:zuckersteuer",
+      "regex": "\\bzuckersteuer[a-z]*\\b",
+      "priority": 2,
+      "tags": [
+        "food_policy_anchor"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "phrase:getraenkesteuer",
+      "regex": "\\bgetraenkesteuer[a-z]*\\b|\\bsuessgetraenkesteuer[a-z]*\\b",
+      "priority": 2,
+      "tags": [
+        "food_policy_anchor"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "phrase:schulverpflegung",
+      "regex": "\\bschulverpflegung[a-z]*\\b",
+      "priority": 2,
+      "tags": [
+        "food_policy_anchor"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "phrase:systemrelevante_lebensmittelversorgung",
+      "regex": "\\b(?:systemrelevant[a-z]*\\s+lebensmittelversorgung|lebensmittelversorgung\\s+(?:ist|bleibt|war|sei|sind|waren|seien|bleiben)\\s+systemrelevant[a-z]*)\\b",
+      "priority": 2,
+      "tags": [
+        "sicherheit_resilienz",
+        "corona"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "phrase:systemrelevante_ernaehrungswirtschaft",
+      "regex": "\\b(?:systemrelevant[a-z]*\\s+ernaehrungswirtschaft|ernaehrungswirtschaft\\s+(?:ist|bleibt|war|sei|sind|waren|seien|bleiben)\\s+systemrelevant[a-z]*)\\b",
+      "priority": 2,
+      "tags": [
+        "sicherheit_resilienz",
+        "corona"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "phrase:systemrelevante_landwirtschaft",
+      "regex": "\\b(?:systemrelevant[a-z]*\\s+landwirtschaft|landwirtschaft\\s+(?:ist|bleibt|war|sei|sind|waren|seien|bleiben)\\s+systemrelevant[a-z]*)\\b",
+      "priority": 2,
+      "tags": [
+        "sicherheit_resilienz",
+        "corona"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "phrase:regionale_lebensmittelversorgung",
+      "regex": "\\bregional[a-z]*\\s+lebensmittelversorgung\\b|\\blebensmittelversorgung\\s+(?:regional[a-z]*|aus\\s+der\\s+region)\\b",
+      "priority": 2,
+      "tags": [
+        "sicherheit_resilienz",
+        "oekonomie"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "phrase:regionale_lebensmittelproduktion",
+      "regex": "\\bregional[a-z]*\\s+lebensmittelproduktion\\b|\\blebensmittelproduktion\\s+(?:regional[a-z]*|in\\s+der\\s+region)\\b",
+      "priority": 2,
+      "tags": [
+        "oekonomie"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "phrase:regionale_ernaehrungssysteme",
+      "regex": "\\bregional[a-z]*\\s+ernaehrungssystem(?:e|en)?\\b",
+      "priority": 2,
+      "tags": [
+        "oekonomie",
+        "sicherheit_resilienz"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "phrase:nitratrichtlinie",
+      "regex": "\\bnitrat(?:-|\\s)?richtlinie[a-z]*\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "stem:ernaehrung_lebensmittelsysteme",
+      "regex": "\\b(?:ernaehrungs|lebensmittel)system[a-z]*\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "stem:grundnahrungsmittel",
+      "regex": "\\bgrundnahrungsmittel[a-z]*\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "stem:lebensmittelpreise",
+      "regex": "\\b(?:lebensmittel|nahrungsmittel)(?:-|\\s)?preis[a-z]*\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "stem:lebensmittelversorgung",
+      "regex": "\\b(?:lebensmittel|nahrungsmittel)(?:-|\\s)?versorgung[a-z]*\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "stem:lebensmittelproduktion",
+      "regex": "\\b(?:lebensmittel|nahrungsmittel)(?:-|\\s)?(?:produktion|erzeugung|herstellung)[a-z]*\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "stem:lebensmittelhandel_markt",
+      "regex": "\\b(?:lebensmittel|nahrungsmittel)(?:-|\\s)?(?:handel|markt)[a-z]*\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "stem:acker_pflanzenbau",
+      "regex": "\\b(?:ackerbau|pflanzenbau)[a-z]*\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "stem:vieh_nutztier_tierzucht",
+      "regex": "\\b(?:viehhaltung|viehzucht|viehwirtschaft|nutztierhaltung|nutztierzucht|tierzucht|tierproduktion)[a-z]*\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "stem:milchsektor",
+      "regex": "\\b(?:milchproduktion|milcherzeug[a-z]*|milchwirtschaft|milchmarkt[a-z]*|milchpreis[a-z]*|milchbaeuer[a-z]*|milchbauer[n]?|milchbetrieb[a-z]*)\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "stem:fleischsektor",
+      "regex": "\\b(?:fleischproduktion|fleischerzeug[a-z]*|fleischkonsum|fleischverzehr|fleischmarkt[a-z]*|fleischpreis[a-z]*)\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "stem:getreidesektor",
+      "regex": "\\b(?:getreideproduktion|getreideanbau|getreidemarkt[a-z]*|getreidepreis[a-z]*)\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "stem:sonderkulturen",
+      "regex": "\\b(?:obstbau|gemuesebau|weinbau|hopfenbau|kartoffelanbau|zuckerruebenanbau|ruebenanbau|(?:apfel|aepfel)(?:-|\\s)?anbau)[a-z]*\\b",
+      "priority": 2,
+      "notes": [
+        "Erfasst Sonderkulturen einschließlich der benannten Obstbauformen."
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:agrarpraemien_erweitert",
+      "regex": "\\b(?:basis|umverteilungs|junglandwirte|betriebs|oekoregelungs)(?:-|\\s)?praemi[a-z]*\\b",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:agrifood_input_verfuegbarkeit",
+      "regex": "(?:\\b(?:duengemittel|mineralduenger|duenger|saatgut|futtermittel|lebensmittel|nahrungsmittel|grundnahrungsmittel|agrarrohstoff)(?:-|\\s)?verfuegbar(?:keit)?[a-z]*\\b|\\bverfuegbarkeit[a-z]*\\b[^.!?]{0,60}\\b(?:duengemittel(?:n)?|mineralduenger(?:n)?|duenger(?:n|s)?|mineralisch[a-z]*\\s+duenger(?:n|s)?|saatgut(?:s)?|saatgueter(?:n)?|futtermittel(?:n)?|lebensmittel(?:n)?|nahrungsmittel(?:n)?|grundnahrungsmittel(?:n)?|agrarrohstoff(?:e|en|s)?)\\b|\\b(?:duengemittel|mineralduenger|duenger|saatgut|saatgueter|futtermittel|lebensmittel|nahrungsmittel|grundnahrungsmittel|agrarrohstoff(?:e)?)\\b[^.!?]{0,60}\\b(?:ist|sind|sei|seien|war|waren|waere|waeren|bleibt|bleiben|blieb|blieben|wird|werden|steht|stehen|stand|standen)\\b[^.!?]{0,60}\\bverfuegbar\\b|\\b(?:duengemittel|mineralduenger|duenger|saatgut|saatgueter|futtermittel|lebensmittel|nahrungsmittel|grundnahrungsmittel|agrarrohstoff(?:e)?)\\b[^.!?]{0,60}\\bverfuegbar\\b\\s+(?:ist|sind|sei|seien|war|waren|waere|waeren|bleibt|bleiben|blieb|blieben|wird|werden|steht|stehen|stand|standen)\\b|\\b(?:duengemittel|mineralduenger|duenger|saatgut|saatgueter|futtermittel|lebensmittel|nahrungsmittel|grundnahrungsmittel|agrarrohstoff(?:e)?)\\b[^.!?]{0,25}\\b(?:ist|sind|sei|seien|war|waren|waere|waeren|bleibt|bleiben|blieb|blieben|wird|werden|steht|stehen|stand|standen)\\b[^.!?]{0,25}\\bzur\\s+verfuegung\\b|(?<!fuer\\s)(?<!fuer die\\s)(?<!fuer den\\s)(?<!fuer das\\s)(?<!von\\s)(?<!von den\\s)(?<!von der\\s)(?<!mit\\s)(?<!mit den\\s)(?<!mit der\\s)\\b(?:duengemittel|mineralduenger|duenger|saatgut|saatgueter|futtermittel|lebensmittel|nahrungsmittel|grundnahrungsmittel|agrarrohstoff(?:e)?)\\b[^.!?]{0,25}\\bzur\\s+verfuegung\\s+(?:ist|sind|sei|seien|war|waren|waere|waeren|bleibt|bleiben|blieb|blieben|wird|werden|steht|stehen|stand|standen)\\b)",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "phrase:agrifood_input_abhaengigkeit",
+      "regex": "(?:\\b(?:duengemittel|mineralduenger|saatgut|futtermittel|lebensmittel|nahrungsmittel|grundnahrungsmittel|agrarrohstoff)(?:-|\\s)?(?:import(?:-|\\s)?)?(?:import)?abhaengig(?:keit)?[a-z]*\\b|\\b(?:import)?abhaengig(?:keit)?[a-z]*\\b[^.!?]{0,70}\\b(?:von|bei)\\s+(?:(?:der|dem|den|des|die|das|einer|einem|eines|unser[a-z]*|ihr[a-z]*|sein[a-z]*|eigen[a-z]*|hybrid[a-z]*|mineralisch[a-z]*|chemisch[a-z]*|importiert[a-z]*|auslaendisch[a-z]*|russisch[a-z]*)\\s+){0,4}\\b(?:duengemittel(?:n)?|mineralduenger(?:n)?|duenger(?:n|s)?|mineralisch[a-z]*\\s+duenger(?:n|s)?|saatgut(?:s)?|saatgueter(?:n)?|futtermittel(?:n)?|lebensmittel(?:n)?|nahrungsmittel(?:n)?|grundnahrungsmittel(?:n)?|agrarrohstoff(?:e|en|s)?|(?:duengemittel|futtermittel|lebensmittel|nahrungsmittel|grundnahrungsmittel|agrar|fleisch)(?:-|\\s)?import[a-z]*|(?:lebensmittel|nahrungsmittel|grundnahrungsmittel)(?:-|\\s)?versorgung[a-z]*|pestizid[a-z]*|pflanzenschutzmittel[a-z]*)\\b|\\b(?:von|bei)\\s+(?:(?:der|dem|den|des|die|das|einer|einem|eines|unser[a-z]*|ihr[a-z]*|sein[a-z]*|eigen[a-z]*|hybrid[a-z]*|mineralisch[a-z]*|chemisch[a-z]*|importiert[a-z]*|auslaendisch[a-z]*|russisch[a-z]*)\\s+){0,4}\\b(?:duengemittel(?:n)?|mineralduenger(?:n)?|duenger(?:n|s)?|mineralisch[a-z]*\\s+duenger(?:n|s)?|saatgut(?:s)?|saatgueter(?:n)?|futtermittel(?:n)?|lebensmittel(?:n)?|nahrungsmittel(?:n)?|grundnahrungsmittel(?:n)?|agrarrohstoff(?:e|en|s)?|(?:duengemittel|futtermittel|lebensmittel|nahrungsmittel|grundnahrungsmittel|agrar|fleisch)(?:-|\\s)?import[a-z]*|(?:lebensmittel|nahrungsmittel|grundnahrungsmittel)(?:-|\\s)?versorgung[a-z]*|pestizid[a-z]*|pflanzenschutzmittel[a-z]*)\\b[^.!?]{0,40}\\b(?:import)?abhaengig(?:keit)?[a-z]*\\b)",
+      "priority": 2,
+      "role": "direct"
+    },
+    {
+      "key": "stem:selbstversorgungsquote",
+      "regex": "\\bselbstversorgungsquote[a-z]*\\b",
+      "priority": 3,
+      "evidence_family": "food_self_sufficiency",
+      "notes": [
+        "Selbstversorgungsquote wird unmittelbar erfasst."
+      ],
+      "context_none": [],
+      "role": "direct"
+    },
+    {
+      "key": "phrase:agrarische_direktzahlungen",
+      "regex": "(?:\\b(?:agrar|gap)(?:-|\\s)?direktzahlung[a-z]*\\b|\\bdirektzahlung(?:en|s)?(?:-|\\s)?durchfuehrungs(?:gesetz|verordnung)[a-z]*\\b|\\bdirektzahlung(?:en)?\\s+(?:im\\s+rahmen\\s+)?(?:der\\s+)?gap\\b|\\bdirektzahlung(?:en)?\\s+(?:der|aus\\s+der|in\\s+der)\\s+(?:ersten|zweiten)\\s+saeule\\b)",
+      "priority": 2,
+      "tags": [
+        "agrarpolitik",
+        "gap",
+        "oekonomie"
+      ],
+      "notes": [
+        "Spezifische GAP- und Agrardirektzahlungsformen werden als Sachbezug erfasst.",
+        "Allgemeine Direktzahlungen ohne Agrarbezug lösen allein keinen Treffer aus."
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "phrase:direktzahlung_agrarkontext",
+      "regex": "(?:\\b(?:gap|agrar[a-z]*|landwirtschaft[a-z]*|landwirt[a-z]*|baeuer[a-z]*|bauer[n]?|waldbauer[n]?|hektar|flaechenbezogen[a-z]*|landbesitz[a-z]*|weidetierpraemie[a-z]*|muttertier[a-z]*|grundzahlung[a-z]*|basispraemie[a-z]*|eco(?:-|\\s)?scheme[a-z]*|oekoregelung[a-z]*|gloez|konditionalitaet)\\b[^.!?]{0,120}\\bdirektzahlung(?:en)?\\b|\\bdirektzahlung(?:en)?\\b[^.!?]{0,120}\\b(?:gap|agrar[a-z]*|landwirtschaft[a-z]*|landwirt[a-z]*|baeuer[a-z]*|bauer[n]?|waldbauer[n]?|hektar|flaechenbezogen[a-z]*|landbesitz[a-z]*|weidetierpraemie[a-z]*|muttertier[a-z]*|grundzahlung[a-z]*|basispraemie[a-z]*|eco(?:-|\\s)?scheme[a-z]*|oekoregelung[a-z]*|gloez|konditionalitaet)\\b|\\b(?:erste|zweite)[a-z]*\\s+saeule\\b[^.!?]{0,120}\\bdirektzahlung(?:en)?\\b|\\bdirektzahlung(?:en)?\\b[^.!?]{0,120}\\b(?:erste|zweite)[a-z]*\\s+saeule\\b)",
+      "priority": 2,
+      "tags": [
+        "agrarpolitik",
+        "gap",
+        "kontextregel"
+      ],
+      "notes": [
+        "Direktzahlung(en) wird über diese Regel nur zusammen mit den im Regex explizit",
+        "gebundenen Agrarmarkern erfasst. Allgemeine Direktzahlungen ohne Agrarbezug reichen nicht aus."
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "phrase:lebensmittelkeim_kontext",
+      "regex": "(?:\\b(?:dioxin[a-z]*|fipronil[a-z]*|salmonellen[a-z]*|listerien[a-z]*|ehec[a-z-]*|bse[a-z-]*)\\b[^.!?]{0,100}\\b(?:lebensmittel[a-z]*|nahrungsmittel[a-z]*|wurst[a-z]*|fleisch[a-z]*|eier[a-z]*|essen|schlachthof[a-z]*|tierseuche[a-z]*|rind[a-z]*|gefluegel[a-z]*)\\b|\\b(?:lebensmittel[a-z]*|nahrungsmittel[a-z]*|wurst[a-z]*|fleisch[a-z]*|eier[a-z]*|essen|schlachthof[a-z]*|tierseuche[a-z]*|rind[a-z]*|gefluegel[a-z]*)\\b[^.!?]{0,100}\\b(?:dioxin[a-z]*|fipronil[a-z]*|salmonellen[a-z]*|listerien[a-z]*|ehec[a-z-]*|bse[a-z-]*)\\b)",
+      "priority": 2,
+      "tags": [
+        "lebensmittelsicherheit",
+        "kontextregel"
+      ],
+      "notes": [
+        "Mehrdeutige Stoff- und Erregerbezeichnungen werden nur bei explizitem Lebensmittel- oder",
+        "Nutztierkontext als positive Treffer erfasst."
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:ernaehrungsstrategie",
+      "regex": "\\bernaehrungsstrategie[a-z]*\\b",
+      "priority": 2,
+      "tags": [
+        "ernaehrungspolitik"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:ernaehrungssicherung",
+      "regex": "\\bernaehrungssicherung[a-z]*\\b",
+      "priority": 2,
+      "tags": [
+        "ernaehrungspolitik",
+        "ernaehrungssicherung"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:ernaehrungsbildung",
+      "regex": "\\bernaehrungsbildung[a-z]*\\b",
+      "priority": 2,
+      "tags": [
+        "ernaehrungspolitik",
+        "bildung"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:ernaehrungskompetenz",
+      "regex": "\\bernaehrungskompetenz[a-z]*\\b",
+      "priority": 2,
+      "tags": [
+        "ernaehrungspolitik",
+        "bildung"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:ernaehrungsumgebung",
+      "regex": "\\bernaehrungsumgebung[a-z]*\\b",
+      "priority": 2,
+      "tags": [
+        "ernaehrungspolitik"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:ernaehrungsaufklaerung_erziehung",
+      "regex": "\\b(?:ernaehrungsaufklaerung|ernaehrungserziehung)[a-z]*\\b",
+      "priority": 2,
+      "tags": [
+        "ernaehrungspolitik",
+        "bildung"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:ernaehrungskommunikation",
+      "regex": "\\bernaehrungskommunikation[a-z]*\\b",
+      "priority": 2,
+      "tags": [
+        "ernaehrungspolitik",
+        "kommunikation"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:ernaehrungsempfehlung",
+      "regex": "\\bernaehrungsempfehlung[a-z]*\\b",
+      "priority": 2,
+      "tags": [
+        "ernaehrungspolitik"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:ernaehrungsverhalten",
+      "regex": "\\bernaehrungsverhalten[a-z]*\\b",
+      "priority": 2,
+      "tags": [
+        "ernaehrungspolitik",
+        "public_health_nutrition"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:ernaehrungsgewohnheit",
+      "regex": "\\bernaehrungsgewohnheit[a-z]*\\b",
+      "priority": 2,
+      "tags": [
+        "ernaehrungspolitik",
+        "public_health_nutrition"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:ernaehrungsforschung",
+      "regex": "\\bernaehrungsforschung[a-z]*\\b",
+      "priority": 2,
+      "tags": [
+        "ernaehrungspolitik",
+        "forschung"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:oekotrophologie",
+      "regex": "\\boekotropholog[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "ernaehrungspolitik",
+        "wissenschaft"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:ernaehrungsindustrie",
+      "regex": "\\bernaehrungsindustr[a-z]*\\b",
+      "priority": 2,
+      "tags": [
+        "ernaehrungswirtschaft"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:ernaehrungsbranche",
+      "regex": "\\bernaehrungsbranche[a-z]*\\b",
+      "priority": 2,
+      "tags": [
+        "ernaehrungswirtschaft"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "phrase:gesunde_ernaehrung",
+      "regex": "\\bgesund[a-z]*\\s+ernaehrung\\b",
+      "priority": 2,
+      "tags": [
+        "ernaehrungspolitik",
+        "public_health_nutrition"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "phrase:ausgewogene_ernaehrung",
+      "regex": "\\bausgewogen[a-z]*\\s+ernaehrung\\b",
+      "priority": 2,
+      "tags": [
+        "ernaehrungspolitik",
+        "public_health_nutrition"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "phrase:vollwertige_ernaehrung",
+      "regex": "\\bvollwertig[a-z]*\\s+ernaehrung\\b",
+      "priority": 2,
+      "tags": [
+        "ernaehrungspolitik",
+        "public_health_nutrition"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:schulessen",
+      "regex": "\\bschul(?:-|\\s)?essen[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "gemeinschaftsverpflegung",
+        "ernaehrungspolitik"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:schulspeisung",
+      "regex": "\\bschulspeisung[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "gemeinschaftsverpflegung",
+        "ernaehrungspolitik"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:kitaessen",
+      "regex": "\\b(?:kita|kindertagesstaetten)(?:-|\\s)?essen[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "gemeinschaftsverpflegung",
+        "ernaehrungspolitik"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:kitaverpflegung",
+      "regex": "\\b(?:kita|kindertagesstaetten)(?:-|\\s)?verpflegung[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "gemeinschaftsverpflegung",
+        "ernaehrungspolitik"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:schul_kita_mahlzeit",
+      "regex": "\\b(?:schul|kita|kindertagesstaetten)(?:-|\\s)?mahlzeit[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "gemeinschaftsverpflegung",
+        "ernaehrungspolitik"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:baeckerei",
+      "regex": "\\bbaeckerei(?!fach[a-z]*\\b)[a-z]*\\b",
+      "priority": 3,
+      "tags": [
+        "lebensmittelhandwerk"
+      ],
+      "evidence_family": "food_craft_bakery",
+      "notes": [
+        "Lebensmittelhandwerk bei Betriebs-, Produkt-, Beschäftigungs- oder Politikbezug; die",
+        "hinterlegten Kuchen-/Werftmetaphern sind ausgeschlossen."
+      ],
+      "context_any": [
+        "(?<![a-z])(?:(?:brot[a-z]*|broetchen[a-z]*|kuchen[a-z]*|back[a-z]*|betrieb[a-z]*|handwerk[a-z]*|gewerb[a-z]*|branche[a-z]*|beschaeftig[a-z]*|arbeit[a-z]*|ausbild[a-z]*|kunde[a-z]*|verkauf[a-z]*|versorgung[a-z]*|kosten[a-z]*|preis[a-z]*|energie[a-z]*|steuer[a-z]*|foerder[a-z]*|hilfe[a-z]*|gesetz[a-z]*|pflicht[a-z]*|schliess[a-z]*|schloss[a-z]*|markt[a-z]*|umsatz[a-z]*|liefer[a-z]*|eeg[a-z]*|umlage[a-z]*|baecker[a-z]*|fleischerei[a-z]*|metzgerei[a-z]*|konditorei[a-z]*|brauerei[a-z]*))(?![a-z])"
+      ],
+      "context_none": [
+        "(?<![a-z])(?:(?:\\b(?:haelfte|ganze)\\s+(?:der\\s+)?baeckerei\\b|\\bnicht\\s+(?:ueber\\s+)?(?:eine|die)\\s+baeckerei\\b))(?![a-z])"
+      ],
+      "context_window": 180,
+      "context_distinct": true,
+      "role": "context"
+    },
+    {
+      "key": "stem:fleischerei",
+      "regex": "\\bfleischerei(?!fach[a-z]*\\b)[a-z]*\\b",
+      "priority": 3,
+      "tags": [
+        "lebensmittelhandwerk",
+        "fleischwirtschaft"
+      ],
+      "evidence_family": "food_craft_butchery",
+      "notes": [
+        "Fleischerei und Fleischereihandwerk werden unmittelbar als Lebensmittelhandwerk erfasst."
+      ],
+      "context_none": [],
+      "role": "direct"
+    },
+    {
+      "key": "stem:metzgerei",
+      "regex": "\\bmetzgerei(?!fach[a-z]*\\b)[a-z]*\\b",
+      "priority": 3,
+      "tags": [
+        "lebensmittelhandwerk",
+        "fleischwirtschaft"
+      ],
+      "evidence_family": "food_craft_butchery",
+      "notes": [
+        "Metzgereihandwerk nur mit unabhängigem Produkt-, Betriebs- oder Politikbezug; der Alias",
+        "Fleischerei bestätigt Metzgerei nicht als Kontextpartner. Die hinterlegten",
+        "Kuchen-/Hälfte-Metaphern sind ausgeschlossen."
+      ],
+      "context_any": [
+        "(?<![a-z])(?:(?:fleisch[a-z]*|wurst[a-z]*|betrieb[a-z]*|handwerk[a-z]*|gewerb[a-z]*|branche[a-z]*|beschaeftig[a-z]*|arbeit[a-z]*|ausbild[a-z]*|kunde[a-z]*|verkauf[a-z]*|versorgung[a-z]*|kosten[a-z]*|preis[a-z]*|energie[a-z]*|steuer[a-z]*|foerder[a-z]*|hilfe[a-z]*|gesetz[a-z]*|pflicht[a-z]*|schliess[a-z]*|markt[a-z]*|umsatz[a-z]*|liefer[a-z]*|baeckerei[a-z]*|schlachterei[a-z]*))(?![a-z])"
+      ],
+      "context_none": [
+        "(?<![a-z])(?:(?:\\b(?:haelfte|ganze)\\s+(?:der\\s+)?metzgerei\\b|\\bnicht\\s+(?:ueber\\s+)?(?:eine|die)\\s+metzgerei\\b))(?![a-z])"
+      ],
+      "context_window": 180,
+      "context_distinct": true,
+      "role": "context"
+    },
+    {
+      "key": "stem:konditorei",
+      "regex": "\\bkonditorei(?!fach[a-z]*\\b)[a-z]*\\b",
+      "priority": 3,
+      "tags": [
+        "lebensmittelhandwerk"
+      ],
+      "evidence_family": "food_craft_confectionery",
+      "notes": [
+        "Konditorei nur mit Produkt-, Betriebs- oder Politikbezug."
+      ],
+      "context_any": [
+        "(?<![a-z])(?:(?:kuchen[a-z]*|torte[a-z]*|gebaeck[a-z]*|betrieb[a-z]*|handwerk[a-z]*|gewerb[a-z]*|branche[a-z]*|beschaeftig[a-z]*|arbeit[a-z]*|ausbild[a-z]*|kunde[a-z]*|verkauf[a-z]*|versorgung[a-z]*|kosten[a-z]*|preis[a-z]*|energie[a-z]*|steuer[a-z]*|foerder[a-z]*|hilfe[a-z]*|gesetz[a-z]*|pflicht[a-z]*|schliess[a-z]*|markt[a-z]*|umsatz[a-z]*))(?![a-z])"
+      ],
+      "context_none": [],
+      "context_window": 180,
+      "context_distinct": true,
+      "role": "context"
+    },
+    {
+      "key": "stem:brauerei",
+      "regex": "\\bbrauerei[a-z]*\\b",
+      "priority": 3,
+      "tags": [
+        "getraenkewirtschaft",
+        "lebensmittelhandwerk"
+      ],
+      "evidence_family": "food_craft_brewery",
+      "notes": [
+        "Brauerei mit Bier-, Produktions-, Betriebs-, Steuer- oder Förderbezug; reine",
+        "Namensnennung reicht nicht."
+      ],
+      "context_any": [
+        "(?<![a-z])(?:(?:bier[a-z]*|brau[a-z]*|betrieb[a-z]*|handwerk[a-z]*|gewerb[a-z]*|branche[a-z]*|beschaeftig[a-z]*|arbeit[a-z]*|ausbild[a-z]*|kunde[a-z]*|verkauf[a-z]*|versorgung[a-z]*|kosten[a-z]*|preis[a-z]*|energie[a-z]*|steuer[a-z]*|foerder[a-z]*|hilfe[a-z]*|gesetz[a-z]*|pflicht[a-z]*|schliess[a-z]*|markt[a-z]*|umsatz[a-z]*|gasthof[a-z]*|gaststaett[a-z]*|fass[a-z]*|flasche[a-z]*|gaer[a-z]*))(?![a-z])"
+      ],
+      "context_none": [],
+      "context_window": 200,
+      "context_distinct": true,
+      "role": "context"
+    },
+    {
+      "key": "stem:baecker_fleischerhandwerk",
+      "regex": "\\b(?:baecker|fleischer)(?:-|\\s)?handwerk[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "lebensmittelhandwerk"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:winzer",
+      "regex": "\\bwinzer[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "weinbau"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:weingut",
+      "regex": "\\b(?:weingut|weinguet)[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "weinbau"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:weinberge_plural",
+      "regex": "\\bweinberge(?:n|s)?\\b",
+      "priority": 1,
+      "tags": [
+        "weinbau"
+      ],
+      "notes": [
+        "Nur pluralische Weinberge-Formen; der als Personenname häufige Singular Weinberg bleibt",
+        "ausgeschlossen."
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:imker",
+      "regex": "\\bimker[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "bienenhaltung",
+        "akteure"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:imkerei",
+      "regex": "\\bimkerei[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "bienenhaltung"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:schlachtung",
+      "regex": "\\bschlachtung[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "tierhaltung",
+        "fleischwirtschaft"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:hofnachfolge",
+      "regex": "\\bhofnachfolg[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "agrarstruktur"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:landmaschine",
+      "regex": "\\blandmaschine[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "agrartechnik"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:kulturpflanze",
+      "regex": "\\bkulturpflanz[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "pflanzenbau"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:schafhaltung_zucht",
+      "regex": "\\b(?:schafhaltung|schafzucht|schaeferei)[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "tierhaltung",
+        "tierzucht"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:ziegenhaltung_zucht",
+      "regex": "\\b(?:ziegenhaltung|ziegenzucht)[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "tierhaltung",
+        "tierzucht"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:legehennenhaltung",
+      "regex": "\\b(?:legehennen|huehner|hennen)(?:-|\\s)?haltung[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "tierhaltung"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:milchkuhhaltung",
+      "regex": "\\bmilchkuh(?:-|\\s)?haltung[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "tierhaltung"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:rinderzucht",
+      "regex": "\\brinder(?:-|\\s)?zucht[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "tierzucht"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:schweinezucht",
+      "regex": "\\bschweine(?:-|\\s)?zucht[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "tierzucht"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:gefluegelzucht",
+      "regex": "\\bgefluegel(?:-|\\s)?zucht[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "tierzucht"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:ferkelzucht",
+      "regex": "\\bferkel(?:-|\\s)?zucht[a-z]*\\b|\\bferkelzuecht[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "tierzucht"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:bienenzucht",
+      "regex": "\\bbienen(?:-|\\s)?zucht[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "tierzucht",
+        "bienenhaltung"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:weinwirtschaft",
+      "regex": "\\bweinwirtschaft[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "weinbau",
+        "ernaehrungswirtschaft"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:brauwirtschaft",
+      "regex": "\\b(?:brau|bier)(?:-|\\s)?wirtschaft[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "getraenkewirtschaft"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:getreidewirtschaft",
+      "regex": "\\bgetreidewirtschaft[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "pflanzenbau",
+        "ernaehrungswirtschaft"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:weitere_kulturen_anbau",
+      "regex": "\\b(?:mais|raps|weizen|reis)(?:-|\\s)?anbau[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "pflanzenbau"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:obst_gemueseproduktion",
+      "regex": "\\b(?:obst|gemuese)(?:-|\\s)?(?:produktion|erzeugung|wirtschaft)[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "pflanzenbau",
+        "ernaehrungswirtschaft"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:honigproduktion",
+      "regex": "\\bhonig(?:-|\\s)?(?:produktion|erzeugung|wirtschaft)[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "bienenhaltung",
+        "ernaehrungswirtschaft"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:herdenschutz_konkret",
+      "regex": "\\bherdenschutz(?:hund|zaun|zaeun|massnahm|foerder)[a-z]*\\b",
+      "priority": 2,
+      "tags": [
+        "tierhaltung",
+        "weidetierhaltung"
+      ],
+      "notes": [
+        "Konkrete Schutztiere, Zäune, Maßnahmen und Förderungen; der häufig metaphorische",
+        "Herdenschutzesel ist nicht enthalten."
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "abbr:gak",
+      "regex": "\\bgak\\b",
+      "priority": 3,
+      "tags": [
+        "agrarpolitik",
+        "agrarstruktur",
+        "kuestenschutz_ambig"
+      ],
+      "notes": [
+        "GAK nur im Agrarstruktur-/Betriebs-/Agrarumweltteil; Küstenschutz und reine ländliche",
+        "Entwicklung ausgeschlossen."
+      ],
+      "evidence_family": "gak_agri_structure",
+      "context_any": [
+        "(?<![a-z])(?:(?:(?:agrar[a-z]*|landwirtschaft[a-z]*|landwirt[a-z]*|acker[a-z]*|feld(?:er|es|en)?|hof(?:e|es|en|s)?|hoef[a-z]*|bauern[a-z]*|baeuerlich[a-z]*|ernte[a-z]*|anbau[a-z]*|pflanzenbau[a-z]*|gartenbau[a-z]*|kulturpflanz[a-z]*)|(?:nutztiere?[a-z]*|tierhalt[a-z]*|intensivtierhalt[a-z]*|stall[a-z]*|rind[a-z]*|kuh|kueh[a-z]*|kalb|kaelb[a-z]*|schwein[a-z]*|ferkel[a-z]*|gefluegel[a-z]*|huhn|huehn[a-z]*|pute[a-z]*|schaf(?:e|es|en|herd[a-z]*|halt[a-z]*|zucht[a-z]*|fleisch[a-z]*|wolle[a-z]*)?|ziege[a-z]*|mastvieh[a-z]*|vieh[a-z]*|milchvieh[a-z]*|schlacht[a-z]*)|agrarstruktur[a-z]*|stall[a-z]*|tierwohl[a-z]*|flaechen[a-z]*|agrarumwelt[a-z]*|(?:\\bbmel\\b|bundesministerium(?:s)?\\s+fuer\\s+ernaehrung\\s+und\\s+landwirtschaft|bundesanstalt\\s+fuer\\s+landwirtschaft\\s+und\\s+ernaehrung|\\bble\\b|landwirtschaftsminister[a-z]*)))(?![a-z])"
+      ],
+      "context_none": [
+        "(?<![a-z])(?:(?:kuestenschutz[a-z]*|hochwasserschutz[a-z]*|laendlich[a-z]*\\s+(?:raum|entwicklung)[a-z]*|dorfkern[a-z]*|orts(?:kern|zentrum)[a-z]*|telemedizin[a-z]*|kulturfoerder[a-z]*))(?![a-z])"
+      ],
+      "context_window": 220,
+      "context_distinct": true,
+      "role": "context"
+    },
+    {
+      "key": "abbr:egfl",
+      "regex": "\\begfl\\b",
+      "priority": 1,
+      "tags": [
+        "agrarpolitik",
+        "gap"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "phrase:cross_compliance",
+      "regex": "\\bcross(?:-|\\s)?compliance\\b",
+      "priority": 2,
+      "tags": [
+        "agrarpolitik",
+        "gap"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:greening_gap",
+      "regex": "\\bgreening[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "agrarpolitik",
+        "gap"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:bundessortenamt",
+      "regex": "\\bbundessortenamt[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "agrarpolitik",
+        "pflanzenbau"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:fischerei",
+      "regex": "\\b(?:(?:see|hochsee|krabben|berufs|kutter)(?:-|\\s)?)?fischerei(?!muse(?:um|en)[a-z]*\\b)[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "fischerei",
+        "primaerproduktion"
+      ],
+      "notes": [
+        "Fischereibegriffe werden erfasst; Fischereimuseum*/Fischereimuseen sind als",
+        "touristischer Eigenkontext ausgeschlossen."
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:aquakultur",
+      "regex": "\\baquakultur[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "fischerei",
+        "primaerproduktion"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:fischwirtschaft",
+      "regex": "\\bfisch(?:-|\\s)?wirtschaft[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "fischerei",
+        "ernaehrungswirtschaft"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:fischzucht",
+      "regex": "\\bfisch(?:-|\\s)?zucht[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "fischerei",
+        "primaerproduktion"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:fischfang",
+      "regex": "\\bfischfang[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "fischerei",
+        "fischereipolitik"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:ueberfischung",
+      "regex": "\\bueberfisch[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "fischerei",
+        "fischereipolitik"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:fangquote",
+      "regex": "\\b(?:fangquote|fischereiquote)[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "fischerei",
+        "fischereipolitik"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:kuesten_binnenfischer",
+      "regex": "\\b(?:kuesten|binnen|krabben|kutter|hochsee|berufs)(?:-|\\s)?fischer[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "fischerei",
+        "akteure"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:teichwirtschaft",
+      "regex": "\\bteichwirtschaft[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "fischerei",
+        "aquakultur"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:fischbestand",
+      "regex": "\\bfischbest(?:and|aend)[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "fischerei",
+        "fischereipolitik"
+      ],
+      "notes": [
+        "Bestand/Bestände-Morphologie."
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:unterernaehrung",
+      "regex": "\\bunterernaehrung[a-z]*\\b",
+      "priority": 3,
+      "tags": [
+        "internationale_ernaehrungspolitik",
+        "ernaehrungssicherung"
+      ],
+      "notes": [
+        "Keine Direktregel. Erfasst nur gesellschaftliche bzw. versorgungspolitische",
+        "Verwendungen mit explizitem Zugangs-/Versorgungskontext; rein klinische und",
+        "behandlungsbezogene Verwendungen werden ausgeschlossen."
+      ],
+      "context_any": [
+        "(?<![a-z])(?:ernaehrungssicherheit[a-z]*|ernaehrungsunsicherheit[a-z]*|lebensmittelversorgung[a-z]*|nahrungsmittelversorgung[a-z]*|lebensmittelzugang[a-z]*|nahrungsmittelzugang[a-z]*|ernaehrungsarmut[a-z]*|armut[a-z]*|versorgungslage[a-z]*|versorgungssicher[a-z]*|lebensmittelhilfe[a-z]*|nahrungsmittelhilfe[a-z]*)(?![a-z])"
+      ],
+      "context_none": [
+        "(?<![a-z])(?:patient[a-z]*|klinisch[a-z]*|therap[a-z]*|diagnos[a-z]*|krankheit[a-z]*|stationaer[a-z]*|intensivmedizin[a-z]*|palliativ[a-z]*|medizinisch[a-z]*|behandlung[a-z]*)(?![a-z])"
+      ],
+      "context_window": 180,
+      "context_distinct": true,
+      "role": "context"
+    },
+    {
+      "key": "stem:haltungskennzeichen",
+      "regex": "\\b(?:tier)?haltungskennzeich(?:en|nung)[a-z]*\\b",
+      "priority": 2,
+      "tags": [
+        "tierhaltung",
+        "tierwohl"
+      ],
+      "notes": [
+        "Erfasst Haltungskennzeichen/-kennzeichnung sowie Tierhaltungskennzeichnung und",
+        "Flexionsformen."
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:haltungsstufe",
+      "regex": "\\bhaltungsstuf[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "tierhaltung",
+        "tierwohl"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:haltungsform",
+      "regex": "\\bhaltungsform[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "tierhaltung",
+        "tierwohl"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:tierseuche",
+      "regex": "\\btierseuch[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "tiergesundheit",
+        "veterinaerwesen"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:tiergesundheit",
+      "regex": "\\btiergesundheit[a-z]*\\b",
+      "priority": 3,
+      "tags": [
+        "tiergesundheit",
+        "veterinaerwesen"
+      ],
+      "notes": [
+        "Tiergesundheit nur im Nutztier-/Haltungs-/Veterinärkontext; Heimtier, Wildtier,",
+        "Versuchstier und allgemeines One Health ausgeschlossen."
+      ],
+      "evidence_family": "livestock_health",
+      "context_any": [
+        "(?<![a-z])(?:(?:(?:nutztiere?[a-z]*|tierhalt[a-z]*|intensivtierhalt[a-z]*|stall[a-z]*|rind[a-z]*|kuh|kueh[a-z]*|kalb|kaelb[a-z]*|schwein[a-z]*|ferkel[a-z]*|gefluegel[a-z]*|huhn|huehn[a-z]*|pute[a-z]*|schaf(?:e|es|en|herd[a-z]*|halt[a-z]*|zucht[a-z]*|fleisch[a-z]*|wolle[a-z]*)?|ziege[a-z]*|mastvieh[a-z]*|vieh[a-z]*|milchvieh[a-z]*|schlacht[a-z]*)|(?:agrar[a-z]*|landwirtschaft[a-z]*|landwirt[a-z]*|acker[a-z]*|feld(?:er|es|en)?|hof(?:e|es|en|s)?|hoef[a-z]*|bauern[a-z]*|baeuerlich[a-z]*|ernte[a-z]*|anbau[a-z]*|pflanzenbau[a-z]*|gartenbau[a-z]*|kulturpflanz[a-z]*)|tierarzt[a-z]*|veterinaer[a-z]*|antibiotika[a-z]*|tiergesundheitsdaten\\s+aller\\s+betriebe|tiergesundheitsmonitor[a-z]*))(?![a-z])"
+      ],
+      "context_none": [
+        "(?<![a-z])(?:(?:hund[a-z]*|katze[a-z]*|heimtier[a-z]*|haustier[a-z]*|wildtier[a-z]*|zootier[a-z]*|versuchstier[a-z]*|tierversuch[a-z]*|one(?:-|\\s)?health[a-z]*))(?![a-z])"
+      ],
+      "context_window": 200,
+      "context_distinct": true,
+      "role": "context"
+    },
+    {
+      "key": "phrase:tiergesundheit_agrarkontext",
+      "regex": "(?:\\btiergesundheit[a-z]*\\b[^.!?]{0,100}\\b(?:nutztier[a-z]*|tierhalt[a-z]*|vieh[a-z]*|stall[a-z]*|schwein[a-z]*|rind[a-z]*|gefluegel[a-z]*|landwirt[a-z]*|landwirtschaft[a-z]*|veterinaer[a-z]*|tierarzt[a-z]*)\\b|\\b(?:nutztier[a-z]*|tierhalt[a-z]*|vieh[a-z]*|stall[a-z]*|schwein[a-z]*|rind[a-z]*|gefluegel[a-z]*|landwirt[a-z]*|landwirtschaft[a-z]*|veterinaer[a-z]*|tierarzt[a-z]*)\\b[^.!?]{0,100}\\btiergesundheit[a-z]*\\b)",
+      "priority": 2,
+      "tags": [
+        "tiergesundheit",
+        "tierhaltung",
+        "kontextregel"
+      ],
+      "notes": [
+        "Tiergesundheit wird nur mit engem Nutztier-, Haltungs-, Betriebs- oder Veterinärkontext",
+        "direkt gewertet."
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:tiergesundheitsgesetz",
+      "regex": "\\btiergesundheitsgesetz[a-z]*\\b",
+      "priority": 2,
+      "tags": [
+        "tiergesundheit",
+        "veterinaerrecht"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:tiergesundheitsdatenbank",
+      "regex": "\\btiergesundheitsdatenbank[a-z]*\\b",
+      "priority": 2,
+      "tags": [
+        "tiergesundheit",
+        "veterinaerwesen"
+      ],
+      "notes": [
+        "Konkrete tiergesundheitliche Dateninfrastruktur; anders als Tiergesundheit* allein ein",
+        "direkter positiver Auslöser."
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:nutztier_nomen",
+      "regex": "\\bnutztier(?:e|en|es|s)?\\b",
+      "priority": 1,
+      "tags": [
+        "tierhaltung"
+      ],
+      "notes": [
+        "Nur das eigenständige Substantiv Nutztier mit Flexionsformen; beliebige Komposita sind",
+        "nicht eingeschlossen."
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:weinrecht",
+      "regex": "\\bwein(?:gesetz|recht)[a-z]*\\b",
+      "priority": 2,
+      "tags": [
+        "weinbau",
+        "agrarrecht"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:wanderschaefer",
+      "regex": "\\bwanderschaefer[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "weidetierhaltung"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:schaf_ziegenhalter",
+      "regex": "\\b(?:schaf|ziegen)(?:-|\\s)?halter[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "weidetierhaltung"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:hofladen",
+      "regex": "\\b(?:hofladen[a-z]*|hoflaed[a-z]*)\\b",
+      "priority": 1,
+      "tags": [
+        "direktvermarktung"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:dauergruenland",
+      "regex": "\\bdauergruenland[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "flaechennutzung",
+        "oekologie"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:ertragssicherheit",
+      "regex": "\\bertragssicher[a-z]*\\b",
+      "priority": 1,
+      "tags": [
+        "pflanzenbau",
+        "sicherheit_resilienz"
+      ],
+      "notes": [
+        "Erfasst Ertragssicherheit, Ertragssicherung und adjektivische Formen."
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:erntesicherheit",
+      "regex": "\\berntesicher[a-z]*\\b",
+      "priority": 2,
+      "tags": [
+        "pflanzenbau",
+        "sicherheit_resilienz"
+      ],
+      "notes": [
+        "Erfasst Erntesicherheit, Erntesicherung und adjektivische Formen."
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:ernteertrag",
+      "regex": "\\bernteertr(?:ag|aeg)[a-z]*\\b",
+      "priority": 2,
+      "tags": [
+        "pflanzenbau"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "phrase:internationale_gruene_woche",
+      "regex": "\\b(?:international[a-z]*\\s+)?gruen[a-z]*\\s+woche\\b",
+      "priority": 2,
+      "tags": [
+        "agrarmesse",
+        "ernaehrungspolitik"
+      ],
+      "notes": [
+        "Eigenname Internationale Grüne Woche einschließlich der gebräuchlichen Kurzform Grüne",
+        "Woche."
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "exclude:kuchen_baeckerei_metzgerei_baumarkt_metapher",
+      "regex": "\\bhaelfte\\s+des\\s+kuchens\\b[^.!?]{0,200}\\bbaeckerei[a-z]*\\b[^.!?]{0,120}\\bmetzgerei[a-z]*\\b[^.!?]{0,120}\\bbaumarkt[a-z]*\\b",
+      "priority": 3,
+      "tags": [
+        "precision_exclusion",
+        "metapher"
+      ],
+      "notes": [
+        "Maskiert die benannte rhetorische Kuchen-/Bäckerei-/Metzgerei-/Baumarkt-Aufzählung. Die",
+        "betroffenen Handwerksbezeichnungen zählen hier nicht als A&E-Gegenstand."
+      ],
+      "role": "exclusion",
+      "block_scope": "overlapping_match",
+      "blocks_roles": [
+        "direct",
+        "context"
+      ],
+      "masks_positive_context": true
+    },
+    {
+      "key": "shadow:ernaehrung_sicherungsrelation",
+      "regex": "\\bernaehrung\\b",
+      "priority": 4,
+      "context_any": [
+        "\\b(?:sicher(?:n|t|te|ten|test|tet|nd[a-z]*|zustellen|gestellt)|sicherstell[a-z]*|sichergestell[a-z]*|sicherzustell[a-z]*|gewaehrleist[a-z]*|garantier[a-z]*)\\b",
+        "\\b(?:sicherung|sicherstellung|gewaehrleistung|garantie)\\s+der\\b"
+      ],
+      "context_window": 60,
+      "context_boundary": "clause",
+      "context_distinct": true,
+      "notes": [
+        "Lokale verbale oder nominale Sicherungsrelation; Ernährung allein ist kein",
+        "eigenständiger positiver Auslöser."
+      ],
+      "tags": [
+        "ernaehrungspolitik",
+        "recall",
+        "kontextregel"
+      ],
+      "role": "context"
+    },
+    {
+      "key": "shadow:qualifizierte_ernaehrung",
+      "regex": "\\b(?:gesund(?!heit)|gesuend|gesundheits(?:bewusst|foerderlich)|ungesund|ausgewogen|unausgewogen|vollwertig|nachhaltig|regional|saisonal|bedarfsgerecht|abwechslungsreich|bezahlbar|erschwinglich|pflanzenbasiert|pflanzenbetont|bewusst|tierleidfrei|klimaschonend|klimafreundlich|umweltfreundlich|vielfaeltig|frisch|gut|besser|falsch|richtig|adaequat|ausreichend|hochwertig|proteinreich|sicher(?!heit))[a-z]*\\s+ernaehrung\\b",
+      "priority": 4,
+      "notes": [
+        "Unmittelbar attributive/koordinierte Qualitätsbestimmung vor Ernährung."
+      ],
+      "tags": [
+        "ernaehrungspolitik",
+        "recall",
+        "kontextregel"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "shadow:qualifizierte_ernaehrung_koordiniert",
+      "regex": "\\b(?:gesund(?!heit)|gesuend|gesundheits(?:bewusst|foerderlich)|ungesund|ausgewogen|unausgewogen|vollwertig|nachhaltig|regional|saisonal|bedarfsgerecht|abwechslungsreich|bezahlbar|erschwinglich|pflanzenbasiert|pflanzenbetont|bewusst|tierleidfrei|klimaschonend|klimafreundlich|umweltfreundlich|vielfaeltig|frisch|gut|besser|falsch|richtig|adaequat|ausreichend|hochwertig|proteinreich|sicher(?!heit))[a-z]*(?:(?:\\s*,\\s*|\\s+(?:und|oder)\\s+)[a-z-]+(?:e|en|er|es|em)){1,2}\\s+ernaehrung\\b",
+      "priority": 4,
+      "notes": [
+        "Koordinierte Attributfolge, deren letztes Adjektiv noch nicht in der Positivliste stehen",
+        "muss."
+      ],
+      "tags": [
+        "ernaehrungspolitik",
+        "recall",
+        "kontextregel"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "shadow:hopfen",
+      "regex": "\\bhopfen[a-z]*\\b",
+      "priority": 4,
+      "notes": [
+        "Hopfen als Kultur-, Produkt- und Regelungsfamilie; Redewendung separat maskiert."
+      ],
+      "tags": [
+        "pflanzenbau",
+        "recall"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "shadow:tierschutz_nutztierkontext",
+      "regex": "\\btierschutz[a-z]*\\b",
+      "priority": 4,
+      "context_any": [
+        "\\b(?:nutztiere?[a-z]*|tierhalt[a-z]*|tierwohl[a-z]*|stall[a-z]*|weidetier[a-z]*|tiertransport[a-z]*|schlacht[a-z]*|mast(?:tier|betrieb|anlage|haltung)?[a-z]*|legehenn[a-z]*|kueken[a-z]*|ferkel[a-z]*|kalb[a-z]*|kaelb[a-z]*|rind[a-z]*|kuh[a-z]*|kueh[a-z]*|schwein[a-z]*|gefluegel[a-z]*|huhn[a-z]*|huehn[a-z]*|schaf(?:e|en|es|s|haltung[a-z]*|zucht[a-z]*|fleisch[a-z]*|woll[a-z]*|stall[a-z]*|weide[a-z]*|tier[a-z]*|herd[a-z]*|swild[a-z]*)?|ziege[a-z]*)\\b"
+      ],
+      "context_window": 120,
+      "context_boundary": "clause",
+      "context_distinct": true,
+      "notes": [
+        "Tierschutz nur in engem Nutztier-, Haltungs-, Veterinär- oder Schlachtkontext."
+      ],
+      "tags": [
+        "tierhaltung",
+        "recall",
+        "kontextregel"
+      ],
+      "role": "context"
+    },
+    {
+      "key": "shadow:milchkuh_flexion",
+      "regex": "\\bmilchk(?:uh[a-z]*|ueh(?:e|en)?)\\b",
+      "priority": 4,
+      "notes": [
+        "Milchkuh/Milchkühe ohne den fachfremden Stamm Milchkühl-."
+      ],
+      "tags": [
+        "tierhaltung",
+        "morphologie"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "shadow:weidetierpraemie_kompositum",
+      "regex": "\\b(?:landes)?weidetierpraemi[a-z]*\\b",
+      "priority": 4,
+      "notes": [
+        "Erfasst Landesweidetierprämie trotz Präfix vor Weidetier."
+      ],
+      "tags": [
+        "tierhaltung",
+        "agrarfoerderung"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "shadow:land_und_forstwirtschaft",
+      "regex": "\\bland(?:-\\s*|\\s+)und\\s+forstwirtschaft[a-z]*\\b",
+      "priority": 4,
+      "notes": [
+        "Explizite Landwirtschaft in einer Koordinationsellipse."
+      ],
+      "tags": [
+        "landwirtschaft",
+        "recall"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "shadow:landbau_weit",
+      "regex": "(?:\\boeko(?:-|\\s)?landbau|\\blandbau)[a-z]*\\b",
+      "priority": 4,
+      "notes": [
+        "Landbau und Öko-Landbau einschließlich Flexionen."
+      ],
+      "tags": [
+        "pflanzenbau",
+        "recall"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "shadow:ernaehrungsweise",
+      "regex": "\\bernaehrungsweise[a-z]*\\b",
+      "priority": 4,
+      "notes": [
+        "Substantielle Ernährungsweise; Ernährung allein ist kein eigenständiger positiver",
+        "Auslöser."
+      ],
+      "tags": [
+        "ernaehrungspolitik",
+        "recall"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "shadow:bioanbau",
+      "regex": "\\bbio(?:-|\\s)?anbau[a-z]*\\b",
+      "priority": 4,
+      "notes": [
+        "Bioanbau einschließlich Bindestrich-/Getrenntschreibung."
+      ],
+      "tags": [
+        "pflanzenbau",
+        "recall"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "shadow:betaeubungslose_kastration",
+      "regex": "\\bbetaeubungslos[a-z]*\\s+kastration[a-z]*\\b",
+      "priority": 4,
+      "notes": [
+        "Im Korpus spezifischer Ferkelkastrationsgegenstand."
+      ],
+      "tags": [
+        "tierhaltung",
+        "recall"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "shadow:schlachtkettenbegriffe",
+      "regex": "\\bschlacht(?:branche|staett|erei|unternehmen|vieh|tier|industrie)[a-z]*\\b",
+      "priority": 4,
+      "notes": [
+        "Erfasst spezifische Schlacht- und Fleischwirtschaftsbegriffe einschließlich",
+        "Schlachtindustrie."
+      ],
+      "tags": [
+        "fleischwirtschaft",
+        "recall"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "shadow:eler_agrarkontext",
+      "regex": "\\beler\\b",
+      "priority": 4,
+      "context_any": [
+        "\\b(?:gap|agrar(?!struktur)[a-z]*|landwirtschaft[a-z]*|landwirtschaftsfonds|landwirt[a-z]*)\\b"
+      ],
+      "context_window": 250,
+      "context_boundary": "clause",
+      "context_distinct": true,
+      "notes": [
+        "ELER nur mit explizitem GAP-/Agrar-/Landwirtschaftspartner."
+      ],
+      "tags": [
+        "agrarfoerderung",
+        "precision",
+        "kontextregel"
+      ],
+      "role": "context"
+    },
+    {
+      "key": "shadow:duev_agrarkontext",
+      "regex": "\\bduev\\b",
+      "priority": 4,
+      "context_any": [
+        "\\b(?:dueng[a-z]*|nitrat[a-z]*|naehrstoff[a-z]*|landwirtschaft[a-z]*|landwirt[a-z]*|agrar[a-z]*|grundwasser[a-z]*|duengeverordnung)\\b"
+      ],
+      "context_none": [
+        "\\b(?:duev(?:-|\\s)?anpassg|datenuebermitt[a-z]*|auslaender[a-z]*|sozialrecht[a-z]*|bezahlkarte[a-z]*|asylbewerber[a-z]*)\\b"
+      ],
+      "context_window": 180,
+      "context_distinct": true,
+      "notes": [
+        "DÜV nur als Kürzel der Düngeverordnung im Agrar-/Düngungskontext;",
+        "Datenübermittlungsfamilie ausgeschlossen."
+      ],
+      "tags": [
+        "duengung",
+        "precision",
+        "kontextregel"
+      ],
+      "role": "context"
+    },
+    {
+      "key": "shadow:schlachthaus_tierkontext",
+      "regex": "(?:\\bschlachthaus[a-z]*\\b[^.!?]{0,100}\\b(?:nutztier[a-z]*|tierhalt[a-z]*|vieh[a-z]*|stall[a-z]*|weide[a-z]*|schwein[a-z]*|rind[a-z]*|gefluegel[a-z]*|ferkel[a-z]*|kalb|kaelber[a-z]*|kuh|kuehe[a-z]*|schaf[a-z]*|ziege[a-z]*|mast[a-z]*|schlacht[a-z]*|veterinaer[a-z]*|tierarzt[a-z]*)\\b|\\b(?:nutztier[a-z]*|tierhalt[a-z]*|vieh[a-z]*|stall[a-z]*|weide[a-z]*|schwein[a-z]*|rind[a-z]*|gefluegel[a-z]*|ferkel[a-z]*|kalb|kaelber[a-z]*|kuh|kuehe[a-z]*|schaf[a-z]*|ziege[a-z]*|mast[a-z]*|schlacht[a-z]*|veterinaer[a-z]*|tierarzt[a-z]*)\\b[^.!?]{0,100}\\bschlachthaus[a-z]*\\b)",
+      "priority": 4,
+      "notes": [
+        "Schlachthaus nur mit Tier-/Fleisch-/Nutztierkontext; Gewaltmetaphern bleiben negativ."
+      ],
+      "tags": [
+        "fleischwirtschaft",
+        "kontextregel"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "shadow:bienen_bestaeubung_agrarkontext",
+      "regex": "(?:\\b(?:bienensterben|bienenschutz|bestaeub[a-z]*|bienenvoelk[a-z]*)\\b[^.!?]{0,120}\\b(?:acker[a-z]*|kulturpflanz[a-z]*|obst[a-z]*|gemuese[a-z]*|getreide[a-z]*|ernte[a-z]*|pflanzenschutz[a-z]*|pestizid[a-z]*|landwirtschaft[a-z]*|agrar[a-z]*|imker[a-z]*|honigproduktion[a-z]*)\\b|\\b(?:acker[a-z]*|kulturpflanz[a-z]*|obst[a-z]*|gemuese[a-z]*|getreide[a-z]*|ernte[a-z]*|pflanzenschutz[a-z]*|pestizid[a-z]*|landwirtschaft[a-z]*|agrar[a-z]*|imker[a-z]*|honigproduktion[a-z]*)\\b[^.!?]{0,120}\\b(?:bienensterben|bienenschutz|bestaeub[a-z]*|bienenvoelk[a-z]*)\\b)",
+      "priority": 4,
+      "notes": [
+        "Bienen-/Bestäubungsthemen nur mit Kulturpflanzen-, Ernte-, Pflanzenschutz- oder",
+        "Imkereikontext."
+      ],
+      "tags": [
+        "bienenhaltung",
+        "pflanzenbau",
+        "kontextregel"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "shadow:internationale_ernaehrungsinstitution_sachkontext",
+      "regex": "(?:\\b(?:wfp|welternaehrungsprogramm[a-z]*|welternaehrungsorganisation[a-z]*|welthungerhilfe[a-z]*)\\b[^.!?]{0,180}\\b(?:hunger[a-z]*|verhunger[a-z]*|hungertod[a-z]*|ernaehrung[a-z]*|nahrungsmittel[a-z]*|lebensmittel[a-z]*|getreide[a-z]*|unterernaehrung[a-z]*)\\b|\\b(?:hunger[a-z]*|verhunger[a-z]*|hungertod[a-z]*|ernaehrung[a-z]*|nahrungsmittel[a-z]*|lebensmittel[a-z]*|getreide[a-z]*|unterernaehrung[a-z]*)\\b[^.!?]{0,180}\\b(?:wfp|welternaehrungsprogramm[a-z]*|welternaehrungsorganisation[a-z]*|welthungerhilfe[a-z]*)\\b)",
+      "priority": 6,
+      "notes": [
+        "Internationale Ernährungsinstitution nur plus eigenständigem Hunger-, Ernährungs-,",
+        "Lebensmittel- oder Getreidegegenstand; allgemeine Hilfs-/Budgetnennung genügt nicht."
+      ],
+      "tags": [
+        "ernaehrungssicherung",
+        "institution",
+        "kontextregel"
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "exclude:hopfen_und_malz_verloren",
+      "regex": "\\bhopfen\\s+und\\s+malz\\b[^.;:!?]{0,45}\\bverloren\\b",
+      "priority": 7,
+      "notes": [
+        "Hinterlegte Redewendung ohne A&E-Gegenstand."
+      ],
+      "tags": [
+        "precision_exclusion"
+      ],
+      "role": "exclusion",
+      "block_scope": "overlapping_match",
+      "blocks_roles": [
+        "direct",
+        "context"
+      ],
+      "masks_positive_context": true
+    },
+    {
+      "key": "exclude:hopfen_und_malz_gott_erhalts",
+      "regex": "\\bhopfen\\s+und\\s+malz\\b[^.;:!?]{0,30}\\bgott\\s+erhalt",
+      "priority": 7,
+      "notes": [
+        "Hinterlegtes Wortspiel ohne A&E-Gegenstand."
+      ],
+      "tags": [
+        "precision_exclusion"
+      ],
+      "role": "exclusion",
+      "block_scope": "overlapping_match",
+      "blocks_roles": [
+        "direct",
+        "context"
+      ],
+      "masks_positive_context": true
+    },
+    {
+      "key": "exclude:csu_erhalts_hopfen_und_malz",
+      "regex": "\\bcsu\\s+erhalt['’]?s\\b[^.;:!?]{0,30}\\bhopfen\\s+und\\s+malz\\b",
+      "priority": 7,
+      "notes": [
+        "Hinterlegtes parteipolitisches Wortspiel."
+      ],
+      "tags": [
+        "precision_exclusion"
+      ],
+      "role": "exclusion",
+      "block_scope": "overlapping_match",
+      "blocks_roles": [
+        "direct",
+        "context"
+      ],
+      "masks_positive_context": true
+    },
+    {
+      "key": "exclude:erntehelfer_personenmetapher",
+      "regex": "\\bernte(?:-|\\s)?helfer\\s+christian\\s+lindner\\b",
+      "priority": 7,
+      "notes": [
+        "Hinterlegte politische Personenmetapher."
+      ],
+      "tags": [
+        "precision_exclusion"
+      ],
+      "role": "exclusion",
+      "block_scope": "overlapping_match",
+      "blocks_roles": [
+        "direct",
+        "context"
+      ],
+      "masks_positive_context": true
+    },
+    {
+      "key": "exclude:tierschutz_schwarze_schafe",
+      "regex": "(?:\\btierschutz[a-z]*\\b[^.;:!?]{0,120}\\bschwarz[a-z]*\\s+schaf(?:e|en)?\\b|\\bschwarz[a-z]*\\s+schaf(?:e|en)?\\b[^.;:!?]{0,120}\\btierschutz[a-z]*\\b)",
+      "priority": 7,
+      "notes": [
+        "Hinterlegte schwarze-Schafe-Redewendung; unabhängige Nutztiermarker bleiben wirksam."
+      ],
+      "tags": [
+        "precision_exclusion"
+      ],
+      "role": "exclusion",
+      "block_scope": "overlapping_match",
+      "blocks_roles": [
+        "direct",
+        "context"
+      ],
+      "masks_positive_context": true
+    },
+    {
+      "key": "exclude:agrarzelte",
+      "regex": "\\bagrarzelte?[a-z]*\\b",
+      "priority": 7,
+      "notes": [
+        "Fachfremdes Kompositum für Grenzkontrollüberdachungen."
+      ],
+      "tags": [
+        "precision_exclusion"
+      ],
+      "role": "exclusion",
+      "block_scope": "overlapping_match",
+      "blocks_roles": [
+        "direct",
+        "context"
+      ],
+      "masks_positive_context": true
+    },
+    {
+      "key": "exclude:ig_bauen_agrar_umwelt",
+      "regex": "\\big\\s+bauen(?:-|\\s)+agrar(?:-|\\s)+umwelt\\b",
+      "priority": 7,
+      "notes": [
+        "Reiner Organisationsname."
+      ],
+      "tags": [
+        "entity_mask"
+      ],
+      "masks_positive_context": true,
+      "role": "exclusion",
+      "block_scope": "overlapping_match",
+      "blocks_roles": [
+        "direct",
+        "context"
+      ]
+    },
+    {
+      "key": "exclude:bauernmaut",
+      "regex": "\\bbauernmaut[a-z]*\\b",
+      "priority": 7,
+      "notes": [
+        "Politisches Wortspiel."
+      ],
+      "tags": [
+        "precision_exclusion"
+      ],
+      "role": "exclusion",
+      "block_scope": "overlapping_match",
+      "blocks_roles": [
+        "direct",
+        "context"
+      ],
+      "masks_positive_context": true
+    },
+    {
+      "key": "exclude:bauernmarkt_eigenname",
+      "regex": "\\bbauernmarkt[a-z]*\\b",
+      "priority": 7,
+      "context_any": [
+        "\\b(?:terrorist[a-z]*|islamist[a-z]*|umgebracht[a-z]*|polizeistation[a-z]*|cottbuser|wandmosaik|mosaik|suchmaschine)\\b"
+      ],
+      "notes": [
+        "Maskiert benannte Terror- und Kunsttitelverwendungen; reale Bauernmärkte bleiben",
+        "erfassbar."
+      ],
+      "tags": [
+        "precision_exclusion"
+      ],
+      "role": "exclusion",
+      "block_scope": "overlapping_match",
+      "blocks_roles": [
+        "direct",
+        "context"
+      ],
+      "masks_positive_context": true
+    },
+    {
+      "key": "exclude:welternaehrungsrat_entity",
+      "regex": "\\bwelternaehrungsrat(?:es|s|e|en)?\\b",
+      "priority": 7,
+      "notes": [
+        "Reine Institutionsnennung; separater Sachmarker bleibt aktiv."
+      ],
+      "tags": [
+        "entity_mask"
+      ],
+      "masks_positive_context": true,
+      "role": "exclusion",
+      "block_scope": "overlapping_match",
+      "blocks_roles": [
+        "direct",
+        "context"
+      ]
+    },
+    {
+      "key": "exclude:ble_entity",
+      "regex": "\\bbundesanstalt\\s+fuer\\s+landwirtschaft\\s+und\\s+ernaehrung\\b",
+      "priority": 7,
+      "notes": [
+        "Behördenname spanweise maskiert."
+      ],
+      "tags": [
+        "entity_mask"
+      ],
+      "masks_positive_context": true,
+      "role": "exclusion",
+      "block_scope": "overlapping_match",
+      "blocks_roles": [
+        "direct",
+        "context"
+      ]
+    },
+    {
+      "key": "exclude:bfr_entity",
+      "regex": "\\bbundesinstitut\\s+fuer\\s+risikobewertung\\b",
+      "priority": 7,
+      "notes": [
+        "Institutionsname spanweise maskiert."
+      ],
+      "tags": [
+        "entity_mask"
+      ],
+      "masks_positive_context": true,
+      "role": "exclusion",
+      "block_scope": "overlapping_match",
+      "blocks_roles": [
+        "direct",
+        "context"
+      ]
+    },
+    {
+      "key": "exclude:thuenen_entity",
+      "regex": "\\b(?:johann(?:-|\\s)?heinrich(?:-|\\s)?von(?:-|\\s)?)?thuenen(?:-|\\s)?institut\\b",
+      "priority": 7,
+      "notes": [
+        "Institutionsname spanweise maskiert."
+      ],
+      "tags": [
+        "entity_mask"
+      ],
+      "masks_positive_context": true,
+      "role": "exclusion",
+      "block_scope": "overlapping_match",
+      "blocks_roles": [
+        "direct",
+        "context"
+      ]
+    },
+    {
+      "key": "exclude:welternaehrungsinstitution_entity",
+      "regex": "\\b(?:wfp|welternaehrungsprogramm[a-z]*|welternaehrungsorganisation[a-z]*|welthungerhilfe[a-z]*)\\b",
+      "priority": 5,
+      "notes": [
+        "Maskiert die Institutionsnennung. Die in exception_rule_keys benannte Sachkontextregel",
+        "ist ausdrücklich ausgenommen."
+      ],
+      "tags": [
+        "entity_mask"
+      ],
+      "masks_positive_context": true,
+      "role": "exclusion",
+      "block_scope": "overlapping_match",
+      "blocks_roles": [
+        "direct",
+        "context"
+      ],
+      "exception_rule_keys": [
+        "shadow:internationale_ernaehrungsinstitution_sachkontext"
+      ]
+    },
+    {
+      "key": "exclude:ausschuss_ernaehrung_landwirtschaft",
+      "regex": "\\b(?:ausschuss(?:es)?|ausschussmitglied[a-z]*)\\s+fuer\\s+ernaehrung\\s+und\\s+landwirtschaft\\b",
+      "priority": 7,
+      "notes": [
+        "Ausschussbezeichnung spanweise maskiert."
+      ],
+      "tags": [
+        "entity_mask"
+      ],
+      "masks_positive_context": true,
+      "role": "exclusion",
+      "block_scope": "overlapping_match",
+      "blocks_roles": [
+        "direct",
+        "context"
+      ]
+    },
+    {
+      "key": "exclude:ausschuss_landwirtschaft_ernaehrung",
+      "regex": "\\b(?:ausschuss(?:es)?|ausschuesse)\\s+fuer\\s+landwirtschaft\\s+und\\s+ernaehrung\\b",
+      "priority": 7,
+      "notes": [
+        "Umgekehrte Ausschussbezeichnung spanweise maskiert."
+      ],
+      "tags": [
+        "entity_mask"
+      ],
+      "masks_positive_context": true,
+      "role": "exclusion",
+      "block_scope": "overlapping_match",
+      "blocks_roles": [
+        "direct",
+        "context"
+      ]
+    },
+    {
+      "key": "exclude:agrar_ernaehrungsausschuss_kurz",
+      "regex": "\\b(?:landwirtschafts|agrar|ernaehrungs)(?:-|\\s)?ausschuss(?:es|s|e|en)?\\b",
+      "priority": 7,
+      "notes": [
+        "Kurze Agrar-/Ernährungsausschussbezeichnung spanweise maskiert."
+      ],
+      "tags": [
+        "entity_mask"
+      ],
+      "masks_positive_context": true,
+      "role": "exclusion",
+      "block_scope": "overlapping_match",
+      "blocks_roles": [
+        "direct",
+        "context"
+      ]
+    },
+    {
+      "key": "exclude:mhd_politische_metapher",
+      "regex": "\\bmindesthaltbarkeitsdatum(?:s)?\\b",
+      "priority": 7,
+      "context_any": [
+        "\\bsolidaritaetszuschlag[a-z]*\\b",
+        "\\ber\\s+ist\\s+veraltet\\b"
+      ],
+      "notes": [
+        "Maskiert benannte politische MHD-Metaphern; fachliche Verwendungen bleiben erfassbar."
+      ],
+      "tags": [
+        "precision_exclusion"
+      ],
+      "role": "exclusion",
+      "block_scope": "overlapping_match",
+      "blocks_roles": [
+        "direct",
+        "context"
+      ],
+      "masks_positive_context": true
+    },
+    {
+      "key": "exclude:zutatenliste_metapher",
+      "regex": "\\bzutatenliste[n]?\\b",
+      "priority": 7,
+      "context_any": [
+        "\\bdie\\s+ganze\\s+sache\\b[^.!?]{0,100}\\blecker\\b",
+        "\\bkochrezept\\b[^.!?]{0,160}\\bspeisekarte\\b"
+      ],
+      "notes": [
+        "Maskiert benannte politische und digitalpolitische Metaphern."
+      ],
+      "tags": [
+        "precision_exclusion"
+      ],
+      "role": "exclusion",
+      "block_scope": "overlapping_match",
+      "blocks_roles": [
+        "direct",
+        "context"
+      ],
+      "masks_positive_context": true
+    },
+    {
+      "key": "exclude:weinberge_szenisch",
+      "regex": "\\bweinberge(?:n|s)?\\b",
+      "priority": 7,
+      "context_any": [
+        "\\b(?:aussichtspunkt[a-z]*|weltkulturerbe|rheintal|burgen|schloesser|alte[nrms]*\\s+staedt[a-z]*|doerfer|aufgewachsen|grosseltern|grosselternteil[a-z]*)\\b"
+      ],
+      "notes": [
+        "Maskiert benannte Landschafts-, Tourismus- und Biografiekontexte."
+      ],
+      "tags": [
+        "precision_exclusion"
+      ],
+      "role": "exclusion",
+      "block_scope": "overlapping_match",
+      "blocks_roles": [
+        "direct",
+        "context"
+      ],
+      "masks_positive_context": true
+    },
+    {
+      "key": "exclude:tierhaltung_nicht_nutztier",
+      "regex": "\\btierhalt[a-z]*\\b",
+      "priority": 7,
+      "context_any": [
+        "\\b(?:zirkusbetrieb[a-z]*|falknerei[a-z]*)\\b"
+      ],
+      "notes": [
+        "Maskiert Tierhaltung im benannten Zirkus- und Falknereikontext."
+      ],
+      "tags": [
+        "precision_exclusion"
+      ],
+      "role": "exclusion",
+      "block_scope": "overlapping_match",
+      "blocks_roles": [
+        "direct",
+        "context"
+      ],
+      "masks_positive_context": true
+    },
+    {
+      "key": "exclude:gak_nichtagrar_langform",
+      "regex": "\\b(?:bund(?:-laender)?(?:-gemeinschaftsaufgabe)?\\s+)?gemeinschaftsaufgabe\\s*[„“\\\" ]*(?:verbesserung\\s+der\\s+)?agrarstruktur\\s+und\\s+(?:des\\s+)?kuestenschutz(?:es)?\\b|\\bverbesserung\\s+der\\s+agrarstruktur\\s+und\\s+des\\s+kuestenschutzes\\b|\\bgemeinschaftsaufgabe\\s+[„“\\\" ]*agrarstruktur[„“\\\" ]*\\s+und\\s+[„“\\\" ]*kuestenschutz[„“\\\" ]*",
+      "priority": 7,
+      "context_any": [
+        "\\b(?:kuestenschutzmassnahm[a-z]*|kuestenschutzprojekt[a-z]*|kuestenschutzmittel[a-z]*|hafenanlag[a-z]*|hochwasser[a-z]*|niedrigwasser[a-z]*|gewaesser[a-z]*|wald[a-z]*|forstwirtschaft[a-z]*|forstbetrieb[a-z]*|waldbewirtschaftung[a-z]*|laendlich[a-z]*\\s+(?:raum|raeume|entwicklung|infrastruktur)[a-z]*|dorfentwicklung[a-z]*|dorfkern[a-z]*|ortskern[a-z]*|telemedizin|medizinisch[a-z]*\\s+versorgung|kulturfoerderung|staedtebaufoerderung|munitionsaltlast[a-z]*|insekten?schutz[a-z]*|klimaschutz[a-z]*|regionale[nrms]*\\s+wirtschaftsstruktur)\\b|\\bschutz\\s+(?:unserer|der)\\s+kuesten\\b"
+      ],
+      "notes": [
+        "GAK-Langname nur bei explizitem Küsten-, Wald-, Dorf-/Landentwicklungs- oder sonstigem",
+        "Nicht-Agrar-Zielkontext maskiert."
+      ],
+      "tags": [
+        "precision_exclusion"
+      ],
+      "role": "exclusion",
+      "block_scope": "overlapping_match",
+      "blocks_roles": [
+        "direct",
+        "context"
+      ],
+      "masks_positive_context": true
+    },
+    {
+      "key": "exclude:gak_nichtagrar_abkuerzung",
+      "regex": "\\bgak(?:-mittel[a-z]*)?\\b",
+      "priority": 7,
+      "context_any": [
+        "\\b(?:kuestenschutzmassnahm[a-z]*|kuestenschutzprojekt[a-z]*|kuestenschutzmittel[a-z]*|hafenanlag[a-z]*|hochwasser[a-z]*|niedrigwasser[a-z]*|gewaesser[a-z]*|wald[a-z]*|forstwirtschaft[a-z]*|forstbetrieb[a-z]*|waldbewirtschaftung[a-z]*|laendlich[a-z]*\\s+(?:raum|raeume|entwicklung|infrastruktur)[a-z]*|dorfentwicklung[a-z]*|dorfkern[a-z]*|ortskern[a-z]*|telemedizin|medizinisch[a-z]*\\s+versorgung|kulturfoerderung|staedtebaufoerderung|munitionsaltlast[a-z]*|insekten?schutz[a-z]*|klimaschutz[a-z]*|regionale[nrms]*\\s+wirtschaftsstruktur)\\b|\\bschutz\\s+(?:unserer|der)\\s+kuesten\\b"
+      ],
+      "notes": [
+        "GAK-Kürzel nur bei denselben expliziten Nicht-Agrar-Zielkontexten maskiert."
+      ],
+      "tags": [
+        "precision_exclusion"
+      ],
+      "role": "exclusion",
+      "block_scope": "overlapping_match",
+      "blocks_roles": [
+        "direct",
+        "context"
+      ],
+      "masks_positive_context": true
+    },
+    {
+      "key": "stem:tierwohlabgabe",
+      "regex": "\\btierwohl(?:-|\\s)?abgabe[a-z]*\\b",
+      "priority": 3,
+      "tags": [
+        "agrarpolitik",
+        "tierhaltung"
+      ],
+      "notes": [
+        "Konkrete agrarpolitische Instrumentbezeichnung; direkter A&E-Gegenstandsmarker."
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:krankenhausverpflegung",
+      "regex": "\\b(?:krankenhaus|klinik)(?:-|\\s)?verpflegung[a-z]*\\b",
+      "priority": 2,
+      "tags": [
+        "gemeinschaftsverpflegung",
+        "ernaehrungspolitik"
+      ],
+      "notes": [
+        "Krankenhaus-/Klinikverpflegung als Verpflegungsgegenstand; nicht mit klinischer",
+        "Ernährung gleichzusetzen."
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:pflegeheimverpflegung",
+      "regex": "\\b(?:pflegeheim|pflegeeinrichtung)(?:-|\\s)?verpflegung[a-z]*\\b",
+      "priority": 2,
+      "tags": [
+        "gemeinschaftsverpflegung",
+        "ernaehrungspolitik"
+      ],
+      "notes": [
+        "Verpflegung in Pflegeeinrichtungen als institutioneller Ernährungsgegenstand."
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:seniorenverpflegung",
+      "regex": "\\bsenioren(?:-|\\s)?verpflegung[a-z]*\\b",
+      "priority": 2,
+      "tags": [
+        "gemeinschaftsverpflegung",
+        "ernaehrungspolitik"
+      ],
+      "notes": [
+        "Seniorenverpflegung als organisierter Ernährungs-/Verpflegungsgegenstand."
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:betriebsverpflegung",
+      "regex": "\\bbetriebs(?:-|\\s)?verpflegung[a-z]*\\b",
+      "priority": 2,
+      "tags": [
+        "gemeinschaftsverpflegung",
+        "lebensmittelkette"
+      ],
+      "notes": [
+        "Betriebsverpflegung als Teil organisierter Außer-Haus-Verpflegung."
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:suppenkueche",
+      "regex": "\\bsuppenkuech[a-z]*\\b",
+      "priority": 2,
+      "tags": [
+        "ernaehrungsversorgung",
+        "lebensmittelzugang"
+      ],
+      "notes": [
+        "Organisierte Essensbereitstellung; direkter Bezug zu Ernährung und Versorgung."
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:lebensmittelausgabe",
+      "regex": "\\blebensmittel(?:-|\\s)?ausgabe[a-z]*\\b",
+      "priority": 2,
+      "tags": [
+        "ernaehrungsversorgung",
+        "lebensmittelzugang"
+      ],
+      "notes": [
+        "Organisierte Ausgabe von Lebensmitteln; direkter Versorgungsgegenstand."
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:essensausgabe",
+      "regex": "\\bessens(?:-|\\s)?ausgabe[a-z]*\\b",
+      "priority": 2,
+      "tags": [
+        "gemeinschaftsverpflegung",
+        "ernaehrungsversorgung"
+      ],
+      "notes": [
+        "Organisierte Essensausgabe; direkter Ernährungs-/Verpflegungsgegenstand."
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:gemeinschaftskueche",
+      "regex": "\\bgemeinschafts(?:-|\\s)?kuech[a-z]*\\b",
+      "priority": 2,
+      "tags": [
+        "gemeinschaftsverpflegung",
+        "lebensmittelkette"
+      ],
+      "notes": [
+        "Gemeinschaftsküche als institutionelle Lebensmittelzubereitung."
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:grosskueche",
+      "regex": "\\bgross(?:-|\\s)?kuech[a-z]*\\b",
+      "priority": 2,
+      "tags": [
+        "gemeinschaftsverpflegung",
+        "lebensmittelkette"
+      ],
+      "notes": [
+        "Großküche als institutionelle Lebensmittelzubereitung."
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:speisengastronomie",
+      "regex": "\\bspeisengastronomi[a-z]*\\b",
+      "priority": 2,
+      "tags": [
+        "ausser_haus_verpflegung",
+        "lebensmittelkette"
+      ],
+      "notes": [
+        "Speisengastronomie als Teil der Außer-Haus-Verpflegung."
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:catering",
+      "regex": "\\bcatering(?:s|unternehmen(?:s)?|betrieb(?:e|en|es|s)?|branche(?:n)?|service(?:s)?|dienstleist[a-z]*)?\\b",
+      "priority": 2,
+      "tags": [
+        "ausser_haus_verpflegung",
+        "lebensmittelkette"
+      ],
+      "notes": [
+        "Erfasst Catering und benannte Zusammensetzungen mit ihren Flexionsformen."
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "stem:tafel_ernaehrungskontext",
+      "regex": "\\btafel(?:n)?\\b",
+      "priority": 3,
+      "context_any": [
+        "(?<![a-z])(?:lebensmittel[a-z]*|nahrungsmittel[a-z]*|essen[a-z]*|lebensmittelspend[a-z]*|essensausgabe[a-z]*|lebensmittelausgabe[a-z]*|beduerftig[a-z]*|ernaehrungsarmut[a-z]*)(?![a-z])"
+      ],
+      "context_none": [
+        "(?<![a-z])(?:schultafel[a-z]*|tafelbild[a-z]*|tafelrunde[a-z]*|tafelwein[a-z]*|tafelwasser[a-z]*)(?![a-z])"
+      ],
+      "context_window": 160,
+      "context_distinct": true,
+      "tags": [
+        "ernaehrungsversorgung",
+        "lebensmittelzugang"
+      ],
+      "notes": [
+        "Mehrdeutiges Grundwort; nur im expliziten Lebensmittel-/Versorgungskontext A&E-relevant."
+      ],
+      "role": "context"
+    },
+    {
+      "key": "exclude:nicht_agrarpolitiker_personenbezeichnung",
+      "regex": "\\bnicht(?:-|\\s)+agrarpolitiker(?:in(?:nen)?|n|s)?\\b",
+      "priority": 10,
+      "masks_positive_context": true,
+      "tags": [
+        "entity_mask"
+      ],
+      "notes": [
+        "Maskiert die Personenbezeichnung Nicht-Agrarpolitiker lokal."
+      ],
+      "role": "exclusion",
+      "block_scope": "overlapping_match",
+      "blocks_roles": [
+        "direct",
+        "context"
+      ]
+    },
+    {
+      "key": "exclude:weltorganisation_ernaehrung_landwirtschaft",
+      "regex": "\\bweltorganisation\\s+fuer\\s+ernaehrung\\s+und\\s+landwirtschaft\\b",
+      "priority": 10,
+      "masks_positive_context": true,
+      "tags": [
+        "entity_mask"
+      ],
+      "notes": [
+        "Maskiert den benannten Institutionsnamen lokal."
+      ],
+      "role": "exclusion",
+      "block_scope": "overlapping_match",
+      "blocks_roles": [
+        "direct",
+        "context"
+      ]
+    },
+    {
+      "key": "exclude:ig_herdenschutz_plus_hund",
+      "regex": "\\big\\s+herdenschutz\\s+plus\\s+hund\\b",
+      "priority": 10,
+      "masks_positive_context": true,
+      "tags": [
+        "entity_mask"
+      ],
+      "notes": [
+        "Maskiert den Organisationsnamen IG Herdenschutz plus Hund lokal."
+      ],
+      "role": "exclusion",
+      "block_scope": "overlapping_match",
+      "blocks_roles": [
+        "direct",
+        "context"
+      ]
+    },
+    {
+      "key": "phrase:haltungs_und_herkunftskennzeichnung",
+      "regex": "\\bhaltungs-\\s*und\\s+herkunftskennzeichn[a-z]*\\b",
+      "priority": 3,
+      "notes": [
+        "Erfasst die verkürzte Wortfolge Haltungs- und Herkunftskennzeichnung."
+      ],
+      "role": "direct"
+    },
+    {
+      "key": "phrase:hoefeordnung",
+      "regex": "\\bhoefeordnung(?:en)?\\b",
+      "priority": 3,
+      "evidence_family": "agrar_erbrecht",
+      "notes": [
+        "Erfasst Höfeordnung als ausdrücklich landwirtschaftlichen Regelungsgegenstand."
+      ],
+      "role": "direct"
+    }
+  ]
+}
