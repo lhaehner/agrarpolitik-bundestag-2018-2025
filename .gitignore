@@ -1,0 +1,6 @@
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+lauf/
+CPP-BT_2026-01-17_DE_CSV_Reden_Gesamt.zip
+Saetze_2018-2025.csv.gz
