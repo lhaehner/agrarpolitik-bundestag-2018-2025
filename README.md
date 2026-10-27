@@ -14,10 +14,10 @@ Die ursprünglichen Reden werden direkt von [Zenodo, Version 2026-01-17](https:/
 | Gesuchter Inhalt | Ablage |
 | --- | --- |
 | Codebuch als Lesefassung | [Codebuch.pdf](codebuch/Codebuch.pdf) |
-| Vier tatsächlich verwendete Wörterbücher | `dictionaries/` |
+| Vier tatsächlich verwendete Wörterbücher | [dictionaries/](dictionaries/) |
 | Unveränderte Ausgangsreden | [Redenarchiv auf Zenodo](https://zenodo.org/records/18177196/files/CPP-BT_2026-01-17_DE_CSV_Reden_Gesamt.zip?download=1) |
 | Vollständige aufbereitete Satzbasis | [Saetze_2018-2025.csv.gz herunterladen](https://github.com/lhaehner/agrarpolitik-bundestag-2018-2025/releases/download/abgabe-v1.0/Saetze_2018-2025.csv.gz) (ca. 145 MB) |
-| A&E-Satzmaster | `ergebnisse/Satzmaster_Agrar_Ernaehrung.csv.gz` |
+| A&E-Satzmaster | [ergebnisse/Satzmaster_Agrar_Ernaehrung.csv.gz](ergebnisse/Satzmaster_Agrar_Ernaehrung.csv.gz) |
 | Fertige Excel-Auswertung | [ergebnisse/Datengrundlage.xlsx](ergebnisse/Datengrundlage.xlsx) |
 | Berechnete Gütemaße der Validierung | [ergebnisse/Guetemasse_Validierung.csv](ergebnisse/Guetemasse_Validierung.csv) |
 | Validierung mit 1.000 Sätzen | [validierung/Validierung_AE_und_Themen_1000.xlsx](validierung/Validierung_AE_und_Themen_1000.xlsx) |
